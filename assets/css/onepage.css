@@ -161,6 +161,44 @@ main {
   color: var(--text);
 }
 
+.interests {
+  max-width: 34rem;
+  margin: 0 auto 2rem;
+  padding: 1.25rem 1.5rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--panel-border);
+  border-radius: 1rem;
+}
+
+.interests-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.85rem;
+}
+
+.interests-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+}
+
+.interests-list li {
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(138, 180, 248, 0.35);
+  background: rgba(138, 180, 248, 0.1);
+  color: var(--text);
+  font-size: 0.85rem;
+}
+
 .hero-actions {
   display: flex;
   gap: 1rem;
