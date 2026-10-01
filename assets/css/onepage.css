@@ -246,6 +246,34 @@ main {
   border-color: var(--accent);
 }
 
+/* News */
+.news-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.news-item {
+  padding: 1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--panel-border);
+  border-left: 3px solid var(--accent);
+  border-radius: 0.5rem;
+}
+
+.news-date {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.news-body {
+  color: var(--text);
+}
+
 /* Highlights */
 .highlights-list {
   list-style: none;
