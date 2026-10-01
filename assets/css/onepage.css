@@ -338,10 +338,25 @@ main {
 }
 
 /* Contact */
-.contact-links {
+.contact-icons {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   flex-wrap: wrap;
+}
+
+.contact-icons a {
+  display: inline-flex;
+  color: var(--text-muted);
+  transition: color 0.15s ease;
+}
+
+.contact-icons a:hover {
+  color: var(--accent);
+}
+
+.contact-icon {
+  width: 1.75rem;
+  height: 1.75rem;
 }
 
 /* Footer */
