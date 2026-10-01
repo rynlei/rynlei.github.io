@@ -366,15 +366,12 @@ main {
 }
 
 /* Contact */
-#contact.section {
-  padding-top: 1.5rem;
-}
-
 .contact-icons {
   display: flex;
   justify-content: center;
   gap: 1.5rem;
   flex-wrap: wrap;
+  margin-bottom: 1rem;
 }
 
 .contact-icons a {
@@ -394,6 +391,7 @@ main {
 
 /* Footer */
 .site-footer {
+  scroll-margin-top: 6.5rem;
   text-align: center;
   padding: 2rem 1.5rem 3rem;
   color: var(--text-muted);
