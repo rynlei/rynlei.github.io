@@ -261,6 +261,12 @@ main {
   padding: 0.35rem;
 }
 
+.project-card img.photo {
+  object-fit: cover;
+  background: none;
+  padding: 0;
+}
+
 .project-card h3 {
   font-size: 1.1rem;
   margin: 0 0 0.4rem;
