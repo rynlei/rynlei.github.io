@@ -1,8 +1,8 @@
 :root {
   --text: #eef1f6;
   --text-muted: #aab4c4;
-  --accent: #8ab4f8;
-  --accent-strong: #5f8fe0;
+  --accent: #e2c2ff;
+  --accent-strong: #8c5fa8;
   --panel-bg: rgba(16, 20, 28, 0.55);
   --panel-bg-strong: rgba(16, 20, 28, 0.72);
   --panel-border: rgba(255, 255, 255, 0.14);
@@ -141,7 +141,7 @@ main {
   object-fit: cover;
   margin-bottom: 1.5rem;
   border: 2px solid var(--panel-border);
-  box-shadow: 0 0 0 6px rgba(138, 180, 248, 0.12);
+  box-shadow: 0 0 0 6px rgba(226, 194, 255, 0.12);
 }
 
 .hero h1 {
@@ -193,8 +193,8 @@ main {
 .interests-list li {
   padding: 0.4rem 0.9rem;
   border-radius: 999px;
-  border: 1px solid rgba(138, 180, 248, 0.35);
-  background: rgba(138, 180, 248, 0.1);
+  border: 1px solid rgba(226, 194, 255, 0.35);
+  background: rgba(226, 194, 255, 0.1);
   color: var(--text);
   font-size: 0.85rem;
 }
