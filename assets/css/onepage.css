@@ -143,8 +143,8 @@ main {
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 1.5rem;
-  border: 2px solid var(--panel-border);
-  box-shadow: 0 0 0 6px rgba(138, 180, 248, 0.12);
+  border: 4px solid var(--accent);
+  box-shadow: 0 0 0 6px rgba(138, 180, 248, 0.25);
 }
 
 .hero h1 {
