@@ -340,6 +340,10 @@ main {
   padding: 0;
 }
 
+.project-card img.photo-muted {
+  filter: saturate(0.7) brightness(0.85);
+}
+
 .project-card-body {
   min-width: 0;
 }
