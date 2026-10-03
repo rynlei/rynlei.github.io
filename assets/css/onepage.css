@@ -17,6 +17,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -26,6 +27,7 @@ body {
   font-family: "Aileron", Helvetica, Arial, sans-serif;
   line-height: 1.6;
   background: #05070b;
+  overflow-wrap: break-word;
 }
 
 .page-background {
@@ -304,7 +306,6 @@ main {
 .highlight-meta {
   color: var(--text-muted);
   font-size: 0.9rem;
-  white-space: nowrap;
 }
 
 /* Projects */
@@ -339,6 +340,10 @@ main {
   padding: 0;
 }
 
+.project-card-body {
+  min-width: 0;
+}
+
 .project-card h3 {
   font-size: 1.1rem;
   margin: 0 0 0.4rem;
@@ -362,6 +367,57 @@ main {
   }
   .project-card img {
     height: 9.5rem;
+  }
+}
+
+/* Mobile layout */
+@media (max-width: 48em) {
+  .site-header {
+    position: static;
+    padding: 0 1rem;
+  }
+
+  .site-header-inner {
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 0.85rem 1rem;
+    border-radius: 1.25rem;
+  }
+
+  .nav {
+    justify-content: center;
+    gap: 0.4rem 1rem;
+  }
+
+  section,
+  .site-footer {
+    scroll-margin-top: 1rem;
+  }
+
+  .hero,
+  .section {
+    margin: 1.25rem 1rem 0;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .hero {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .section h2 {
+    font-size: 1.5rem;
+  }
+
+  .highlight-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
   }
 }
 
