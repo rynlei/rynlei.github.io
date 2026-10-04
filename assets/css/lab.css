@@ -109,10 +109,10 @@ main.ap { padding: 0 0 3rem; }
   background: #fff;
 }
 .ap-hero-media img { aspect-ratio: 3 / 2; }
+.ap-about-media img { aspect-ratio: 4 / 3; object-position: 50% 40%; }
 
 /* Text column */
 .ap-text {
-  max-width: 46rem;
   padding: 2.75rem 2.5rem 3rem;
 }
 
@@ -180,6 +180,21 @@ main.ap { padding: 0 0 3rem; }
 
 .ap-date { margin: 0 0 0.4rem; font-weight: 600; color: var(--ap-grey); }
 .ap-card .news-item { padding: 0; background: none; border: 0; border-radius: 0; }
+.ap-card .news-item.has-media {
+  display: grid;
+  grid-template-columns: 1fr 16rem;
+  gap: 2rem;
+  align-items: start;
+}
+.ap-news-text .ap-desc:last-child { margin-bottom: 0; }
+.ap-news-media { margin: 0; }
+.ap-news-media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 1rem;
+}
 
 /* Highlights as a stat list */
 .ap-stats { list-style: none; margin: 0; padding: 0; }
@@ -246,5 +261,17 @@ main.ap { padding: 0 0 3rem; }
   }
   .ap-head { padding: 3rem 1.5rem 0.25rem; }
   .ap-text { padding: 1.75rem 1.5rem 2.25rem; }
+  .ap-card .news-item.has-media { grid-template-columns: 1fr; gap: 1.25rem; }
+  .ap-news-media img { aspect-ratio: 16 / 9; }
   .ap-media.contain img, .project-card.ap-card .ap-media.contain img { padding: 1.25rem; }
 }
+
+/* Footer: white band with black icons (Apple-style light footer) */
+.site-footer {
+  background: #fff;
+  border-top: 0;
+  color: #6e6e73;
+}
+.site-footer .contact-icons a { color: #1d1d1f; }
+.site-footer .contact-icons a:hover { color: var(--accent-strong); background: rgba(0, 0, 0, 0.06); }
+.site-footer .lab-note { color: #86868b; opacity: 1; }
