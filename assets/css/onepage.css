@@ -305,6 +305,47 @@ a {
   }
 }
 
+/* Wide screens: the header bar spans the page, and a frosted blur that
+   wide is re-blurred on every scroll frame. Use a solid fill instead;
+   phones keep the small frosted pill. */
+@media (min-width: 48.0625em) {
+  .site-header-inner {
+    background: rgba(16, 20, 28, 0.92);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+/* Scroll reveal: blocks fade in and drift up as they enter the view,
+   grouped items arrive one after another. Only opacity and transform
+   animate, so this runs on the compositor and costs nothing on scroll.
+   Styles are gated on html.js so content is always visible without JS. */
+.js .reveal,
+.js .reveal-child {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.js .reveal.is-visible,
+.js .reveal.is-visible .reveal-child,
+.js.reveal-all .reveal,
+.js.reveal-all .reveal-child {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal,
+  .js .reveal-child {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 /* Sections as floating glass panels */
 section {
   scroll-margin-top: 6.5rem;
