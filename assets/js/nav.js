@@ -31,4 +31,25 @@
       setOpen(false);
     }
   });
+
+  // Swipe: a leftward swipe on the open menu closes it; a rightward swipe
+  // starting near the left edge opens it. Only horizontal swipes count.
+  var startX = 0, startY = 0, tracking = false, fromEdge = false;
+  document.addEventListener('touchstart', function (e) {
+    tracking = e.touches.length === 1 && getComputedStyle(btn).display !== 'none';
+    if (!tracking) return;
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    fromEdge = startX <= 48;
+  }, { passive: true });
+  document.addEventListener('touchend', function (e) {
+    if (!tracking) return;
+    tracking = false;
+    var dx = e.changedTouches[0].clientX - startX;
+    var dy = e.changedTouches[0].clientY - startY;
+    if (Math.abs(dx) < 60 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
+    var open = root.classList.contains('menu-open');
+    if (open && dx < 0) setOpen(false);
+    else if (!open && dx > 0 && fromEdge) setOpen(true);
+  }, { passive: true });
 })();
