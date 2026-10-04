@@ -60,8 +60,10 @@
    layout behave exactly as they would without the animation. */
 (function () {
   var root = document.documentElement;
-  var BLOCKS = '.hero, .section, .project-hero, .colophon, .project-figure';
-  var ITEMS = '.project-card, .highlight-item, .news-item, #skills .interests-list li, .index-row';
+  // Project and publication cards reveal on their own as each one enters
+  // the view; smaller items reveal with their section, staggered.
+  var BLOCKS = '.hero, .section, .project-card, .project-hero, .colophon, .project-figure';
+  var ITEMS = '.highlight-item, .news-item, #skills .interests-list li, .index-row';
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var blocks = Array.prototype.slice.call(document.querySelectorAll(BLOCKS));
   if (!blocks.length || !root.classList.contains('js')) return;
@@ -77,6 +79,7 @@
 
   function settle(b) {
     b.classList.remove('reveal', 'is-visible');
+    b.style.transitionDelay = '';
     Array.prototype.forEach.call(b.querySelectorAll('.reveal-child'), function (el) {
       el.classList.remove('reveal-child');
       el.style.transitionDelay = '';
@@ -85,20 +88,26 @@
 
   var pending = blocks.slice();
 
-  function show(b, instant) {
+  function show(b, instant, delay) {
     pending.splice(pending.indexOf(b), 1);
     io.unobserve(b);
     if (instant) { settle(b); return; }
+    b.style.transitionDelay = delay ? delay + 'ms' : '';
     b.classList.add('is-visible');
     setTimeout(function () { settle(b); }, 2400);
   }
 
   var io = new IntersectionObserver(function (entries) {
+    // Blocks that enter together (a section and its first card, or two
+    // cards side by side) arrive top to bottom with a short stagger.
+    var incoming = [];
     entries.forEach(function (e) {
       if (pending.indexOf(e.target) < 0) return;
-      if (e.isIntersecting) show(e.target, false);
+      if (e.isIntersecting) incoming.push(e);
       else if (e.boundingClientRect.bottom < 0) show(e.target, true);
     });
+    incoming.sort(function (a, b) { return a.boundingClientRect.top - b.boundingClientRect.top; });
+    incoming.forEach(function (e, i) { show(e.target, false, Math.min(i, 8) * 110); });
   }, { rootMargin: '0px 0px -72px 0px', threshold: 0 });
 
   blocks.forEach(function (b) { io.observe(b); });
