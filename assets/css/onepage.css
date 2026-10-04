@@ -464,3 +464,45 @@ main {
   max-width: var(--max-width);
   margin: 0 auto;
 }
+
+/* Project cards: per-project accent, image-led thumbnails, kickers */
+.project-card {
+  --card-accent: var(--accent);
+  grid-template-columns: 16rem 1fr;
+  gap: 1.5rem;
+  border-left: 3px solid var(--card-accent);
+  background:
+    linear-gradient(90deg,
+      color-mix(in srgb, var(--card-accent) 12%, transparent),
+      rgba(255, 255, 255, 0.04) 45%);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.project-card img {
+  height: 11rem;
+  border-radius: 0.6rem;
+}
+
+.project-kicker {
+  margin: 0 0 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--card-accent);
+}
+
+/* Must follow the 16rem column rule above so it wins the cascade on phones. */
+@media (max-width: 48em) {
+  .project-card {
+    grid-template-columns: 1fr;
+  }
+  .project-card img {
+    height: 13rem;
+  }
+}
