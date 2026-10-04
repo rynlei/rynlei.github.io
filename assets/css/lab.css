@@ -521,6 +521,45 @@ h1, h2, h3 {
   opacity: 0.7;
 }
 
+/* Experiment 2: per-project accent tint + image-led project cards.
+   Each card sets --card-accent inline; the tint stays subtle so the
+   colour reads as a cue, not a block. */
+.project-card {
+  --card-accent: var(--accent);
+  grid-template-columns: 16rem 1fr;
+  gap: 1.5rem;
+  border-left: 3px solid var(--card-accent);
+  background:
+    linear-gradient(90deg,
+      color-mix(in srgb, var(--card-accent) 12%, transparent),
+      rgba(255, 255, 255, 0.04) 45%);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.project-card img {
+  height: 11rem;
+  border-radius: 0.6rem;
+}
+
+.project-kicker {
+  color: var(--card-accent);
+}
+
+/* Must come after the 16rem column rule above so it wins the cascade. */
+@media (max-width: 48em) {
+  .project-card {
+    grid-template-columns: 1fr;
+  }
+  .project-card img {
+    height: 13rem;
+  }
+}
+
 @media (max-width: 48em) {
   .hero h1 {
     font-size: 2.6rem;
