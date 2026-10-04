@@ -140,8 +140,8 @@ main {
 }
 
 .hero-avatar {
-  width: 162px;
-  height: 162px;
+  width: 154px;
+  height: 154px;
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 1.5rem;
