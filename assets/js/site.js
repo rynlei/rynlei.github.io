@@ -71,7 +71,7 @@
     b.classList.add('reveal');
     Array.prototype.forEach.call(b.querySelectorAll(ITEMS), function (el, i) {
       el.classList.add('reveal-child');
-      el.style.transitionDelay = Math.min(i, 8) * 90 + 'ms';
+      el.style.transitionDelay = Math.min(i, 8) * 110 + 'ms';
     });
   });
 
@@ -90,7 +90,7 @@
     io.unobserve(b);
     if (instant) { settle(b); return; }
     b.classList.add('is-visible');
-    setTimeout(function () { settle(b); }, 1800);
+    setTimeout(function () { settle(b); }, 2400);
   }
 
   var io = new IntersectionObserver(function (entries) {

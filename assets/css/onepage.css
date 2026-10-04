@@ -331,10 +331,10 @@ a {
 .js .reveal,
 .js .reveal-child {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(36px);
   transition:
-    opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1),
-    transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+    opacity 1.05s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 1.05s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 .js .reveal.is-visible,
