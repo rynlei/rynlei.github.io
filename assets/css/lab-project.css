@@ -1,5 +1,5 @@
 /* Lab: project "publication" pages (used with _layouts/project.html).
-   Builds on lab.css for the background, header, footer and type vars. */
+   Builds on onepage.css + lab.css for the background, header, drawer and footer. */
 
 .project {
   max-width: var(--max-width);
@@ -20,7 +20,7 @@
 
 .project-number {
   display: block;
-  font-family: var(--serif);
+  font-weight: 700;
   font-size: 4.5rem;
   line-height: 1;
   color: var(--accent);
@@ -28,15 +28,13 @@
 }
 
 .project-title {
-  font-family: var(--serif);
-  font-size: 2.75rem;
+  font-size: 2.4rem;
   font-weight: 600;
   line-height: 1.15;
   margin: 0 0 0.75rem;
 }
 
 .project-subtitle {
-  font-family: var(--serif);
   font-style: italic;
   font-size: 1.15rem;
   color: var(--text-muted);
@@ -83,7 +81,6 @@
 }
 
 .project-body h2 {
-  font-family: var(--serif);
   font-size: 1.75rem;
   font-weight: 600;
   margin: 2.5rem 0 0.75rem;

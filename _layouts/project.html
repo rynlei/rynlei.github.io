@@ -14,9 +14,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
   <link href="https://fonts.cdnfonts.com/css/aileron" rel="stylesheet">
 
+  <link rel="stylesheet" href="/assets/css/onepage.css?v={{ site.time | date: '%s' }}">
   <link rel="stylesheet" href="/assets/css/lab.css?v={{ site.time | date: '%s' }}">
   <link rel="stylesheet" href="/assets/css/lab-project.css?v={{ site.time | date: '%s' }}">
 </head>
@@ -26,15 +26,25 @@
 
   <header class="site-header">
     <div class="site-header-inner">
+      <button class="menu-toggle" type="button" aria-controls="site-drawer" aria-expanded="false" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
       <a class="brand" href="/lab.html">Darin Lei</a>
-      <nav class="nav">
-        <a href="/lab.html#index">Index</a>
-        <a href="/lab.html#projects">Projects</a>
-        <a href="/lab.html#publications">Publications</a>
-        <a href="/lab.html#contact">Contact</a>
-      </nav>
     </div>
   </header>
+
+  <div class="drawer-scrim" aria-hidden="true"></div>
+  <aside id="site-drawer" class="drawer" aria-hidden="true">
+    <p class="drawer-label">Menu</p>
+    <nav class="drawer-nav" aria-label="Site">
+      <a href="/lab.html#home">Home</a>
+      <a href="/lab.html#index" class="is-lab">Project Index</a>
+      <a href="/lab.html#projects">Ongoing Projects</a>
+      <a href="/lab.html#publications">Publications</a>
+      <a href="/lab.html#contact">Contact</a>
+    </nav>
+    <p class="drawer-foot"><a href="mailto:darin.lei@mail.utoronto.ca">darin.lei@mail.utoronto.ca</a><br>Experimental project page &mdash; not the live site.</p>
+  </aside>
 
   <main class="project">
     <header class="project-hero">
@@ -70,5 +80,6 @@
       <p class="lab-note">Experimental project page &mdash; not the live site.</p>
     </div>
   </footer>
+  <script src="/assets/js/lab-nav.js?v={{ site.time | date: '%s' }}"></script>
 </body>
 </html>
