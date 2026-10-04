@@ -265,3 +265,13 @@ main.ap { padding: 0 0 3rem; }
   .ap-news-media img { aspect-ratio: 16 / 9; }
   .ap-media.contain img, .project-card.ap-card .ap-media.contain img { padding: 1.25rem; }
 }
+
+/* Footer: white band with black icons (Apple-style light footer) */
+.site-footer {
+  background: #fff;
+  border-top: 0;
+  color: #6e6e73;
+}
+.site-footer .contact-icons a { color: #1d1d1f; }
+.site-footer .contact-icons a:hover { color: var(--accent-strong); background: rgba(0, 0, 0, 0.06); }
+.site-footer .lab-note { color: #86868b; opacity: 1; }
