@@ -129,7 +129,7 @@ a {
   position: absolute;
   inset: 0;
   rotate: 0deg;
-  transition: rotate 0.9s cubic-bezier(0.65, 0, 0.35, 1);
+  transition: rotate 0.55s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .menu-open .menu-toggle-icon {
@@ -147,10 +147,10 @@ a {
   border-radius: 2px;
   /* Closing: the X unwinds while the lines drift back apart. */
   transition:
-    rotate 0.75s cubic-bezier(0.65, 0, 0.35, 1) 0s,
-    translate 0.75s cubic-bezier(0.65, 0, 0.35, 1) 0.15s,
-    opacity 0.4s ease 0.45s,
-    scale 0.4s cubic-bezier(0.65, 0, 0.35, 1) 0.45s;
+    rotate 0.45s cubic-bezier(0.65, 0, 0.35, 1) 0s,
+    translate 0.45s cubic-bezier(0.65, 0, 0.35, 1) 0.1s,
+    opacity 0.3s ease 0.25s,
+    scale 0.3s cubic-bezier(0.65, 0, 0.35, 1) 0.25s;
 }
 
 .menu-toggle-icon > span:nth-child(1) { translate: 0 -6px; }
@@ -160,10 +160,10 @@ a {
    rotation into the X begins before they have fully met. */
 .menu-open .menu-toggle-icon > span {
   transition:
-    translate 0.75s cubic-bezier(0.65, 0, 0.35, 1) 0s,
-    opacity 0.4s ease 0s,
-    scale 0.4s cubic-bezier(0.65, 0, 0.35, 1) 0s,
-    rotate 0.75s cubic-bezier(0.65, 0, 0.35, 1) 0.15s;
+    translate 0.45s cubic-bezier(0.65, 0, 0.35, 1) 0s,
+    opacity 0.3s ease 0s,
+    scale 0.3s cubic-bezier(0.65, 0, 0.35, 1) 0s,
+    rotate 0.45s cubic-bezier(0.65, 0, 0.35, 1) 0.1s;
 }
 
 .menu-open .menu-toggle-icon > span:nth-child(1) { translate: 0 0; rotate: 45deg; }
@@ -183,7 +183,7 @@ a {
   -webkit-backdrop-filter: blur(3px);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.3s ease;
 }
 
 .menu-open .drawer-scrim {
@@ -209,13 +209,13 @@ a {
   transform: translateX(-100%);
   visibility: hidden;
   overflow-y: auto;
-  transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1), visibility 0s linear 0.6s;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0s linear 0.4s;
 }
 
 .menu-open .drawer {
   transform: none;
   visibility: visible;
-  transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1), visibility 0s;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0s;
 }
 
 .drawer-label {
@@ -257,18 +257,18 @@ a {
 .menu-open .drawer-nav a {
   opacity: 1;
   transform: none;
-  transition: opacity 0.45s ease, transform 0.45s ease, color 0.15s ease, padding-left 0.2s ease;
+  transition: opacity 0.35s ease, transform 0.35s ease, color 0.15s ease, padding-left 0.2s ease;
 }
 
-.menu-open .drawer-nav a:nth-child(1) { transition-delay: 0.18s; }
-.menu-open .drawer-nav a:nth-child(2) { transition-delay: 0.22s; }
-.menu-open .drawer-nav a:nth-child(3) { transition-delay: 0.26s; }
-.menu-open .drawer-nav a:nth-child(4) { transition-delay: 0.30s; }
-.menu-open .drawer-nav a:nth-child(5) { transition-delay: 0.34s; }
-.menu-open .drawer-nav a:nth-child(6) { transition-delay: 0.38s; }
-.menu-open .drawer-nav a:nth-child(7) { transition-delay: 0.42s; }
-.menu-open .drawer-nav a:nth-child(8) { transition-delay: 0.46s; }
-.menu-open .drawer-nav a:nth-child(9) { transition-delay: 0.50s; }
+.menu-open .drawer-nav a:nth-child(1) { transition-delay: 0.08s; }
+.menu-open .drawer-nav a:nth-child(2) { transition-delay: 0.11s; }
+.menu-open .drawer-nav a:nth-child(3) { transition-delay: 0.14s; }
+.menu-open .drawer-nav a:nth-child(4) { transition-delay: 0.17s; }
+.menu-open .drawer-nav a:nth-child(5) { transition-delay: 0.20s; }
+.menu-open .drawer-nav a:nth-child(6) { transition-delay: 0.23s; }
+.menu-open .drawer-nav a:nth-child(7) { transition-delay: 0.26s; }
+.menu-open .drawer-nav a:nth-child(8) { transition-delay: 0.29s; }
+.menu-open .drawer-nav a:nth-child(9) { transition-delay: 0.32s; }
 
 .drawer-foot {
   margin-top: auto;
