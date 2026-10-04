@@ -1,3 +1,10 @@
+/* Aileron (Sora Sagano, CC0), self-hosted so it loads reliably and
+   without a third-party request. Only the weights the site uses. */
+@font-face { font-family: "Aileron"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/Aileron-Regular.woff2") format("woff2"); }
+@font-face { font-family: "Aileron"; font-style: italic; font-weight: 400; font-display: swap; src: url("../fonts/Aileron-Italic.woff2") format("woff2"); }
+@font-face { font-family: "Aileron"; font-style: normal; font-weight: 600; font-display: swap; src: url("../fonts/Aileron-SemiBold.woff2") format("woff2"); }
+@font-face { font-family: "Aileron"; font-style: normal; font-weight: 700; font-display: swap; src: url("../fonts/Aileron-Bold.woff2") format("woff2"); }
+
 :root {
   --text: #eef1f6;
   --text-muted: #aab4c4;
