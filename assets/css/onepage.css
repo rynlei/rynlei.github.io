@@ -56,7 +56,7 @@ a {
 .site-header {
   position: sticky;
   top: 1rem;
-  z-index: 10;
+  z-index: 40; /* above the drawer, so the X stays visible as it closes */
   max-width: var(--header-max-width);
   margin: 1rem auto 0;
   padding: 0 1.5rem;
@@ -122,7 +122,21 @@ a {
   outline: none;
 }
 
-.menu-toggle span {
+/* The icon morphs as one continuous motion: the outer lines glide onto
+   the middle one while the whole icon turns a half circle, and they keep
+   turning into the X. Stages overlap so nothing reads as a step. */
+.menu-toggle-icon {
+  position: absolute;
+  inset: 0;
+  rotate: 0deg;
+  transition: rotate 0.55s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.menu-open .menu-toggle-icon {
+  rotate: 180deg;
+}
+
+.menu-toggle-icon > span {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -131,20 +145,30 @@ a {
   margin: -1px 0 0 -0.625rem;
   background: currentColor;
   border-radius: 2px;
-  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.2s ease;
+  /* Closing: the X unwinds while the lines drift back apart. */
+  transition:
+    rotate 0.45s cubic-bezier(0.65, 0, 0.35, 1) 0s,
+    translate 0.45s cubic-bezier(0.65, 0, 0.35, 1) 0.1s,
+    opacity 0.3s ease 0.25s,
+    scale 0.3s cubic-bezier(0.65, 0, 0.35, 1) 0.25s;
 }
 
-.menu-toggle span:nth-child(1) { transform: translateY(-6px); }
-.menu-toggle span:nth-child(3) { transform: translateY(6px); }
+.menu-toggle-icon > span:nth-child(1) { translate: 0 -6px; }
+.menu-toggle-icon > span:nth-child(3) { translate: 0 6px; }
 
-.menu-open .menu-toggle span:nth-child(1) { transform: rotate(45deg); }
-.menu-open .menu-toggle span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-.menu-open .menu-toggle span:nth-child(3) { transform: rotate(-45deg); }
-
-/* Keep the pill (and the X in it) above the drawer while it is open. */
-.menu-open .site-header {
-  z-index: 40;
+/* Opening: the lines converge while the middle one melts away, and the
+   rotation into the X begins before they have fully met. */
+.menu-open .menu-toggle-icon > span {
+  transition:
+    translate 0.45s cubic-bezier(0.65, 0, 0.35, 1) 0s,
+    opacity 0.3s ease 0s,
+    scale 0.3s cubic-bezier(0.65, 0, 0.35, 1) 0s,
+    rotate 0.45s cubic-bezier(0.65, 0, 0.35, 1) 0.1s;
 }
+
+.menu-open .menu-toggle-icon > span:nth-child(1) { translate: 0 0; rotate: 45deg; }
+.menu-open .menu-toggle-icon > span:nth-child(2) { opacity: 0; scale: 0 1; }
+.menu-open .menu-toggle-icon > span:nth-child(3) { translate: 0 0; rotate: -45deg; }
 
 .menu-open {
   overflow: hidden;
@@ -271,7 +295,8 @@ a {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .menu-toggle span,
+  .menu-toggle-icon,
+  .menu-toggle-icon > span,
   .drawer,
   .drawer-scrim,
   .drawer-nav a,
