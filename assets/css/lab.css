@@ -275,3 +275,6 @@ main.ap { padding: 0 0 3rem; }
 .site-footer .contact-icons a { color: #1d1d1f; }
 .site-footer .contact-icons a:hover { color: var(--accent-strong); background: rgba(0, 0, 0, 0.06); }
 .site-footer .lab-note { color: #86868b; opacity: 1; }
+.site-footer .contact-icon { width: 3.25rem; height: 3.25rem; }
+.site-footer .contact-icons { gap: 1rem; }
+.site-footer .contact-icons a { padding: 0.75rem; }
