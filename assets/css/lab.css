@@ -560,6 +560,104 @@ h1, h2, h3 {
   }
 }
 
+/* Experiment 3: publication-style project index with filmstrips,
+   inspired by Atelier Andrea Gassner's index view. Rows link to
+   dedicated project pages (see _layouts/project.html). */
+.index-intro {
+  margin: -0.5rem 0 1.5rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.index-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--panel-border);
+}
+
+.index-row {
+  padding: 1.25rem 0 1.5rem;
+  border-bottom: 1px solid var(--panel-border);
+}
+
+.index-head {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr;
+  gap: 1rem;
+  align-items: baseline;
+  margin-bottom: 1rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.index-num {
+  font-family: var(--serif);
+  font-size: 1.75rem;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.index-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.index-title {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #fff;
+  transition: color 0.15s ease;
+}
+
+a.index-head:hover .index-title {
+  color: var(--accent);
+}
+
+.index-meta {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.filmstrip {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 0.5rem;
+  scrollbar-width: thin;
+}
+
+.filmstrip img {
+  flex: 0 0 auto;
+  width: 14rem;
+  height: 9rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  border: 1px solid var(--panel-border);
+  background: #0f1320;
+  scroll-snap-align: start;
+}
+
+.filmstrip img.contain {
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 0.35rem;
+}
+
+@media (max-width: 48em) {
+  .index-head {
+    grid-template-columns: 2.75rem 1fr;
+  }
+  .filmstrip img {
+    width: 11rem;
+    height: 7rem;
+  }
+}
+
 @media (max-width: 48em) {
   .hero h1 {
     font-size: 2.6rem;

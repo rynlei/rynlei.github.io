@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="Figure 2 placeholder">
+  <rect width="1600" height="900" fill="#12161f"/>
+  <rect x="24" y="24" width="1552" height="852" fill="none" stroke="#3a4255" stroke-width="4" stroke-dasharray="18 14" rx="20"/>
+  <text x="800" y="430" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="72" font-weight="700" fill="#aab4c4">Figure 2</text>
+  <text x="800" y="510" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="40" fill="#6f7a8f">placeholder &#8212; real figure to come</text>
+</svg>
