@@ -1,4 +1,4 @@
-/* Lab: hamburger drawer navigation. */
+/* Hamburger drawer navigation. */
 (function () {
   var root = document.documentElement;
   var btn = document.querySelector('.menu-toggle');
@@ -24,6 +24,11 @@
     if (e.key === 'Escape' && root.classList.contains('menu-open')) {
       setOpen(false);
       btn.focus();
+    }
+  });
+  window.addEventListener('resize', function () {
+    if (root.classList.contains('menu-open') && getComputedStyle(btn).display === 'none') {
+      setOpen(false);
     }
   });
 })();
