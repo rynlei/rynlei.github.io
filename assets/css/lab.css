@@ -372,26 +372,48 @@ main {
 
 /* Mobile layout */
 @media (max-width: 48em) {
+  /* Sticky single-row nav: brand stays put, links scroll sideways. */
   .site-header {
-    position: static;
-    padding: 0 1rem;
+    position: sticky;
+    top: 0.5rem;
+    padding: 0 0.75rem;
   }
 
   .site-header-inner {
-    flex-direction: column;
-    gap: 0.6rem;
-    padding: 0.85rem 1rem;
-    border-radius: 1.25rem;
+    gap: 0.25rem;
+    padding: 0.6rem 1rem;
+    border-radius: 999px;
+  }
+
+  .brand {
+    flex: 0 0 auto;
   }
 
   .nav {
-    justify-content: center;
-    gap: 0.4rem 1rem;
+    flex: 1 1 auto;
+    min-width: 0;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 1rem;
+    padding: 0 2rem 0 1rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 1rem, #000 88%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 1rem, #000 88%, transparent);
+  }
+
+  .nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav a {
+    white-space: nowrap;
   }
 
   section,
   .site-footer {
-    scroll-margin-top: 1rem;
+    scroll-margin-top: 4.5rem;
   }
 
   .hero,
