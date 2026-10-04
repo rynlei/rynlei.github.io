@@ -1,5 +1,5 @@
-/* Lab experiments. Loaded AFTER onepage.css so the lab page mirrors the
-   live site and only the experiments below differ. */
+/* Lab experiments. Loaded AFTER onepage.css; everything here overrides
+   the live layout for the lab page and the project pages. */
 
 .lab-note {
   margin-top: 0.5rem;
@@ -8,10 +8,8 @@
 }
 
 /* ------------------------------------------------------------------
-   Experiment 4: hamburger drawer on every screen size.
-   The live site uses the drawer on phones only (see onepage.css); here
-   the inline nav is hidden on wide screens too and the drawer grows to
-   cover half the page.
+   Experiment 4: hamburger drawer on every screen size (the live site
+   uses it on phones only).
    ------------------------------------------------------------------ */
 @media (min-width: 48.0625em) {
   .site-header-inner {
@@ -20,141 +18,250 @@
     gap: 0.75rem;
     padding: 0.55rem 1.25rem 0.55rem 0.6rem;
   }
-
-  .nav {
-    display: none;
-  }
-
-  .menu-toggle {
-    display: inline-block;
-  }
-
+  .nav { display: none; }
+  .menu-toggle { display: inline-block; }
   .drawer {
     display: flex;
     width: 50vw;
     min-width: 20rem;
     padding: 6.5rem 3rem 2.5rem;
   }
-
-  .drawer-label {
-    margin-bottom: 1.5rem;
-  }
-
-  .drawer-scrim {
-    display: block;
-  }
-
-  .drawer-nav a {
-    font-size: 1.6rem;
-    padding: 0.7rem 0;
-  }
+  .drawer-label { margin-bottom: 1.5rem; }
+  .drawer-scrim { display: block; }
+  .drawer-nav a { font-size: 1.6rem; padding: 0.7rem 0; }
 }
 
-.drawer-nav a.is-lab {
-  color: var(--text-muted);
-  font-size: 1.1rem;
-  font-weight: 500;
-}
-
-.drawer-nav a.is-lab:hover {
-  color: var(--accent);
-}
+.drawer-nav a.is-lab { color: var(--text-muted); font-size: 1.1rem; font-weight: 500; }
+.drawer-nav a.is-lab:hover { color: var(--accent); }
 
 /* ------------------------------------------------------------------
-   Experiment 3: publication-style project index with filmstrips,
-   inspired by Atelier Andrea Gassner's index view. Rows link to
-   dedicated project pages (see _layouts/project.html).
+   Experiment 5: Apple-style editorial layout.
+   Solid black page. Each block is its own dark card: media first, then
+   kicker, heading, description. Large type; grey running text with the
+   opening statement in white. Scroll reveal comes from onepage.css.
    ------------------------------------------------------------------ */
-.index-intro {
-  margin: -0.5rem 0 1.5rem;
-  font-size: 0.95rem;
-  color: var(--text-muted);
+:root {
+  --ap-bg: #000;
+  --ap-card: #111114;
+  --ap-line: #2a2a2e;
+  --ap-text: #f5f5f7;
+  --ap-grey: #86868b;
+  --ap-radius: 1.75rem;
+  --ap-width: 62rem;
 }
 
-.index-list {
-  list-style: none;
-  margin: 0;
+body { background: var(--ap-bg); }
+.page-background { display: none; }
+.site-header-inner { background: rgba(17, 17, 20, 0.85); }
+section { scroll-margin-top: 5rem; }
+
+main.ap { padding: 0 0 3rem; }
+
+.ap-hero,
+.ap-card,
+.ap-head {
+  max-width: var(--ap-width);
+  margin: 1.25rem auto 0;
+}
+
+.ap-hero,
+.ap-card,
+.project-card.ap-card {
+  display: block;
   padding: 0;
-  border-top: 1px solid var(--panel-border);
+  overflow: hidden;
+  text-align: left;
+  background: var(--ap-card);
+  border: 0;
+  border-left: 0;
+  border-radius: var(--ap-radius);
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
-.index-row {
-  padding: 1.25rem 0 1.5rem;
-  border-bottom: 1px solid var(--panel-border);
+.ap-head {
+  padding: 4.5rem 2.5rem 0.75rem;
+  background: none;
+  border: 0;
+  box-shadow: none;
 }
 
-.index-head {
-  display: grid;
-  grid-template-columns: 3.5rem 1fr;
-  gap: 1rem;
-  align-items: baseline;
-  margin-bottom: 1rem;
-  color: inherit;
-  text-decoration: none;
-}
-
-.index-num {
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 1;
-  color: var(--accent);
-}
-
-.index-text {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
-.index-title {
-  font-size: 1.15rem;
-  font-weight: 600;
-  line-height: 1.3;
-  color: #fff;
-  transition: color 0.15s ease;
-}
-
-a.index-head:hover .index-title {
-  color: var(--accent);
-}
-
-.index-meta {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-}
-
-.filmstrip {
-  display: flex;
-  gap: 0.75rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 0.5rem;
-  scrollbar-width: thin;
-}
-
-.filmstrip img {
-  flex: 0 0 auto;
-  width: 14rem;
-  height: 9rem;
+/* Media leads every card */
+.ap-media { margin: 0; }
+.ap-media img,
+.project-card.ap-card .ap-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
-  border-radius: 0.5rem;
-  border: 1px solid var(--panel-border);
-  background: #0f1320;
-  scroll-snap-align: start;
+  object-position: 50% 30%;
+  border-radius: 0;
+  background: none;
+  padding: 0;
+}
+.ap-media.contain { background: #fff; }
+.ap-media.contain img,
+.project-card.ap-card .ap-media.contain img {
+  object-fit: contain;
+  padding: 2rem;
+  background: #fff;
+}
+.ap-hero-media img { aspect-ratio: 3 / 2; }
+
+/* Text column */
+.ap-text {
+  max-width: 46rem;
+  padding: 2.75rem 2.5rem 3rem;
+}
+.ap-text-wide { max-width: none; }
+
+.ap-kicker {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ap-grey);
 }
 
-.filmstrip img.contain {
-  object-fit: contain;
-  background: rgba(255, 255, 255, 0.85);
-  padding: 0.35rem;
+.ap-card h2,
+.ap-head h2 {
+  margin: 0 0 1.25rem;
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--ap-text);
 }
+
+.ap-card h3 {
+  margin: 0 0 0.6rem;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--ap-text);
+}
+
+.ap-hero h1 {
+  margin: 0;
+  font-size: clamp(2.75rem, 7vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: var(--ap-text);
+}
+
+.ap-tagline {
+  margin: 0.6rem 0 1.75rem;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.ap-desc,
+.ap-desc p,
+.project-card.ap-card .ap-desc {
+  margin: 0 0 1.1em;
+  font-size: clamp(1.125rem, 2vw, 1.4rem);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--ap-grey);
+}
+.ap-desc p:last-child { margin-bottom: 0; }
+.ap-desc strong { color: var(--ap-text); font-weight: 600; }
+.ap-desc a { color: var(--ap-text); text-decoration: underline; text-underline-offset: 0.15em; text-decoration-color: var(--ap-grey); }
+.ap-desc a:hover { color: var(--accent); }
+
+.ap-meta { margin: 0 0 1.1rem; font-size: 1rem; color: var(--ap-grey); }
+.ap-meta a { color: var(--accent); }
+.ap-meta em { font-style: normal; color: var(--ap-text); }
+
+.ap-date { margin: 0 0 0.4rem; font-weight: 600; color: var(--ap-grey); }
+.ap-card .news-item { padding: 0; background: none; border: 0; border-radius: 0; }
+
+/* Highlights as a stat list */
+.ap-stats { list-style: none; margin: 0; padding: 0; }
+.ap-stats .highlight-item {
+  display: block;
+  padding: 1.35rem 0;
+  background: none;
+  border: 0;
+  border-top: 1px solid var(--ap-line);
+  border-radius: 0;
+}
+.ap-stats .highlight-item:last-child { border-bottom: 1px solid var(--ap-line); }
+.ap-stat-title { display: block; font-size: clamp(1.35rem, 2.6vw, 2rem); font-weight: 700; letter-spacing: -0.015em; color: var(--ap-text); }
+.ap-stat-meta { display: block; margin-top: 0.25rem; font-size: 1.05rem; color: var(--ap-grey); }
+
+/* Pills and buttons */
+.ap-pills,
+.interests-list.ap-pills {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 0.6rem;
+  margin: 0 0 2rem;
+  padding: 0;
+}
+.ap-pills li,
+.interests-list.ap-pills li {
+  padding: 0.55rem 1.05rem;
+  border-radius: 999px;
+  border: 1px solid var(--ap-line);
+  background: #1d1d1f;
+  color: var(--ap-text);
+  font-size: 1rem;
+  font-weight: 500;
+}
+.ap-actions { display: flex; flex-wrap: wrap; gap: 0.9rem; }
+.ap-btn {
+  display: inline-block;
+  padding: 0.85rem 1.5rem;
+  border-radius: 999px;
+  background: var(--accent-strong);
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.ap-btn:hover { background: var(--accent); }
+.ap-btn-ghost { background: transparent; color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.ap-btn-ghost:hover { background: var(--accent); color: #fff; }
+
+/* Project cards keep the gentle lift from the live site */
+.project-card.ap-card:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5); }
+
+/* Project index (experiment 3), restyled for the dark cards */
+.index-intro { margin: 0 0 1.5rem; font-size: 1.05rem; color: var(--ap-grey); }
+.index-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ap-line); }
+.index-row { padding: 1.25rem 0 1.5rem; border-bottom: 1px solid var(--ap-line); }
+.index-head { display: grid; grid-template-columns: 3.5rem 1fr; gap: 1rem; align-items: baseline; margin-bottom: 1rem; color: inherit; text-decoration: none; }
+.index-num { font-size: 1.5rem; font-weight: 700; line-height: 1; color: var(--accent); }
+.index-text { display: flex; flex-direction: column; gap: 0.2rem; }
+.index-title { font-size: 1.25rem; font-weight: 600; line-height: 1.3; color: var(--ap-text); transition: color 0.15s ease; }
+a.index-head:hover .index-title { color: var(--accent); }
+.index-meta { font-size: 0.95rem; color: var(--ap-grey); }
+.filmstrip { display: flex; gap: 0.75rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 0.5rem; scrollbar-width: thin; }
+.filmstrip img { flex: 0 0 auto; width: 14rem; height: 9rem; object-fit: cover; border-radius: 0.75rem; border: 1px solid var(--ap-line); background: #0f1320; scroll-snap-align: start; }
+.filmstrip img.contain { object-fit: contain; background: rgba(255, 255, 255, 0.9); padding: 0.35rem; }
 
 @media (max-width: 48em) {
-  .index-head {
-    grid-template-columns: 2.75rem 1fr;
+  .ap-hero,
+  .ap-card,
+  .ap-head,
+  .project-card.ap-card {
+    margin: 0.75rem 0.75rem 0;
+    padding: 0;
+    border-radius: 1.25rem;
   }
-  .filmstrip img {
-    width: 11rem;
-    height: 7rem;
-  }
+  .ap-head { padding: 3rem 1.5rem 0.25rem; }
+  .ap-text { padding: 1.75rem 1.5rem 2.25rem; }
+  .ap-media.contain img, .project-card.ap-card .ap-media.contain img { padding: 1.25rem; }
+  .index-head { grid-template-columns: 2.75rem 1fr; }
+  .filmstrip img { width: 11rem; height: 7rem; }
 }
