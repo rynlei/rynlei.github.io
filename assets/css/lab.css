@@ -8,155 +8,46 @@
 }
 
 /* ------------------------------------------------------------------
-   Experiment 4: hamburger drawer navigation.
-   The header pill shrinks to [menu button + brand]. The button sits on
-   the left and morphs into an X when the drawer is open. The drawer
-   slides in from the left and covers half the page; a scrim masks the
-   rest until the reader picks a destination or dismisses it.
+   Experiment 4: hamburger drawer on every screen size.
+   The live site uses the drawer on phones only (see onepage.css); here
+   the inline nav is hidden on wide screens too and the drawer grows to
+   cover half the page.
    ------------------------------------------------------------------ */
-.site-header-inner {
-  width: fit-content;
-  justify-content: flex-start;
-  gap: 0.75rem;
-  padding: 0.55rem 1.25rem 0.55rem 0.6rem;
-}
+@media (min-width: 48.0625em) {
+  .site-header-inner {
+    width: fit-content;
+    justify-content: flex-start;
+    gap: 0.75rem;
+    padding: 0.55rem 1.25rem 0.55rem 0.6rem;
+  }
 
-.menu-toggle {
-  position: relative;
-  width: 2.5rem;
-  height: 2.5rem;
-  padding: 0;
-  border: 0;
-  border-radius: 50%;
-  background: transparent;
-  color: #fff;
-  cursor: pointer;
-  transition: background 0.15s ease;
-}
+  .nav {
+    display: none;
+  }
 
-.menu-toggle:hover,
-.menu-toggle:focus-visible {
-  background: rgba(255, 255, 255, 0.08);
-  outline: none;
-}
+  .menu-toggle {
+    display: inline-block;
+  }
 
-.menu-toggle span {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 1.25rem;
-  height: 2px;
-  margin: -1px 0 0 -0.625rem;
-  background: currentColor;
-  border-radius: 2px;
-  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.2s ease;
-}
+  .drawer {
+    display: flex;
+    width: 50vw;
+    min-width: 20rem;
+    padding: 6.5rem 3rem 2.5rem;
+  }
 
-.menu-toggle span:nth-child(1) { transform: translateY(-6px); }
-.menu-toggle span:nth-child(3) { transform: translateY(6px); }
+  .drawer-label {
+    margin-bottom: 1.5rem;
+  }
 
-.menu-open .menu-toggle span:nth-child(1) { transform: rotate(45deg); }
-.menu-open .menu-toggle span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-.menu-open .menu-toggle span:nth-child(3) { transform: rotate(-45deg); }
+  .drawer-scrim {
+    display: block;
+  }
 
-/* Keep the pill (and the X in it) above the drawer while it is open. */
-.menu-open .site-header {
-  z-index: 40;
-}
-
-.drawer-scrim {
-  position: fixed;
-  inset: 0;
-  z-index: 25;
-  background: rgba(3, 5, 10, 0.55);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-
-.drawer {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 30;
-  width: 50vw;
-  min-width: 20rem;
-  display: flex;
-  flex-direction: column;
-  padding: 6.5rem 3rem 2.5rem;
-  background: rgba(10, 13, 20, 0.88);
-  border-right: 1px solid var(--panel-border);
-  box-shadow: 30px 0 80px rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  transform: translateX(-100%);
-  visibility: hidden;
-  overflow-y: auto;
-  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0s linear 0.4s;
-}
-
-.menu-open .drawer {
-  transform: none;
-  visibility: visible;
-  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0s;
-}
-
-.menu-open .drawer-scrim {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.menu-open {
-  overflow: hidden;
-}
-
-.drawer-label {
-  margin: 0 0 1.5rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
-
-.drawer-nav {
-  display: flex;
-  flex-direction: column;
-  counter-reset: drawer;
-}
-
-.drawer-nav a {
-  display: flex;
-  align-items: baseline;
-  gap: 1rem;
-  padding: 0.7rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  color: #fff;
-  font-size: 1.6rem;
-  font-weight: 600;
-  line-height: 1.2;
-  text-decoration: none;
-  transition: color 0.15s ease, padding-left 0.2s ease;
-}
-
-.drawer-nav a::before {
-  counter-increment: drawer;
-  content: counter(drawer, decimal-leading-zero);
-  flex: 0 0 2rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  color: var(--accent);
-}
-
-.drawer-nav a:hover,
-.drawer-nav a:focus-visible {
-  color: var(--accent);
-  padding-left: 0.35rem;
-  outline: none;
+  .drawer-nav a {
+    font-size: 1.6rem;
+    padding: 0.7rem 0;
+  }
 }
 
 .drawer-nav a.is-lab {
@@ -167,70 +58,6 @@
 
 .drawer-nav a.is-lab:hover {
   color: var(--accent);
-}
-
-.drawer-foot {
-  margin-top: auto;
-  padding-top: 2rem;
-  font-size: 0.85rem;
-  color: var(--text-muted);
-}
-
-.drawer-foot a {
-  color: var(--text-muted);
-  text-decoration: none;
-}
-
-.drawer-foot a:hover {
-  color: var(--accent);
-}
-
-/* Stagger the links in as the drawer opens. */
-.drawer-nav a {
-  opacity: 0;
-  transform: translateX(-0.75rem);
-}
-
-.menu-open .drawer-nav a {
-  opacity: 1;
-  transform: none;
-  transition: opacity 0.35s ease, transform 0.35s ease, color 0.15s ease, padding-left 0.2s ease;
-}
-
-.menu-open .drawer-nav a:nth-child(1) { transition-delay: 0.08s; }
-.menu-open .drawer-nav a:nth-child(2) { transition-delay: 0.11s; }
-.menu-open .drawer-nav a:nth-child(3) { transition-delay: 0.14s; }
-.menu-open .drawer-nav a:nth-child(4) { transition-delay: 0.17s; }
-.menu-open .drawer-nav a:nth-child(5) { transition-delay: 0.20s; }
-.menu-open .drawer-nav a:nth-child(6) { transition-delay: 0.23s; }
-.menu-open .drawer-nav a:nth-child(7) { transition-delay: 0.26s; }
-.menu-open .drawer-nav a:nth-child(8) { transition-delay: 0.29s; }
-.menu-open .drawer-nav a:nth-child(9) { transition-delay: 0.32s; }
-
-@media (prefers-reduced-motion: reduce) {
-  .menu-toggle span,
-  .drawer,
-  .drawer-scrim,
-  .drawer-nav a,
-  .menu-open .drawer-nav a {
-    transition: none !important;
-  }
-}
-
-@media (max-width: 48em) {
-  .site-header-inner {
-    gap: 0.5rem;
-    padding: 0.4rem 1rem 0.4rem 0.4rem;
-  }
-  .drawer {
-    width: min(82vw, 22rem);
-    min-width: 0;
-    padding: 5.5rem 1.75rem 2rem;
-  }
-  .drawer-nav a {
-    font-size: 1.3rem;
-    padding: 0.6rem 0;
-  }
 }
 
 /* ------------------------------------------------------------------
