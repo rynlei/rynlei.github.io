@@ -1,0 +1,171 @@
+/* Lab: project "publication" pages (used with _layouts/project.html).
+   Builds on lab.css for the background, header, footer and type vars. */
+
+.project {
+  max-width: var(--max-width);
+  margin: 2rem auto 0;
+  padding: 2.5rem 2.5rem 4rem;
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 1.5rem;
+  box-shadow: var(--panel-shadow);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Title block */
+.project-hero {
+  padding: 1rem 0 2rem;
+}
+
+.project-number {
+  display: block;
+  font-family: var(--serif);
+  font-size: 4.5rem;
+  line-height: 1;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.project-title {
+  font-family: var(--serif);
+  font-size: 2.75rem;
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0 0 0.75rem;
+}
+
+.project-subtitle {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Colophon-style metadata table */
+.colophon {
+  margin: 0 0 3rem;
+  border-top: 1px solid var(--panel-border);
+}
+
+.colophon-row {
+  display: grid;
+  grid-template-columns: 11rem 1fr;
+  gap: 1.5rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--panel-border);
+}
+
+.colophon dt {
+  margin: 0;
+  padding-top: 0.2rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.colophon dd {
+  margin: 0;
+  color: var(--text);
+}
+
+.colophon a {
+  color: var(--accent);
+}
+
+/* Body text and figures */
+.project-body {
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.project-body h2 {
+  font-family: var(--serif);
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 2.5rem 0 0.75rem;
+}
+
+.project-body p {
+  margin: 0 0 1.25rem;
+  max-width: 40rem;
+}
+
+.project-figure {
+  margin: 2.5rem 0;
+}
+
+.project-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+  border: 1px solid var(--panel-border);
+}
+
+.project-figure figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.fig-label {
+  margin-right: 0.4rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* Floating Index / Next pills, as in the reference */
+.project-nav {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pill {
+  display: inline-block;
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  background: var(--panel-bg-strong);
+  border: 1px solid var(--panel-border);
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.85rem;
+  box-shadow: var(--panel-shadow);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.pill:hover {
+  border-color: var(--accent);
+  color: #fff;
+}
+
+@media (max-width: 48em) {
+  .project {
+    margin: 1.25rem 1rem 0;
+    padding: 1.75rem 1.25rem 3rem;
+  }
+  .project-number {
+    font-size: 3.25rem;
+  }
+  .project-title {
+    font-size: 2rem;
+  }
+  .colophon-row {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+  .project-nav {
+    right: 1rem;
+    bottom: 1rem;
+    flex-direction: row;
+  }
+}
