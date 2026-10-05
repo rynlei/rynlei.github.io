@@ -504,18 +504,18 @@ main.ap { padding: 0 0 3rem; }
   filter: drop-shadow(0 14px 30px rgba(0, 0, 0, 0.55));
 }
 
-/* Footer as the last card: the white band takes the card width and
-   radius and sits on the black page with a margin all round, so the
-   page ends on one more card rather than a hard white cut. */
+/* Footer as a sheet: the white band takes the card width and the card
+   radius on its top corners, and sits flush to the page bottom, so it
+   is framed by the black page yet anchored like a footer. */
 main.ap { padding-bottom: 0; }
 .site-footer {
   max-width: var(--ap-width);
-  margin: 1.25rem auto 1.25rem;
-  border-radius: var(--ap-radius);
+  margin: 1.25rem auto 0;
+  border-radius: var(--ap-radius) var(--ap-radius) 0 0;
   padding: 3.5rem 1.5rem 3rem;
 }
 @media (max-width: 48em) {
-  .site-footer { margin: 0.75rem; border-radius: 1.25rem; }
+  .site-footer { margin: 0.75rem 0.75rem 0; border-radius: 1.25rem 1.25rem 0 0; }
 }
 
 /* Einstein bust: anchor the 16:9 window on the head (hair to tongue)
