@@ -564,3 +564,29 @@ main.ap { padding-bottom: 0; }
 
 /* Centre the news thumbnail against its text */
 .ap-card .news-item.has-media { align-items: center; }
+
+/* Experiment: centred hero with the circular avatar in place of the
+   portrait panel. Shares the split hero's wash. */
+.ap-hero-centre { position: relative; isolation: isolate; text-align: center; padding: 4.5rem 2.5rem 4rem; --wash: 48, 88, 180; --wash2: 226, 160, 70; }
+.ap-hero-centre::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(70% 90% at 100% 0%, rgba(var(--wash), 0.55), rgba(var(--wash), 0.22) 45%, rgba(var(--wash), 0) 80%),
+    radial-gradient(60% 70% at 0% 100%, rgba(var(--wash), 0.28), rgba(var(--wash), 0) 70%),
+    radial-gradient(40% 80% at 50% 70%, rgba(var(--wash2), 0.26), rgba(var(--wash2), 0) 70%);
+}
+.ap-hero-centre > * { position: relative; z-index: 1; }
+.ap-avatar { display: block; width: 10rem; height: 10rem; margin: 0 auto 1.5rem; border-radius: 50%; object-fit: cover; border: 3px solid rgba(255, 255, 255, 0.16); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5); }
+.ap-hero-centre .ap-text { max-width: 40rem; margin: 0 auto; padding: 0; }
+.ap-hero-centre h1 { font-size: clamp(2.75rem, 5.5vw, 4rem); }
+.ap-hero-centre .ap-desc { max-width: 34rem; margin-left: auto; margin-right: auto; }
+.ap-hero-centre .ap-kicker, .ap-hero-centre .ap-pills { max-width: 26rem; margin-left: auto; margin-right: auto; }
+.ap-hero-centre .ap-pills li { text-align: center; }
+.ap-hero-centre .ap-actions { justify-content: center; }
+@media (max-width: 48em) {
+  .ap-hero-centre { padding: 3.25rem 1.5rem 3rem; }
+  .ap-avatar { width: 8.5rem; height: 8.5rem; }
+}
