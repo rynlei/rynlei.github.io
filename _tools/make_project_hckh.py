@@ -134,6 +134,15 @@ permalink: /project-hckh.html
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>document.documentElement.classList.add('js');setTimeout(function(){{if(!window.__revealReady){{document.documentElement.classList.add('reveal-all');}}}},4000);</script>
   <title>HippoCamera Knowledge Hub &mdash; Darin Lei</title>
+  <meta name="description" content="The HippoCamera Knowledge Hub: a digital educational program on memory and healthy aging for older adults, designed by Darin Lei with the Barense Lab. Screens, prototype and poster.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="HippoCamera Knowledge Hub &mdash; Darin Lei">
+  <meta property="og:description" content="A digital educational program on memory and healthy aging for older adults. Screens, interactive prototype and conference poster.">
+  <meta property="og:url" content="https://rynlei.github.io/project-hckh.html">
+  <meta property="og:image" content="https://rynlei.github.io/assets/img/og-hckh.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" href="favicon.ico?v={V}" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png?v={V}">
