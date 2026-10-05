@@ -426,3 +426,25 @@ main.ap { padding: 0 0 3rem; }
 .ap-card .card-cta, .ap-card .section-cta, .project-card.ap-card .card-cta { margin-top: 1.1rem; font-size: 1.05rem; }
 .ap-card .card-cta a, .ap-card .section-cta a { color: var(--ap-text); border-bottom-color: #3a3a3e; }
 .ap-card .card-cta a:hover, .ap-card .section-cta a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* Research interests as a hairline list (Apple's short-list device) */
+.ap-hero .ap-pills,
+.ap-hero .interests-list.ap-pills {
+  display: block;
+  margin: 0 0 2rem;
+  border-top: 1px solid #2a2a2e;
+}
+.ap-hero .ap-pills li,
+.ap-hero .interests-list.ap-pills li {
+  display: block;
+  padding: 0.6rem 0;
+  border: 0;
+  border-bottom: 1px solid #2a2a2e;
+  border-radius: 0;
+  background: none;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--ap-text);
+}
+.ap-hero:not(.ap-hero-dark) .ap-pills,
+.ap-hero:not(.ap-hero-dark) .ap-pills li { border-color: #e3e3e8; }
