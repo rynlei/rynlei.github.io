@@ -420,8 +420,8 @@ main.ap { padding: 0 0 3rem; }
 /* Hero accents in white so the crimson wash is the only colour in the
    card; periwinkle remains the accent everywhere below. */
 .ap-hero-dark .ap-tagline { color: var(--accent); }
-.ap-hero-dark .ap-btn { background: #fff; color: #000; }
-.ap-hero-dark .ap-btn:hover { background: #e8e8ed; color: #000; }
+.ap-hero-dark .ap-btn { background: var(--accent-strong); color: #fff; }
+.ap-hero-dark .ap-btn:hover { background: var(--accent); color: #fff; }
 .ap-hero-dark .ap-btn-ghost { background: transparent; color: #fff; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7); }
 .ap-hero-dark .ap-btn-ghost:hover { background: #fff; color: #000; }
 
@@ -479,4 +479,9 @@ main.ap { padding: 0 0 3rem; }
   .drawer.drawer-full,
   .menu-open .drawer.drawer-full,
   .drawer-full .drawer-nav a { transition: none !important; }
+}
+
+/* Header pill aligned with the cards' left edge on wide screens */
+@media (min-width: 48.0625em) {
+  .site-header { max-width: var(--ap-width); padding: 0; }
 }
