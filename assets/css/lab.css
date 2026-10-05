@@ -554,3 +554,6 @@ main.ap { padding-bottom: 0; }
 @media (prefers-reduced-motion: reduce) {
   .to-top { transition: none; transform: none; }
 }
+
+/* Two links in one card CTA line */
+.ap-card .card-cta a:not(:last-child) { margin-right: 1.5rem; }
