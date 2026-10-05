@@ -130,19 +130,10 @@ main.ap { padding: 0 0 3rem; }
   .ap-hero-split .ap-hero-media img { aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 35%; }
 }
 
-/* About: show the whole MRI (no cropping of the head) inside a shorter
-   frame whose colour matches the image's own background. */
-.ap-about-media { background: #1b1b1c; }
-.ap-about-media img { aspect-ratio: 16 / 10; object-fit: contain; object-position: 50% 50%; background: #1b1b1c; }
-.ap-about-media { position: relative; }
-.ap-about-media::after {
-  content: "";
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  height: 9%;
-  background: linear-gradient(to bottom, rgba(27, 27, 28, 0), #1b1b1c);
-  pointer-events: none;
-}
+/* About: the MRI spans the card width in a 3:2 frame, anchored at the
+   top so the crown of the head stays in frame; the crop falls below the
+   jaw instead. */
+.ap-about-media img { aspect-ratio: 3 / 2; object-fit: cover; object-position: 50% 4%; }
 
 /* Text column */
 .ap-text {
