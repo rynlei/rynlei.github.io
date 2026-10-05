@@ -44,7 +44,6 @@ main.ap.hk { padding-bottom: 0; }
 .hk-sec .ap-text { padding: 3rem 2.5rem 0; }
 .hk-sec .ap-text:last-child { padding-bottom: 3rem; }
 .hk-sec h2 { margin-bottom: 1rem; }
-.hk-sec .ap-desc { max-width: 40rem; }
 .hk-phones {
   display: grid;
   gap: 1.5rem;
@@ -95,7 +94,6 @@ main.ap.hk { padding-bottom: 0; }
 /* Closing card */
 .hk-close .ap-text { padding: 3rem 2.5rem; }
 .hk-close .ap-meta { margin: -0.25rem 0 1.5rem; }
-.hk-close .ap-desc { max-width: 44rem; }
 
 /* Prototype embed (poster until clicked, then the Figma viewer) */
 .hk-embed { position: relative; margin: 0 2.5rem 3rem; aspect-ratio: 16 / 10; border-radius: 1.25rem; overflow: hidden; background: #000; border: 1px solid #2a2a2e; }
