@@ -54,7 +54,7 @@ pubs.append(dict(
     alt='Two people standing inside StreetLab, a curved projection simulator showing a Toronto street scene with a fire truck',
     photo=True,
     kicker='Poster presentation',
-    title='Hearing Loss, Vection, and Anxiety and Depression',
+    title='Unravelling the Relationship Between Mental Health, Vection, and Hearing Loss: A Lifespan Approach',
     meta='<em>Lei, D.</em>, Hong, L., &amp; Campos, J. L. (2026) &middot; UHN Summer Training and Research (STAR) Program Research Day',
     cta='<a href="assets/pdf/DL_STAR-2026_poster.pdf">View the poster <span aria-hidden="true">&rarr;</span></a>',
     desc=('Older adults with age-related hearing loss (ARHL) fall three times more often, and overlap between the auditory and vestibular systems may link hearing to balance. Over-reliance on vision can amplify vection, the illusory sense of self-motion, and anxiety and depression may shape that experience. Using a global visual motion paradigm, this study asks how vection differs with age, hearing status, and mental health.')))
