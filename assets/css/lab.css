@@ -399,24 +399,27 @@ main.ap { padding: 0 0 3rem; }
 .menu-open .site-header-inner { background: transparent; border-color: transparent; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none; }
 .menu-open .menu-toggle, .menu-open .brand-mark { color: #1d1d1f; }
 
-/* Gradient wash: colour pools in the top corner of the text column and
-   bleeds across the card, fading into the card's own black. */
-.ap-hero-split { position: relative; isolation: isolate; --wash: 196, 32, 64; }
-.ap-hero-split .ap-text { position: relative; }
-.ap-hero-split .ap-text::before {
+/* Gradient wash across the whole hero card: suit blue pools at the top
+   right and runs the full height of the card; a trace of the window's
+   gold comes in along the photo's edge. The photo sits above the wash. */
+.ap-hero-split { position: relative; isolation: isolate; --wash: 70, 120, 220; --wash2: 226, 160, 70; }
+.ap-hero-split::before {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: -1;
+  z-index: 0;
   background:
-    radial-gradient(90% 80% at 85% -10%, rgba(var(--wash), 0.55), rgba(var(--wash), 0.18) 45%, rgba(var(--wash), 0) 75%),
-    radial-gradient(60% 50% at 0% 100%, rgba(var(--wash), 0.14), rgba(var(--wash), 0) 70%);
+    radial-gradient(70% 90% at 100% 0%, rgba(var(--wash), 0.55), rgba(var(--wash), 0.22) 45%, rgba(var(--wash), 0) 80%),
+    radial-gradient(60% 70% at 100% 100%, rgba(var(--wash), 0.28), rgba(var(--wash), 0) 70%),
+    radial-gradient(40% 80% at 50% 70%, rgba(var(--wash2), 0.26), rgba(var(--wash2), 0) 70%);
   pointer-events: none;
 }
+.ap-hero-split .ap-hero-media,
+.ap-hero-split .ap-text { position: relative; z-index: 1; }
 
 /* Hero accents in white so the crimson wash is the only colour in the
    card; periwinkle remains the accent everywhere below. */
-.ap-hero-dark .ap-tagline { color: #fff; opacity: 0.85; }
+.ap-hero-dark .ap-tagline { color: var(--accent); }
 .ap-hero-dark .ap-btn { background: #fff; color: #000; }
 .ap-hero-dark .ap-btn:hover { background: #e8e8ed; color: #000; }
 .ap-hero-dark .ap-btn-ghost { background: transparent; color: #fff; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7); }
