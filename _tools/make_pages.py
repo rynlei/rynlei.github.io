@@ -121,7 +121,12 @@ def news_item(d, b):
 news_html = '\n'.join(news_item(d, b) for d, b in news)
 
 
+avatar = one(r'<img class="hero-avatar"[^>]*src="([^"]+)"', src).group(1)
+# Hero style per output: 'split' (portrait panel) or 'avatar' (centred circle). Lab experiment: avatar.
+HERO = {'live': 'split', 'lab': 'avatar'}
+
 def render(live):
+    hero = HERO['live' if live else 'lab']
     title = 'Darin Lei' if live else 'Darin Lei &mdash; Lab'
     robots = '' if live else '<meta name="robots" content="noindex, nofollow">' + chr(10) + '  '
     df = '    <p class="drawer-foot">&copy; Copyright 2026 Darin Lei. Hosted by GitHub Pages.</p>' if live else drawer_foot
@@ -177,8 +182,8 @@ permalink: {'/' if live else '/lab.html'}
   </aside>
 
   <main class="ap">
-    <section id="home" class="hero ap-hero ap-hero-dark ap-hero-split">
-      <figure class="ap-media ap-hero-media"><img src="assets/img/lab/hero-seated.jpg" alt="Darin Lei seated by a window in a wood-panelled hallway" fetchpriority="high"></figure>
+    <section id="home" class="hero ap-hero ap-hero-dark {'ap-hero-split' if hero == 'split' else 'ap-hero-centre'}">
+      {'<figure class="ap-media ap-hero-media"><img src="assets/img/lab/hero-seated.jpg" alt="Darin Lei seated by a window in a wood-panelled hallway" fetchpriority="high"></figure>' if hero == 'split' else '<img class="ap-avatar" src="' + avatar + '" alt="Portrait of Darin Lei" width="160" height="160" fetchpriority="high">'}
       <div class="ap-text">
         <h1>Darin Lei</h1>
         <p class="ap-tagline">{tagline}</p>
