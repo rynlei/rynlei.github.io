@@ -35,7 +35,7 @@ main.ap.hk { padding-bottom: 0; }
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.5rem;
   max-width: 54rem;
-  margin: 3rem auto -26%;
+  margin: 5.5rem auto -26%;
   padding: 0 2.5rem;
 }
 .hk-hero-phones .hk-phone:nth-child(2) { transform: translateY(-2.5rem); }
@@ -147,7 +147,7 @@ main.ap.hk { padding-bottom: 0; }
 /* Phone and narrow screens: phones become a swipeable row */
 @media (max-width: 48em) {
   .hk-hero .ap-text { padding: 3.25rem 1.5rem 0; }
-  .hk-hero-phones { grid-template-columns: minmax(0, 60%); justify-content: center; gap: 0; padding: 0 1.5rem; margin: 2.25rem auto -34%; }
+  .hk-hero-phones { grid-template-columns: minmax(0, 60%); justify-content: center; gap: 0; padding: 0 1.5rem; margin: 4rem auto -34%; }
   .hk-hero-phones .hk-phone:nth-child(n+2) { display: none; }
   .hk-hero-phones .hk-phone:nth-child(2) { transform: none; }
   .hk-sec .ap-text { padding: 2.25rem 1.5rem 0; }
