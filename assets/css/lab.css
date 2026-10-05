@@ -590,3 +590,19 @@ main.ap { padding-bottom: 0; }
   .ap-hero-centre { padding: 3.25rem 1.5rem 3rem; }
   .ap-avatar { width: 8.5rem; height: 8.5rem; }
 }
+
+/* Experiment: visible section links in the header on wide screens.
+   The pill stretches to the card width with the name on the left and
+   the links on the right; the hamburger and sheet remain for phones. */
+.site-nav { display: none; }
+@media (min-width: 48.0625em) {
+  .site-header-inner:has(.site-nav) { width: auto; justify-content: space-between; padding: 0.7rem 0.6rem 0.7rem 1.4rem; }
+  .site-header-inner:has(.site-nav) .menu-toggle { display: none; }
+  .site-nav { display: flex; align-items: center; gap: 0.25rem; }
+  .site-nav a { padding: 0.45rem 0.8rem; border-radius: 999px; font-size: 0.95rem; font-weight: 600; color: #a1a1a6; text-decoration: none; transition: color 0.15s ease, background-color 0.15s ease; }
+  .site-nav a:hover { color: #fff; background: rgba(255, 255, 255, 0.08); }
+  .site-nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+}
+@media (min-width: 48.0625em) and (max-width: 64em) {
+  .site-nav a { padding: 0.45rem 0.6rem; font-size: 0.9rem; }
+}
