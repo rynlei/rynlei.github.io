@@ -724,7 +724,7 @@ main {
   display: inline-flex;
   padding: 0.6rem;
   border-radius: 50%;
-  color: var(--text-muted);
+  color: #fff;
   transition: color 0.15s ease, background 0.15s ease;
 }
 
@@ -734,8 +734,8 @@ main {
 }
 
 .contact-icon {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.9rem;
+  height: 2.9rem;
 }
 
 /* Footer */
@@ -744,9 +744,9 @@ main {
   text-align: center;
   margin-top: 3rem;
   padding: 3rem 1.5rem;
-  background: #0b1526;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  color: var(--text-muted);
+  background: var(--panel-bg);
+  border-top: 1px solid var(--panel-border);
+  color: #c9d1dc;
   font-size: 0.85rem;
 }
 
