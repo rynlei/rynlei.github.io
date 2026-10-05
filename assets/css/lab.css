@@ -517,3 +517,7 @@ main.ap { padding-bottom: 0; }
 @media (max-width: 48em) {
   .site-footer { margin: 0.75rem; border-radius: 1.25rem; }
 }
+
+/* Einstein bust: anchor the 16:9 window on the head (hair to tongue)
+   rather than near the top of the portrait, which cut the hair off. */
+#publications .ap-media img[src$="humour-insight-1500.jpg"] { object-position: 50% 54%; }
