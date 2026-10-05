@@ -448,3 +448,32 @@ main.ap { padding: 0 0 3rem; }
 }
 .ap-hero:not(.ap-hero-dark) .ap-pills,
 .ap-hero:not(.ap-hero-dark) .ap-pills li { border-color: #e3e3e8; }
+
+/* Full-screen menu dissolves in and out instead of sliding like the
+   half-width drawer. Links keep their short stagger. */
+.drawer.drawer-full {
+  transform: none;
+  opacity: 0;
+  transition: opacity 0.4s ease, visibility 0s linear 0.4s;
+}
+.menu-open .drawer.drawer-full {
+  opacity: 1;
+  transition: opacity 0.4s ease, visibility 0s;
+}
+.drawer-full .drawer-nav a {
+  transform: translateY(0.5rem);
+}
+.menu-open .drawer-full .drawer-nav a {
+  transform: none;
+}
+/* The header's inversion to dark text follows the same timing */
+.site-header-inner,
+.brand-mark,
+.menu-toggle {
+  transition: background 0.4s ease, border-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .drawer.drawer-full,
+  .menu-open .drawer.drawer-full,
+  .drawer-full .drawer-nav a { transition: none !important; }
+}
