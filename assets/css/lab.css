@@ -402,7 +402,7 @@ main.ap { padding: 0 0 3rem; }
 /* Gradient wash across the whole hero card: suit blue pools at the top
    right and runs the full height of the card; a trace of the window's
    gold comes in along the photo's edge. The photo sits above the wash. */
-.ap-hero-split { position: relative; isolation: isolate; --wash: 70, 120, 220; --wash2: 226, 160, 70; }
+.ap-hero-split { position: relative; isolation: isolate; --wash: 48, 88, 180; --wash2: 226, 160, 70; }
 .ap-hero-split::before {
   content: "";
   position: absolute;
