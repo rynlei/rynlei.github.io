@@ -133,7 +133,7 @@ main.ap { padding: 0 0 3rem; }
 /* About: the MRI spans the card width in a 3:2 frame, anchored at the
    top so the crown of the head stays in frame; the crop falls below the
    jaw instead. */
-.ap-about-media img { aspect-ratio: 16 / 10; object-fit: cover; object-position: 50% 4%; }
+.ap-about-media img { aspect-ratio: 16 / 9; object-fit: cover; object-position: 50% 0%; }
 
 /* Text column */
 .ap-text {
