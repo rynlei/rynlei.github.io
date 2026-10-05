@@ -125,13 +125,18 @@ avatar = one(r'<img class="hero-avatar"[^>]*src="([^"]+)"', src).group(1)
 # Hero style per output: 'split' (portrait panel) or 'avatar' (centred circle). Lab experiment: avatar.
 HERO = {'live': 'split', 'lab': 'avatar'}
 # Visible section links in the header on wide screens (the hamburger stays for phones). Lab experiment.
-DESKTOP_NAV = {'live': False, 'lab': True}
+DESKTOP_NAV = {'live': False, 'lab': 'apple'}  # False, True (pill), or 'apple' (thin full-width local nav)
 
 def render(live):
     hero = HERO['live' if live else 'lab']
-    nav = ''
-    if DESKTOP_NAV['live' if live else 'lab']:
-        nav = '\n      <nav class="site-nav" aria-label="Sections">' + ''.join(f'<a href="#{h}">{l}</a>' for h, l in [('about','About'),('highlights','Highlights'),('news','News'),('projects','Projects'),('publications','Publications'),('skills','Skills'),('contact','Contact')]) + '</nav>'
+    nav = ''; hdr_cls = 'site-header'
+    mode = DESKTOP_NAV['live' if live else 'lab']
+    if mode:
+        links = ''.join(f'<a href="#{h}">{l}</a>' for h, l in [('about','About'),('highlights','Highlights'),('news','News'),('projects','Projects'),('publications','Publications'),('skills','Skills'),('contact','Contact')])
+        if mode == 'apple':
+            hdr_cls = 'site-header nav-apple'
+            links += f'<a class="site-nav-cta" href="{cv}">Download CV</a>'
+        nav = '\n      <nav class="site-nav" aria-label="Sections">' + links + '</nav>'
     title = 'Darin Lei' if live else 'Darin Lei &mdash; Lab'
     robots = '' if live else '<meta name="robots" content="noindex, nofollow">' + chr(10) + '  '
     df = '    <p class="drawer-foot">&copy; Copyright 2026 Darin Lei. Hosted by GitHub Pages.</p>' if live else drawer_foot
@@ -170,7 +175,7 @@ permalink: {'/' if live else '/lab.html'}
 </head>
 <body>
 
-  <header class="site-header">
+  <header class="{hdr_cls}">
     <div class="site-header-inner">
       <button class="menu-toggle" type="button" aria-controls="site-drawer" aria-expanded="false" aria-label="Open menu">
         <span class="menu-toggle-icon"><span></span><span></span><span></span></span>
