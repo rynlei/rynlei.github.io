@@ -1,0 +1,130 @@
+/* HippoCamera Knowledge Hub project page. Loaded after onepage.css and
+   lab.css; reuses the lab card system, header, menu, footer and the
+   back-to-top control, and adds phone frames for the program stills. */
+
+main.ap.hk { padding-bottom: 0; }
+
+/* Hero: text centred over a teal wash, with three phones rising out of
+   the bottom edge of the card. */
+.hk-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  text-align: center;
+  --wash: 26, 112, 98;
+  --wash2: 120, 200, 170;
+}
+.hk-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(70% 90% at 100% 0%, rgba(var(--wash), 0.55), rgba(var(--wash), 0.22) 45%, rgba(var(--wash), 0) 80%),
+    radial-gradient(60% 70% at 0% 100%, rgba(var(--wash), 0.3), rgba(var(--wash), 0) 70%),
+    radial-gradient(40% 80% at 50% 70%, rgba(var(--wash2), 0.18), rgba(var(--wash2), 0) 70%);
+}
+.hk-hero > * { position: relative; z-index: 1; }
+.hk-hero .ap-text { max-width: 46rem; margin: 0 auto; padding: 4.5rem 2.5rem 0; }
+.hk-hero h1 { margin: 0 0 1rem; font-size: clamp(2.5rem, 5.5vw, 4rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; color: var(--ap-text); }
+.hk-hero .ap-kicker { color: #9fd6c6; }
+.hk-hero .ap-desc { margin: 0 auto 1.75rem; max-width: 38rem; }
+.hk-hero .ap-actions { justify-content: center; }
+.hk-hero-phones {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  max-width: 54rem;
+  margin: 3rem auto -26%;
+  padding: 0 2.5rem;
+}
+.hk-hero-phones .hk-phone:nth-child(2) { transform: translateY(-2.5rem); }
+
+/* Feature sections */
+.hk-sec .ap-text { padding: 3rem 2.5rem 0; }
+.hk-sec .ap-text:last-child { padding-bottom: 3rem; }
+.hk-sec h2 { margin-bottom: 1rem; }
+.hk-sec .ap-desc { max-width: 40rem; }
+.hk-phones {
+  display: grid;
+  gap: 1.5rem;
+  padding: 2.5rem 2.5rem 3rem;
+  max-width: 60rem;
+  margin: 0 auto;
+}
+.hk-phones[data-n="1"] { grid-template-columns: minmax(0, 18rem); justify-content: center; }
+.hk-phones[data-n="2"] { grid-template-columns: repeat(2, minmax(0, 18rem)); justify-content: center; }
+.hk-phones[data-n="3"] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+/* One-phone sections put the text beside the phone on wide screens */
+@media (min-width: 48.0625em) {
+  .hk-sec.hk-side { display: grid; grid-template-columns: minmax(0, 1fr) 20rem; align-items: center; column-gap: 2rem; }
+  .hk-sec.hk-side .ap-text { padding: 3rem 0 3rem 2.5rem; }
+  .hk-sec.hk-side .hk-phones { padding: 3rem 2.5rem 3rem 0; }
+}
+
+/* Phone frame: the still sits in a rounded black frame at the handset's
+   proportions. Tall stills scroll inside the frame; a fade at the foot
+   hints that there is more. */
+.hk-phone { position: relative; }
+.hk-ph {
+  position: relative;
+  aspect-ratio: 360 / 791;
+  border-radius: 2.4rem;
+  background: #000;
+  border: 1px solid #3a3a3e;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+}
+.hk-ph img { display: block; width: 100%; height: auto; }
+.hk-ph.is-scroll { overflow-y: auto; scrollbar-width: none; overscroll-behavior: contain; }
+.hk-ph.is-scroll::-webkit-scrollbar { display: none; }
+.hk-phone.is-scroll::after {
+  content: "";
+  position: absolute;
+  left: 1px; right: 1px; bottom: 1px;
+  height: 18%;
+  border-radius: 0 0 2.4rem 2.4rem;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.55));
+  pointer-events: none;
+}
+.hk-phone.is-scroll .hk-cap::after { content: " · scrolls"; color: #6e6e73; font-weight: 500; }
+.hk-cap { margin: 0.9rem 0 0; text-align: center; font-size: 0.95rem; font-weight: 600; color: var(--ap-grey); }
+
+/* Closing card */
+.hk-close .ap-text { padding: 3rem 2.5rem; }
+.hk-close .ap-meta { margin: -0.25rem 0 1.5rem; }
+.hk-close .ap-desc { max-width: 44rem; }
+
+/* Prototype embed (poster until clicked, then the Figma viewer) */
+.hk-embed { position: relative; margin: 0 2.5rem 3rem; aspect-ratio: 16 / 10; border-radius: 1.25rem; overflow: hidden; background: #000; border: 1px solid #2a2a2e; }
+.hk-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.hk-embed-poster { position: absolute; inset: 0; display: grid; place-items: center; background: #0b0b0c; color: var(--ap-text); cursor: pointer; border: 0; font: inherit; }
+
+/* Phone and narrow screens: phones become a swipeable row */
+@media (max-width: 48em) {
+  .hk-hero .ap-text { padding: 3.25rem 1.5rem 0; }
+  .hk-hero-phones { grid-template-columns: minmax(0, 60%); justify-content: center; gap: 0; padding: 0 1.5rem; margin: 2.25rem auto -34%; }
+  .hk-hero-phones .hk-phone:nth-child(n+2) { display: none; }
+  .hk-hero-phones .hk-phone:nth-child(2) { transform: none; }
+  .hk-sec .ap-text { padding: 2.25rem 1.5rem 0; }
+  .hk-phones, .hk-phones[data-n="1"], .hk-phones[data-n="2"], .hk-phones[data-n="3"] {
+    display: flex;
+    gap: 1rem;
+    padding: 1.75rem 1.5rem 2.25rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    justify-content: flex-start;
+  }
+  .hk-phones::-webkit-scrollbar { display: none; }
+  .hk-phones[data-n="1"] { justify-content: center; }
+  .hk-phone { flex: 0 0 68%; scroll-snap-align: center; }
+  .hk-ph { border-radius: 1.9rem; }
+  .hk-phone.is-scroll::after { border-radius: 0 0 1.9rem 1.9rem; }
+  .hk-close .ap-text { padding: 2.25rem 1.5rem; }
+  .hk-embed { margin: 0 1rem 2rem; aspect-ratio: 4 / 5; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hk-hero-phones .hk-phone:nth-child(2) { transform: none; }
+}
