@@ -488,3 +488,33 @@ main.ap { padding: 0 0 3rem; }
 
 /* Tighter line spacing on the two-line tagline */
 .ap-hero .ap-tagline { line-height: 1.25; }
+
+/* Experiment 9: the menu sheet expands out of the header pill. The sheet
+   is clipped to the pill's rectangle when closed and grows to the full
+   viewport when open; closing shrinks it back. Replaces the plain fade. */
+.drawer.drawer-full {
+  --pt: 1rem; --pl: 1rem; --pr: calc(100vw - 12rem); --pb: calc(100vh - 4.5rem);
+  opacity: 1;
+  clip-path: inset(var(--pt) var(--pr) var(--pb) var(--pl) round 999px);
+  transition: clip-path 0.55s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0s linear 0.55s;
+}
+.menu-open .drawer.drawer-full {
+  opacity: 1;
+  clip-path: inset(0 0 0 0 round 0px);
+  transition: clip-path 0.55s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0s;
+}
+/* Links arrive once the sheet has mostly opened */
+.menu-open .drawer-full .drawer-nav a:nth-child(1) { transition-delay: 0.30s; }
+.menu-open .drawer-full .drawer-nav a:nth-child(2) { transition-delay: 0.34s; }
+.menu-open .drawer-full .drawer-nav a:nth-child(3) { transition-delay: 0.38s; }
+.menu-open .drawer-full .drawer-nav a:nth-child(4) { transition-delay: 0.42s; }
+.menu-open .drawer-full .drawer-nav a:nth-child(5) { transition-delay: 0.46s; }
+.menu-open .drawer-full .drawer-nav a:nth-child(6) { transition-delay: 0.50s; }
+.menu-open .drawer-full .drawer-nav a:nth-child(7) { transition-delay: 0.54s; }
+.menu-open .drawer-full .drawer-nav a:nth-child(8) { transition-delay: 0.58s; }
+.menu-open .drawer-full .drawer-nav a:nth-child(9) { transition-delay: 0.62s; }
+/* The pill itself holds its dark fill a moment, then clears */
+.menu-open .site-header-inner { transition-delay: 0.25s; }
+@media (prefers-reduced-motion: reduce) {
+  .drawer.drawer-full, .menu-open .drawer.drawer-full { transition: none !important; clip-path: none; }
+}
