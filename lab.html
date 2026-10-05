@@ -51,16 +51,8 @@ permalink: /lab.html
 
   <main class="ap">
     <section id="home" class="hero ap-hero">
-      <figure class="ap-media ap-hero-media">
-        <img class="hero-opt is-active" data-hero="hallway" src="assets/img/lab/hero-hallway.jpg" alt="Darin Lei" fetchpriority="high">
-        <img class="hero-opt" data-hero="studio" src="assets/img/lab/hero-studio-dark.jpg" alt="Darin Lei" loading="lazy" decoding="async">
-      </figure>
+      <figure class="ap-media ap-hero-media"><img src="assets/img/lab/hero-portrait.jpg" alt="Darin Lei" fetchpriority="high"></figure>
       <div class="ap-text">
-        <div class="hero-switch" role="group" aria-label="Hero photo (lab experiment)">
-          <span>Hero photo</span>
-          <button type="button" class="is-active" data-hero="hallway">Hallway</button>
-          <button type="button" data-hero="studio">Studio cut-out</button>
-        </div>
         <h1>Darin Lei</h1>
         <p class="ap-tagline">Honours Bachelor of Science Candidate @ UofT</p>
         <p class="ap-desc"><strong>Hey there, I&rsquo;m Darin!</strong> My research explores the cognitive science of conscious experience, with a particular focus on autobiographical memory and sensorimotor integration.</p>
@@ -247,18 +239,5 @@ permalink: /lab.html
     </div>
   </footer>
   <script src="assets/js/site.js?v={{ site.time | date: '%s' }}"></script>
-  <script>
-  /* Lab only: switch between hero photo candidates; remembers the choice. */
-  (function () {
-    var key = 'labHero', imgs = document.querySelectorAll('.ap-hero-media .hero-opt'), btns = document.querySelectorAll('.hero-switch button');
-    function pick(name) {
-      imgs.forEach(function (i) { i.classList.toggle('is-active', i.dataset.hero === name); });
-      btns.forEach(function (b) { b.classList.toggle('is-active', b.dataset.hero === name); b.setAttribute('aria-pressed', b.dataset.hero === name); });
-      try { localStorage.setItem(key, name); } catch (e) {}
-    }
-    btns.forEach(function (b) { b.addEventListener('click', function () { pick(b.dataset.hero); }); });
-    try { var saved = localStorage.getItem(key); if (saved) pick(saved); } catch (e) {}
-  })();
-  </script>
 </body>
 </html>
