@@ -488,3 +488,32 @@ main.ap { padding: 0 0 3rem; }
 
 /* Tighter line spacing on the two-line tagline */
 .ap-hero .ap-tagline { line-height: 1.25; }
+
+/* Publications row tidy: the two cards in a row share a height and
+   their CTAs sit on one baseline, and the journal cover sits as a small
+   cover on a dark tile instead of filling a white block. */
+#publications .project-card.ap-card { display: flex; flex-direction: column; }
+#publications .project-card.ap-card .ap-text { display: flex; flex-direction: column; flex: 1 1 auto; }
+#publications .project-card.ap-card .card-cta { margin-top: auto; padding-top: 1.1rem; }
+#publications .ap-media.contain { background: linear-gradient(180deg, #26262b, #18181b); }
+#publications .ap-media.contain img,
+#publications .project-card.ap-card .ap-media.contain img {
+  background: none;
+  padding: 1.75rem;
+  object-fit: contain;
+  filter: drop-shadow(0 14px 30px rgba(0, 0, 0, 0.55));
+}
+
+/* Footer as the last card: the white band takes the card width and
+   radius and sits on the black page with a margin all round, so the
+   page ends on one more card rather than a hard white cut. */
+main.ap { padding-bottom: 0; }
+.site-footer {
+  max-width: var(--ap-width);
+  margin: 1.25rem auto 1.25rem;
+  border-radius: var(--ap-radius);
+  padding: 3.5rem 1.5rem 3rem;
+}
+@media (max-width: 48em) {
+  .site-footer { margin: 0.75rem; border-radius: 1.25rem; }
+}
