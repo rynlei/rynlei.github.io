@@ -556,4 +556,5 @@ main.ap { padding-bottom: 0; }
 }
 
 /* Two links in one card CTA line */
+.ap-card .card-cta a { display: inline-block; white-space: nowrap; }
 .ap-card .card-cta a:not(:last-child) { margin-right: 1.5rem; }
