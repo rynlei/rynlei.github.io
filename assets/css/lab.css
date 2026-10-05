@@ -111,24 +111,22 @@ main.ap { padding: 0 0 3rem; }
 .ap-hero-media img { aspect-ratio: 3 / 2; }
 .ap-hero-dark .ap-hero-media img { aspect-ratio: 4 / 5; object-position: 50% 15%; }
 
-/* Split hero: the portrait sits inset at its natural 4:5 proportion
-   beside the text on wide screens, so it is never enlarged to fill the
-   card; stacked full-width on phones. */
+/* Split hero: the photo fills the left column of the card edge to edge
+   (cropped to the column, face kept in frame), the text sits beside it.
+   On phones the photo spans the card width above the text. */
 @media (min-width: 48.0625em) {
   .ap-hero-split {
     display: grid;
-    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-    align-items: center;
-    gap: 2.75rem;
-    padding: 2.25rem;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: stretch;
   }
-  .ap-hero-split .ap-hero-media { height: auto; }
-  .ap-hero-split .ap-hero-media img { aspect-ratio: auto; height: auto; border-radius: 1.25rem; }
-  .ap-hero-split .ap-text { padding: 0.5rem 0.5rem 0.5rem 0; }
+  .ap-hero-split .ap-hero-media { height: 100%; min-height: 28rem; }
+  .ap-hero-split .ap-hero-media img { width: 100%; height: 100%; aspect-ratio: auto; object-fit: cover; object-position: 42% 30%; border-radius: 0; }
+  .ap-hero-split .ap-text { padding: 3rem 3rem 3rem 2.75rem; align-self: center; }
   .ap-hero-split h1 { font-size: clamp(2.5rem, 4.8vw, 3.6rem); }
 }
 @media (max-width: 48em) {
-  .ap-hero-split .ap-hero-media img { aspect-ratio: auto; height: auto; }
+  .ap-hero-split .ap-hero-media img { aspect-ratio: 4 / 3; object-fit: cover; object-position: 42% 30%; }
 }
 
 .ap-about-media img { aspect-ratio: 4 / 3; object-position: 50% 40%; }
