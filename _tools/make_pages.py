@@ -263,3 +263,15 @@ for live, name in ((True, 'index.html'), (False, 'lab.html')):
     page = render(live)
     (root/name).write_text(page)
     print(name, 'written', len(page.splitlines()), 'lines;', len(projects), 'projects', len(pubs), 'publications', len(about), 'about paragraphs')
+
+# classic.html: the previous layout, kept viewable at /classic.html with the
+# same content source, so it stays accurate without being the home page.
+classic = src.replace('title: Darin Lei\npermalink: /\n', 'title: Darin Lei (Classic)\npermalink: /classic.html\n', 1)
+classic = classic.replace('<meta name="viewport" content="width=device-width, initial-scale=1.0">',
+                          '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n  <meta name="robots" content="noindex, nofollow">', 1)
+classic = classic.replace('<title>Darin Lei</title>', '<title>Darin Lei &mdash; Classic layout</title>', 1)
+classic = classic.replace('    <p>&copy; Copyright 2026 Darin Lei. Hosted by GitHub Pages.</p>',
+                          '    <p>&copy; Copyright 2026 Darin Lei. Hosted by GitHub Pages.</p>\n    <p>Previous layout, kept for reference. <a href="index.html">Go to the current site</a>.</p>', 1)
+assert classic != src and 'noindex' in classic and 'classic.html' in classic and 'Classic layout' in classic and 'Previous layout' in classic
+(root/'classic.html').write_text(classic)
+print('classic.html written', len(classic.splitlines()), 'lines')
