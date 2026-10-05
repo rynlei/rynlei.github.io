@@ -413,3 +413,11 @@ main.ap { padding: 0 0 3rem; }
     radial-gradient(60% 50% at 0% 100%, rgba(var(--wash), 0.14), rgba(var(--wash), 0) 70%);
   pointer-events: none;
 }
+
+/* Hero accents in white so the crimson wash is the only colour in the
+   card; periwinkle remains the accent everywhere below. */
+.ap-hero-dark .ap-tagline { color: #fff; opacity: 0.85; }
+.ap-hero-dark .ap-btn { background: #fff; color: #000; }
+.ap-hero-dark .ap-btn:hover { background: #e8e8ed; color: #000; }
+.ap-hero-dark .ap-btn-ghost { background: transparent; color: #fff; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7); }
+.ap-hero-dark .ap-btn-ghost:hover { background: #fff; color: #000; }
