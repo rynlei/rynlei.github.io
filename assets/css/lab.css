@@ -109,7 +109,27 @@ main.ap { padding: 0 0 3rem; }
   background: #fff;
 }
 .ap-hero-media img { aspect-ratio: 3 / 2; }
-.ap-hero-dark .ap-hero-media img { aspect-ratio: 4 / 3; object-position: 50% 20%; }
+.ap-hero-dark .ap-hero-media img { aspect-ratio: 4 / 5; object-position: 50% 15%; }
+
+/* Split hero: the portrait sits inset at its natural 4:5 proportion
+   beside the text on wide screens, so it is never enlarged to fill the
+   card; stacked full-width on phones. */
+@media (min-width: 48.0625em) {
+  .ap-hero-split {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    align-items: center;
+    gap: 2.75rem;
+    padding: 2.25rem;
+  }
+  .ap-hero-split .ap-hero-media { height: auto; }
+  .ap-hero-split .ap-hero-media img { aspect-ratio: 4 / 5; height: auto; border-radius: 1.25rem; }
+  .ap-hero-split .ap-text { padding: 0.5rem 0.5rem 0.5rem 0; }
+  .ap-hero-split h1 { font-size: clamp(2.5rem, 4.8vw, 3.6rem); }
+}
+@media (max-width: 48em) {
+  .ap-hero-split .ap-hero-media img { aspect-ratio: 4 / 5; object-position: 50% 20%; }
+}
 
 .ap-about-media img { aspect-ratio: 4 / 3; object-position: 50% 40%; }
 
