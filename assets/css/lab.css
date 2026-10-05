@@ -558,3 +558,6 @@ main.ap { padding-bottom: 0; }
 /* Two links in one card CTA line */
 .ap-card .card-cta a { display: inline-block; white-space: nowrap; }
 .ap-card .card-cta a:not(:last-child) { margin-right: 1.5rem; }
+
+/* Space and a hairline between successive news items */
+.ap-card .news-item + .news-item { margin-top: 1.75rem; padding-top: 1.75rem; border-top: 1px solid #2a2a2e; }
