@@ -109,6 +109,7 @@ main.ap { padding: 0 0 3rem; }
   background: #fff;
 }
 .ap-hero-media img { aspect-ratio: 3 / 2; }
+
 .ap-about-media img { aspect-ratio: 4 / 3; object-position: 50% 40%; }
 
 /* Text column */
@@ -279,11 +280,25 @@ main.ap { padding: 0 0 3rem; }
 .site-footer .contact-icons { gap: 1rem; }
 .site-footer .contact-icons a { padding: 0.75rem; }
 
-/* Hero photo switch (lab experiment) */
-.ap-hero-media .hero-opt { display: none; }
-.ap-hero-media .hero-opt.is-active { display: block; }
-.hero-switch { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 1.5rem; font-size: 0.85rem; color: var(--ap-grey); }
-.hero-switch span { margin-right: 0.25rem; }
-.hero-switch button { padding: 0.35rem 0.85rem; border-radius: 999px; border: 1px solid var(--ap-line); background: transparent; color: var(--ap-grey); font: inherit; font-weight: 600; cursor: pointer; transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease; }
-.hero-switch button:hover { color: var(--ap-text); border-color: var(--ap-grey); }
-.hero-switch button.is-active { background: var(--ap-text); border-color: var(--ap-text); color: #000; }
+/* Light hero: the card takes the studio backdrop's own off-white, so the
+   photo has no visible edges and the subject appears to stand in the
+   card (Apple alternates light and dark sections the same way). A soft
+   fade at the foot of the photo hides the backdrop's slight vignette. */
+.ap-hero { --hero-paper: #fcfcfd; background: var(--hero-paper); }
+.ap-hero-media { position: relative; }
+.ap-hero-media::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 10%;
+  background: linear-gradient(to bottom, rgba(252, 252, 253, 0), var(--hero-paper));
+  pointer-events: none;
+}
+.ap-hero h1 { color: #1d1d1f; }
+.ap-hero .ap-tagline { color: var(--accent-strong); }
+.ap-hero .ap-desc { color: #6e6e73; }
+.ap-hero .ap-desc strong { color: #1d1d1f; }
+.ap-hero .ap-kicker { color: #6e6e73; }
+.ap-hero .ap-pills li { background: #f0f0f3; border-color: #e3e3e8; color: #1d1d1f; }
+.ap-hero .ap-btn-ghost { color: var(--accent-strong); box-shadow: inset 0 0 0 1px var(--accent-strong); }
+.ap-hero .ap-btn-ghost:hover { background: var(--accent-strong); color: #fff; }
