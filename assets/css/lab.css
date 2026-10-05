@@ -363,24 +363,30 @@ main.ap { padding: 0 0 3rem; }
    full-screen menu, gradient wash behind the hero text.
    ------------------------------------------------------------------ */
 /* Wordmark: small mark + two-line name */
-.brand-mark { display: inline-flex; align-items: center; gap: 0.55rem; text-decoration: none; }
-.monogram {
-  flex: 0 0 auto;
-  font-size: 1.35rem;
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  line-height: 1;
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
   background: linear-gradient(135deg, #e0325a 0%, #a84fc4 55%, #7f8fe0 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
-.brand-mark span { display: inline-block; font-size: 0.78rem; line-height: 1.05; font-weight: 700; letter-spacing: 0.01em; }
-@media (min-width: 48.0625em) {
-  .site-header-inner { padding: 0.5rem 1.1rem 0.5rem 0.55rem; }
+.monogram {
+  flex: 0 0 auto;
+  font-size: 2.3rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 1;
 }
-.footer-mark { justify-content: center; margin-bottom: 0.75rem; color: #1d1d1f; }
-.footer-mark .monogram { font-size: 1.9rem; }
+.brand-mark span { display: inline-block; font-size: 1.15rem; line-height: 1; font-weight: 700; letter-spacing: -0.01em; color: inherit; }
+@media (min-width: 48.0625em) {
+  .site-header-inner { padding: 0.45rem 1.25rem 0.45rem 0.6rem; gap: 0.85rem; }
+}
+.footer-mark { justify-content: center; margin-bottom: 0.9rem; }
+.footer-mark .monogram { font-size: 3rem; }
+.footer-mark span:not(.monogram) { font-size: 1.5rem; text-align: left; }
 .footer-mark span { font-size: 0.95rem; }
 .footer-tagline { max-width: 26rem; margin: 0 auto 1.75rem; color: var(--accent-strong); font-weight: 600; font-size: 0.9rem; }
 
@@ -405,7 +411,7 @@ main.ap { padding: 0 0 3rem; }
 .menu-open .drawer-scrim { opacity: 0; }
 /* Header inverts with the menu so the X and mark stay legible on white */
 .menu-open .site-header-inner { background: transparent; border-color: transparent; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none; }
-.menu-open .brand-mark span:not(.monogram), .menu-open .menu-toggle { color: #1d1d1f; }
+.menu-open .menu-toggle { color: #1d1d1f; }
 
 /* Gradient wash: colour pools in the top corner of the text column and
    bleeds across the card, fading into the card's own black. */
