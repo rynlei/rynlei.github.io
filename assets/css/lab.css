@@ -130,7 +130,19 @@ main.ap { padding: 0 0 3rem; }
   .ap-hero-split .ap-hero-media img { aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 35%; }
 }
 
-.ap-about-media img { aspect-ratio: 4 / 3; object-position: 50% 40%; }
+/* About: show the whole MRI (no cropping of the head) inside a shorter
+   frame whose colour matches the image's own background. */
+.ap-about-media { background: #1b1b1c; }
+.ap-about-media img { aspect-ratio: 16 / 10; object-fit: contain; object-position: 50% 50%; background: #1b1b1c; }
+.ap-about-media { position: relative; }
+.ap-about-media::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 9%;
+  background: linear-gradient(to bottom, rgba(27, 27, 28, 0), #1b1b1c);
+  pointer-events: none;
+}
 
 /* Text column */
 .ap-text {
