@@ -55,7 +55,7 @@ pubs.append(dict(
     photo=True,
     kicker='Poster presentation',
     title='Hearing Loss, Vection, and Anxiety and Depression',
-    meta='<em>Lei, D.</em>, Hong, L., &amp; Campos, J. L. (2026)',
+    meta='<em>Lei, D.</em>, Hong, L., &amp; Campos, J. L. (2026) &middot; UHN Summer Training and Research (STAR) Program Research Day',
     cta='<a href="assets/pdf/DL_STAR-2026_poster.pdf">View the poster <span aria-hidden="true">&rarr;</span></a>',
     desc=('Older adults with age-related hearing loss (ARHL) fall three times more often, and overlap between the auditory and vestibular systems may link hearing to balance. Over-reliance on vision can amplify vection, the illusory sense of self-motion, and anxiety and depression may shape that experience. Using a global visual motion paradigm, this study asks how vection differs with age, hearing status, and mental health.')))
 
@@ -144,6 +144,15 @@ permalink: {'/' if live else '/lab.html'}
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>document.documentElement.classList.add('js');setTimeout(function(){{if(!window.__revealReady){{document.documentElement.classList.add('reveal-all');}}}},4000);</script>
   {robots}<title>{title}</title>
+  <meta name="description" content="Darin Lei, Honours BSc candidate at the University of Toronto, researching consciousness, autobiographical memory and altered states with Dr. Morgan D. Barense.">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Darin Lei">
+  <meta property="og:description" content="Honours BSc candidate at the University of Toronto, researching consciousness, autobiographical memory and altered states with Dr. Morgan D. Barense.">
+  <meta property="og:url" content="https://rynlei.github.io/{'' if live else 'lab.html'}">
+  <meta property="og:image" content="https://rynlei.github.io/assets/img/og-home.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" href="favicon.ico?v={{{{ site.time | date: '%s' }}}}" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png?v={{{{ site.time | date: '%s' }}}}">
