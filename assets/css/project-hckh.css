@@ -129,6 +129,6 @@ main.ap.hk { padding-bottom: 0; }
   .hk-hero-phones .hk-phone:nth-child(2) { transform: none; }
 }
 
-/* Hero button in the program's own teal */
-.hk-hero .ap-btn.hk-btn-teal { background: #1a7062; color: #fff; }
-.hk-hero .ap-btn.hk-btn-teal:hover { background: #22907d; }
+/* Primary buttons in the program's own teal */
+.hk .ap-btn.hk-btn-teal { background: #1a7062; color: #fff; }
+.hk .ap-btn.hk-btn-teal:hover { background: #22907d; }
