@@ -345,3 +345,12 @@ main.ap { padding: 0 0 3rem; }
   #publications .ap-media.contain img,
   #publications .project-card.ap-card .ap-media.contain img { padding: 1.25rem; }
 }
+
+/* Experiment 7: Apple system purple as the accent (dark-mode value). */
+:root {
+  --accent: #BF5AF2;
+  --accent-strong: #A64FD9;
+}
+.ap-hero:not(.ap-hero-dark) .ap-tagline { color: #AF52DE; }
+.ap-btn:hover { background: #D07BF5; }
+.ap-btn-ghost:hover { background: var(--accent); color: #fff; }
