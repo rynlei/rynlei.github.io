@@ -86,7 +86,7 @@ def card_html(c, tag='h3'):
         <div class="ap-text">
           <p class="ap-kicker">{c['kicker']}</p>
           <{tag}>{c['title']}</{tag}>
-          <p class="ap-meta">{c['meta']}</p>{(chr(10) + '          <p class="ap-status">' + c['status'] + '</p>') if c.get('status') else ''}
+          <p class="ap-meta">{c['meta']}</p>{(chr(10) + '          <p class="ap-status' + (' is-live' if 'Data collection' in c['status'] else '') + '">' + c['status'] + '</p>') if c.get('status') else ''}
           <p class="ap-desc">{lead_bold(c['desc'])}</p>
           {('<p class="card-cta">' + c['cta'] + '</p>') if c.get('cta') else ''}
         </div>
