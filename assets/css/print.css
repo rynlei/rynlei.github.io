@@ -58,4 +58,5 @@ a { color: #111 !important; text-decoration: underline !important; text-decorati
 .ap-exp-item { border-color: #ddd !important; padding: 2mm 0 !important; break-inside: avoid; }
 .ap-exp-lab { font-size: 11pt !important; color: #111 !important; }
 .ap-exp-when, .ap-exp-role, .ap-exp-desc { color: #444 !important; font-size: 9.5pt !important; }
-.ap-exp-role { font-weight: 600 !important; color: #111 !important; }
+.ap-exp-pi, .ap-exp-title { color: #111 !important; }
+.ap-exp-title { font-weight: 600 !important; }

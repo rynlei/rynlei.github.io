@@ -710,8 +710,8 @@ main.ap { padding-bottom: 0; }
 }
 
 /* Committee-review prototype pieces */
-.ap-status { margin: -0.6rem 0 1rem; font-size: 0.9rem; font-weight: 600; color: #9fd6c6; }
-.ap-status::before { content: ""; display: inline-block; width: 0.45rem; height: 0.45rem; margin-right: 0.5rem; border-radius: 50%; background: #3dbfa6; vertical-align: 0.1em; }
+.ap-status { margin: -0.6rem 0 1rem; font-size: 0.9rem; font-weight: 600; color: var(--accent); }
+.ap-status::before { content: ""; display: inline-block; width: 0.45rem; height: 0.45rem; margin-right: 0.5rem; border-radius: 50%; background: var(--accent); vertical-align: 0.1em; }
 .ap-skills { margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem 3rem; }
 .ap-skill dt { margin: 0 0 0.3rem; font-size: 0.85rem; font-weight: 600; color: var(--ap-grey); }
 .ap-skill dd { margin: 0; font-size: 1.05rem; font-weight: 500; line-height: 1.5; color: var(--ap-text); }
@@ -726,8 +726,10 @@ main.ap { padding-bottom: 0; }
 .ap-exp-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
 .ap-exp-lab { font-size: clamp(1.15rem, 1.8vw, 1.4rem); font-weight: 600; letter-spacing: -0.01em; color: var(--ap-text); }
 .ap-exp-when { font-size: 0.95rem; font-weight: 500; color: var(--ap-grey); white-space: nowrap; }
-.ap-exp-role { margin: 0.25rem 0 0.5rem; font-size: 0.95rem; font-weight: 600; color: #9fd6c6; }
-.ap-exp-desc { margin: 0; font-size: 1.02rem; line-height: 1.5; color: var(--ap-grey); }
+.ap-exp-role { margin: 0.3rem 0 0; font-size: 0.98rem; font-weight: 500; color: var(--ap-grey); }
+.ap-exp-role .ap-exp-title { color: var(--accent); font-weight: 600; }
+.ap-exp-role .ap-exp-pi { color: var(--ap-text); }
+.ap-exp-desc { margin: 0.5rem 0 0; font-size: 1.02rem; line-height: 1.5; color: var(--ap-grey); }
 
 /* Tighter project cards (prototype): a notch less padding and gap */
 .proto #projects .project-card.ap-card { margin-top: 1rem; }
