@@ -757,16 +757,16 @@ main.ap { padding-bottom: 0; }
 .ap-status.is-live::before { animation: status-pulse 3s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) { .ap-status.is-live::before { animation: none; } }
 
-/* Lab experiment: the current section's link brightens and carries a
-   short underline in the header row and pill. */
+/* Current section: its link brightens and carries a short underline in
+   the header row and pill. */
 @media (min-width: 48.0625em) {
-  .lab .nav-apple .site-nav a, .lab .nav-apple .site-nav-more-btn { position: relative; }
-  .lab .nav-apple .site-nav a::after, .lab .nav-apple .site-nav-more-btn::after {
+  .nav-apple .site-nav a, .nav-apple .site-nav-more-btn { position: relative; }
+  .nav-apple .site-nav a::after, .nav-apple .site-nav-more-btn::after {
     content: ""; position: absolute; left: 0.95rem; right: 0.95rem; bottom: 0.1rem; height: 2px; border-radius: 1px;
     background: var(--accent); transform: scaleX(0); transform-origin: center; transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease; opacity: 0;
   }
-  .lab .nav-apple .site-nav a.is-current, .lab .nav-apple .site-nav-more-btn.is-current { color: #fff; }
-  .lab .nav-apple .site-nav a.is-current::after, .lab .nav-apple .site-nav-more-btn.is-current::after { transform: scaleX(1); opacity: 1; }
-  .lab .nav-apple .site-nav .site-nav-cta::after { display: none; }
+  .nav-apple .site-nav a.is-current, .nav-apple .site-nav-more-btn.is-current { color: #fff; }
+  .nav-apple .site-nav a.is-current::after, .nav-apple .site-nav-more-btn.is-current::after { transform: scaleX(1); opacity: 1; }
+  .nav-apple .site-nav .site-nav-cta::after { display: none; }
 }
-@media (prefers-reduced-motion: reduce) { .lab .nav-apple .site-nav a::after, .lab .nav-apple .site-nav-more-btn::after { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .nav-apple .site-nav a::after, .nav-apple .site-nav-more-btn::after { transition: none; } }
