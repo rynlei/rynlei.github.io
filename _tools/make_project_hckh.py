@@ -112,6 +112,7 @@ closing = '''
         <div class="ap-actions">
           <a class="ap-btn hk-btn-teal" href="https://canva.link/efl2qt7o34hguq3">View the presentation</a>
           <a class="ap-btn hk-btn-teal" href="assets/pdf/DL_LOVE-2026_poster.pdf">View the poster</a>
+          <a class="ap-btn hk-btn-teal" href="https://youtu.be/lrgng-rhZew">Watch the talk</a>
           <a class="ap-btn ap-btn-ghost" href="index.html#projects">Back to home</a>
         </div>
         <p class="hk-credit">Screens designed by Darin Lei, in collaboration with Ever C. Hughes, Bryan Hong and Morgan D. Barense, and shaped by feedback from older adults in the Greater Toronto Area.</p>
