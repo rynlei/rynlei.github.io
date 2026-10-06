@@ -129,7 +129,7 @@ DESKTOP_NAV = {'live': 'apple', 'lab': 'apple'}
 # The More menu: 'panel' (small dropdown under the button) or 'mega' (full-width black sheet, as Apple's global menu). Lab experiment: mega.
 MORE_STYLE = {'live': 'mega', 'lab': 'mega'}
 # Committee-review additions (OSNC poster card, EPIC-AT talk, CV-style skills, project status, graduation line, visible email, print stylesheet). Lab prototype.
-PROTO = {'live': False, 'lab': True}  # False, True (pill), or 'apple' (thin full-width local nav)
+PROTO = {'live': True, 'lab': True}  # False, True (pill), or 'apple' (thin full-width local nav)
 
 def render(live):
     hero = HERO['live' if live else 'lab']
@@ -184,7 +184,7 @@ def render(live):
              'Autobiographical Interview and temporal recall dynamics in temporal lobe epilepsy patients implanted with the NeuroPace RNS system; electrode localisation in FreeSurfer; patient tutorials for RNS data syncing in HippoCamera.'),
             ('Levine Lab, Rotman Research Institute, Baycrest', 'Dr. Brian Levine', 'Individual Research Project Student', 'January 2026 &ndash; present',
              'Sleep, targeted memory reactivation and the free recall of a naturalistic experience, using a controlled hospital tour as the memory paradigm.'),
-            ('Toronto Rehabilitation Institute, University Health Network', 'Dr. Jennifer L. Campos', 'Summer Research Project Student', 'May &ndash; August 2026',
+            ('KITE Research Institute, University Health Network', 'Dr. Jennifer L. Campos', 'Summer Research Project Student', 'May &ndash; August 2026',
              'Vection, hearing loss and mental health across the lifespan, using a global visual motion paradigm in the StreetLab simulator.'),
         ]
         exp_rows = '\n'.join(f'''          <li class="ap-exp-item">
