@@ -123,19 +123,20 @@ news_html = '\n'.join(news_item(d, b) for d, b in news)
 
 avatar = one(r'<img class="hero-avatar"[^>]*src="([^"]+)"', src).group(1)
 # Hero style per output: 'split' (portrait panel) or 'avatar' (centred circle). Lab experiment: avatar.
-HERO = {'live': 'split', 'lab': 'avatar'}
+HERO = {'live': 'split', 'lab': 'split'}
 # Visible section links in the header on wide screens (the hamburger stays for phones). Lab experiment.
 DESKTOP_NAV = {'live': False, 'lab': 'apple'}  # False, True (pill), or 'apple' (thin full-width local nav)
 
 def render(live):
     hero = HERO['live' if live else 'lab']
-    nav = ''; hdr_cls = 'site-header'
+    nav = ''; hdr_cls = 'site-header'; navjs = ''
     mode = DESKTOP_NAV['live' if live else 'lab']
     if mode:
         links = ''.join(f'<a href="#{h}">{l}</a>' for h, l in [('about','About'),('highlights','Highlights'),('news','News'),('projects','Projects'),('publications','Publications'),('skills','Skills'),('contact','Contact')])
         if mode == 'apple':
             hdr_cls = 'site-header nav-apple'
             links += f'<a class="site-nav-cta" href="{cv}">Download CV</a>'
+            navjs = '\n  <script src="assets/js/nav-pill.js?v={{ site.time | date: \'%s\' }}"></script>'
         nav = '\n      <nav class="site-nav" aria-label="Sections">' + links + '</nav>'
     title = 'Darin Lei' if live else 'Darin Lei &mdash; Lab'
     robots = '' if live else '<meta name="robots" content="noindex, nofollow">' + chr(10) + '  '
@@ -277,7 +278,7 @@ permalink: {'/' if live else '/lab.html'}
 {foot}
   <a href="#home" class="to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 14l6-6 6 6"/></svg></a>
   <script src="assets/js/site.js?v={{{{ site.time | date: '%s' }}}}"></script>
-  <script src="assets/js/lab-top.js?v={{{{ site.time | date: '%s' }}}}"></script>
+  <script src="assets/js/lab-top.js?v={{{{ site.time | date: '%s' }}}}"></script>{navjs}
 </body>
 </html>
 '''
