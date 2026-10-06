@@ -129,12 +129,15 @@ DESKTOP_NAV = {'live': 'apple', 'lab': 'apple'}
 # The More menu: 'panel' (small dropdown under the button) or 'mega' (full-width black sheet, as Apple's global menu). Lab experiment: mega.
 MORE_STYLE = {'live': 'mega', 'lab': 'mega'}
 # Committee-review additions (OSNC poster card, EPIC-AT talk, CV-style skills, project status, graduation line, visible email, print stylesheet). Lab prototype.
-PROTO = {'live': True, 'lab': True}  # False, True (pill), or 'apple' (thin full-width local nav)
+PROTO = {'live': True, 'lab': True}
+# Cloudflare Web Analytics beacon (no cookies or local storage); emitted on the live home page only
+ANALYTICS = '  <!-- Cloudflare Web Analytics --><script type=\'module\' src=\'https://static.cloudflareinsights.com/beacon.min.js\' data-cf-beacon=\'{"token": "5b027d490a3f4799bf9f8fb65f310082"}\'></script><!-- End Cloudflare Web Analytics -->'  # False, True (pill), or 'apple' (thin full-width local nav)
 
 def render(live):
     hero = HERO['live' if live else 'lab']
     proto = PROTO['live' if live else 'lab']
     experience = ''
+    analytics = ('\n' + ANALYTICS) if live else ''  # live pages only, so the sandbox and classic copies do not count
     pubs_out = list(pubs)
     projects_out = [dict(c) for c in projects]
     about_out = list(about)
@@ -395,7 +398,7 @@ permalink: {'/' if live else '/lab.html'}
 {foot_out}
   <a href="#home" class="to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 14l6-6 6 6"/></svg></a>
   <script src="assets/js/site.js?v={{{{ site.time | date: '%s' }}}}"></script>
-  <script src="assets/js/lab-top.js?v={{{{ site.time | date: '%s' }}}}"></script>{navjs}
+  <script src="assets/js/lab-top.js?v={{{{ site.time | date: '%s' }}}}"></script>{navjs}{analytics}
 </body>
 </html>
 '''

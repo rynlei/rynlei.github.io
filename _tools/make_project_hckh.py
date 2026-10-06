@@ -191,6 +191,7 @@ permalink: /project-hckh.html
   <script src="assets/js/lab-top.js?v={V}"></script>
   <script src="assets/js/nav-pill.js?v={V}"></script>
   <script src="assets/js/hckh-embed.js?v={V}"></script>
+  <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{{"token": "5b027d490a3f4799bf9f8fb65f310082"}}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
 '''
