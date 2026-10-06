@@ -134,6 +134,7 @@ PROTO = {'live': False, 'lab': True}  # False, True (pill), or 'apple' (thin ful
 def render(live):
     hero = HERO['live' if live else 'lab']
     proto = PROTO['live' if live else 'lab']
+    experience = ''
     pubs_out = list(pubs)
     projects_out = [dict(c) for c in projects]
     about_out = list(about)
@@ -177,6 +178,32 @@ def render(live):
                   ('User app testing', 'TestFlight (user testing as a UX researcher)')]
         skills_block = '        <dl class="ap-skills">\n' + '\n'.join(f'          <div class="ap-skill"><dt>{k}</dt><dd>{v}</dd></div>' for k, v in groups) + '\n        </dl>'
         print_link = "\n  <link rel=\"stylesheet\" href=\"assets/css/print.css?v={{ site.time | date: '%s' }}\" media=\"print\">"
+        LABS = [
+            ('Memory &amp; Perception Lab, University of Toronto', 'Dr. Morgan D. Barense', 'Study lead and thesis student', 'May 2025 &ndash; present',
+             'Thesis on temporal context recovery in autobiographical memory using HippoCamera; led the HippoCamera Knowledge Hub study with older adults, from Figma prototypes to semi-structured interviews and thematic analysis.'),
+            ('Texas Computational Memory Lab, UT Southwestern Medical Center', 'Dr. Bradley Lega', 'External research collaborator', 'January 2026 &ndash; present',
+             'Autobiographical Interview and temporal recall dynamics in temporal lobe epilepsy patients implanted with the NeuroPace RNS system; electrode localisation in FreeSurfer; patient tutorials for RNS data syncing in HippoCamera.'),
+            ('Levine Lab, Rotman Research Institute, Baycrest', 'Dr. Brian Levine', 'Individual research project student', 'January 2026 &ndash; present',
+             'Sleep, targeted memory reactivation and the free recall of a naturalistic experience, using a controlled hospital tour as the memory paradigm.'),
+            ('Toronto Rehabilitation Institute, University Health Network', 'Dr. Jennifer L. Campos', 'Summer research project student', 'May &ndash; August 2026',
+             'Vection, hearing loss and mental health across the lifespan, using a global visual motion paradigm in the StreetLab simulator.'),
+        ]
+        exp_rows = '\n'.join(f'''          <li class="ap-exp-item">
+            <div class="ap-exp-head"><span class="ap-exp-lab">{lab}</span><span class="ap-exp-when">{when}</span></div>
+            <p class="ap-exp-role">{role} &middot; {pi}</p>
+            <p class="ap-exp-desc">{desc}</p>
+          </li>''' for lab, pi, role, when, desc in LABS)
+        experience = f'''
+    <section id="experience" class="section ap-card">
+      <div class="ap-text">
+        <p class="ap-kicker">Training</p>
+        <h2>Research Experience</h2>
+        <ul class="ap-exp">
+{exp_rows}
+        </ul>
+      </div>
+    </section>
+'''
     nav = ''; hdr_cls = 'site-header'; navjs = ''; mega = ''
     if DESKTOP_NAV['live' if live else 'lab'] == 'apple' and MORE_STYLE['live' if live else 'lab'] == 'mega':
         mega = f'''
@@ -185,7 +212,7 @@ def render(live):
     <div class="mega-inner">
       <div class="mega-col mega-col-lead">
         <p class="mega-label">More</p>
-        <a href="#skills">Technical Skills</a>
+        {'<a href="#experience">Research Experience</a>' + chr(10) + '        ' if proto else ''}<a href="#skills">Technical Skills</a>
         <a href="#contact">Contact</a>
       </div>
       <div class="mega-col">
@@ -257,7 +284,7 @@ permalink: {'/' if live else '/lab.html'}
   <link rel="stylesheet" href="assets/css/onepage.css?v={{{{ site.time | date: '%s' }}}}">
   <link rel="stylesheet" href="assets/css/lab.css?v={{{{ site.time | date: '%s' }}}}">{print_link}
 </head>
-<body>
+<body{' class="proto"' if proto else ''}>
 
   <header class="{hdr_cls}">
     <div class="site-header-inner">
@@ -274,7 +301,7 @@ permalink: {'/' if live else '/lab.html'}
     <nav class="drawer-nav" aria-label="Site">
       <a href="#home">Home</a>
       <a href="#about">About</a>
-      <a href="#highlights">Highlights</a>
+      <a href="#highlights">Highlights</a>{chr(10) + '      <a href="#experience">Research Experience</a>' if proto else ''}
       <a href="#news">News</a>
       <a href="#projects">Ongoing Projects</a>
       <a href="#publications">Publications</a>
@@ -322,7 +349,7 @@ permalink: {'/' if live else '/lab.html'}
         <p class="section-cta"><a href="{cv}">Download the full CV <span aria-hidden="true">&rarr;</span></a></p>
       </div>
     </section>
-
+{experience}
     <section id="news" class="section ap-card">
       <div class="ap-text">
         <p class="ap-kicker">Latest</p>

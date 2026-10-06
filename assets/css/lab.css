@@ -719,3 +719,22 @@ main.ap { padding-bottom: 0; }
 .site-footer .footer-email { margin: 0 0 0.5rem; font-size: 1rem; }
 .site-footer .footer-email a { color: #1d1d1f; font-weight: 600; text-decoration: none; border-bottom: 1px solid #c7c7cc; }
 .site-footer .footer-email a:hover { color: var(--accent-strong); border-color: var(--accent-strong); }
+
+/* Research experience: hairline rows, lab and dates on one line */
+.ap-exp { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ap-line, #2a2a2e); }
+.ap-exp-item { padding: 1.25rem 0 1.35rem; border-bottom: 1px solid var(--ap-line, #2a2a2e); }
+.ap-exp-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+.ap-exp-lab { font-size: clamp(1.15rem, 1.8vw, 1.4rem); font-weight: 600; letter-spacing: -0.01em; color: var(--ap-text); }
+.ap-exp-when { font-size: 0.95rem; font-weight: 500; color: var(--ap-grey); white-space: nowrap; }
+.ap-exp-role { margin: 0.25rem 0 0.5rem; font-size: 0.95rem; font-weight: 600; color: #9fd6c6; }
+.ap-exp-desc { margin: 0; font-size: 1.02rem; line-height: 1.5; color: var(--ap-grey); }
+
+/* Tighter project cards (prototype): a notch less padding and gap */
+.proto #projects .project-card.ap-card { margin-top: 1rem; }
+.proto #projects .project-card.ap-card .ap-text { padding: 2.1rem 2.5rem 2.3rem; }
+.proto #projects .project-card.ap-card .ap-desc { margin-bottom: 0.9em; }
+.proto .ap-head { padding-top: 3.5rem; }
+@media (max-width: 48em) {
+  .proto #projects .project-card.ap-card .ap-text { padding: 1.5rem 1.5rem 1.75rem; }
+  .ap-exp-head { flex-direction: column; gap: 0.15rem; }
+}
