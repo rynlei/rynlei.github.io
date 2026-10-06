@@ -86,7 +86,7 @@ def card_html(c, tag='h3'):
         <div class="ap-text">
           <p class="ap-kicker">{c['kicker']}</p>
           <{tag}>{c['title']}</{tag}>
-          <p class="ap-meta">{c['meta']}</p>
+          <p class="ap-meta">{c['meta']}</p>{(chr(10) + '          <p class="ap-status">' + c['status'] + '</p>') if c.get('status') else ''}
           <p class="ap-desc">{lead_bold(c['desc'])}</p>
           {('<p class="card-cta">' + c['cta'] + '</p>') if c.get('cta') else ''}
         </div>
@@ -127,10 +127,57 @@ HERO = {'live': 'split', 'lab': 'split'}
 # Visible section links in the header on wide screens (the hamburger stays for phones). Lab experiment.
 DESKTOP_NAV = {'live': 'apple', 'lab': 'apple'}
 # The More menu: 'panel' (small dropdown under the button) or 'mega' (full-width black sheet, as Apple's global menu). Lab experiment: mega.
-MORE_STYLE = {'live': 'mega', 'lab': 'mega'}  # False, True (pill), or 'apple' (thin full-width local nav)
+MORE_STYLE = {'live': 'mega', 'lab': 'mega'}
+# Committee-review additions (OSNC poster card, EPIC-AT talk, CV-style skills, project status, graduation line, visible email, print stylesheet). Lab prototype.
+PROTO = {'live': False, 'lab': True}  # False, True (pill), or 'apple' (thin full-width local nav)
 
 def render(live):
     hero = HERO['live' if live else 'lab']
+    proto = PROTO['live' if live else 'lab']
+    pubs_out = list(pubs)
+    projects_out = [dict(c) for c in projects]
+    about_out = list(about)
+    footer_out = footer
+    skills_block = f'''        <ul class="interests-list ap-pills">
+{skills_html}
+        </ul>'''
+    print_link = ''
+    if proto:
+        osnc = dict(src='assets/img/lab/osnc-neurons.jpg', alt='Rendered neurons with glowing cell bodies against a dark background', photo=True,
+            kicker='Poster presentation &middot; Best Undergraduate Poster Award',
+            title='Determining the Mechanisms of Temporal Context Recovery in Autobiographical Memory with Ambulatory Intracranial Recording',
+            meta='<em>Lei, D.</em>, Barense, M. D., Seger, S., Lohnas, L., &amp; Lega, B. (2026) &middot; Ontario Student Neuroscience Conference (OSNC)',
+            cta='<a href="assets/pdf/DL_OSNC-2026_poster.pdf">View the poster <span aria-hidden="true">&rarr;</span></a>',
+            desc='Retrieved-context theory predicts that recalling an event reinstates its temporal context, yet this has only been tested in the laboratory. This poster reports the behavioural phase of the thesis, which tests the prediction in real-world autobiographical memory with HippoCamera, and sets out the planned ambulatory intracranial recordings in patients implanted with the NeuroPace RNS system.')
+        epic = dict(src='assets/img/lab/epic-at-title.webp', alt='Title slide of The HippoCamera Knowledge Hub Program talk at the AGE-WELL EPIC 2026 conference, with an older man in a cap smiling and the partner logos', photo=True,
+            kicker='Conference presentation',
+            title='The HippoCamera Knowledge Hub Program',
+            meta='<em>Lei, D.</em>, Brachaniec, M., Hong, B., Hughes, E. C., &amp; Barense, M. D. (2026) &middot; AGE-WELL EPIC-AT 7th Annual Conference',
+            cta='<a href="https://youtu.be/lrgng-rhZew">Watch the talk <span aria-hidden="true">&rarr;</span></a>',
+            desc='A talk at the AGE-WELL Early Professionals, Inspired Careers in AgeTech conference on the Knowledge Hub: how the program was designed with older adults, what the interviews showed about engagement with technology-based memory tools, and where the program goes next.')
+        # order: the two papers, then presentations newest first
+        papers, posters = pubs_out[:2], pubs_out[2:]
+        star = [c for c in posters if 'STAR' in c['meta']]; purc = [c for c in posters if 'Undergraduate Research Community' in c['meta']]
+        pubs_out = papers + [osnc] + star + [epic] + purc
+        STATUS = {'assets/img/lab/rns-illustration.jpg': 'Data collection &middot; October 2026',
+                  'assets/img/lab/sleep-memory-1600.jpg': 'Data collection &middot; August 2026',
+                  'assets/img/lab/hckh-program-towel.webp': 'Manuscript writing &middot; August 2026'}
+        for c in projects_out:
+            if c['src'] in STATUS: c['status'] = STATUS[c['src']]
+        about_out[0] = about_out[0].replace('</a></strong>.</p>', '</a></strong>. I expect to graduate in <strong>June 2027</strong>.</p>')
+        assert 'June 2027' in about_out[0]
+        footer_out = footer_out.replace('    <p>&copy; Copyright 2026 Darin Lei. Hosted by GitHub Pages.</p>',
+            '    <p class="footer-email"><a href="mailto:darin.lei@mail.utoronto.ca">darin.lei@mail.utoronto.ca</a></p>\n    <p>&copy; Copyright 2026 Darin Lei. Hosted by GitHub Pages.</p>')
+        groups = [('Programming &amp; data analysis', 'R, Python, MATLAB, JavaScript, HTML5/CSS, jamovi, JASP, NVivo (qualitative analysis), Taguette'),
+                  ('Neuroimaging software', 'FSL (FEAT, FLIRT, BET, MELODIC, TBSS, FSLeyes), FreeSurfer'),
+                  ('Experiment design &amp; programming', 'PsychoPy, Psychtoolbox (MATLAB), Qualtrics, Lookit, REDCap'),
+                  ('Technical equipment', 'EyeLink 1000 Plus, EyeLink Data Viewer, EDF2ASC'),
+                  ('Databases &amp; literature review', 'Zotero, PubMed, PsycINFO, Google Scholar, Excel'),
+                  ('Design &amp; graphics', 'Adobe Photoshop, Adobe Lightroom, Figma, Canva, Blender'),
+                  ('User app testing', 'TestFlight (user testing as a UX researcher)'),
+                  ('Languages', 'English and Mandarin (native); Cantonese and Taiwanese Hokkien (heritage, fluent); French and Japanese (conversational)')]
+        skills_block = '        <dl class="ap-skills">\n' + '\n'.join(f'          <div class="ap-skill"><dt>{k}</dt><dd>{v}</dd></div>' for k, v in groups) + '\n        </dl>'
+        print_link = "\n  <link rel=\"stylesheet\" href=\"assets/css/print.css?v={{ site.time | date: '%s' }}\" media=\"print\">"
     nav = ''; hdr_cls = 'site-header'; navjs = ''; mega = ''
     if DESKTOP_NAV['live' if live else 'lab'] == 'apple' and MORE_STYLE['live' if live else 'lab'] == 'mega':
         mega = f'''
@@ -178,6 +225,7 @@ def render(live):
     robots = '' if live else '<meta name="robots" content="noindex, nofollow">' + chr(10) + '  '
     df = '    <p class="drawer-foot">&copy; Copyright 2026 Darin Lei. Hosted by GitHub Pages.</p>' if live else drawer_foot
     foot = footer if live else footer.replace('    <p>&copy; Copyright 2026 Darin Lei. Hosted by GitHub Pages.</p>', '    <p>&copy; Copyright 2026 Darin Lei. Hosted by GitHub Pages.</p>' + chr(10) + '    <p class="lab-note">Experimental layout &mdash; not the live site.</p>')
+    foot_out = foot.replace('    <p>&copy; Copyright 2026 Darin Lei. Hosted by GitHub Pages.</p>', '    <p class="footer-email"><a href="mailto:darin.lei@mail.utoronto.ca">darin.lei@mail.utoronto.ca</a></p>\n    <p>&copy; Copyright 2026 Darin Lei. Hosted by GitHub Pages.</p>') if proto else foot
     page = f'''---
 layout: null
 title: {'Darin Lei' if live else 'Darin Lei (Lab)'}
@@ -208,7 +256,7 @@ permalink: {'/' if live else '/lab.html'}
   <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png?v={{{{ site.time | date: '%s' }}}}">
 
   <link rel="stylesheet" href="assets/css/onepage.css?v={{{{ site.time | date: '%s' }}}}">
-  <link rel="stylesheet" href="assets/css/lab.css?v={{{{ site.time | date: '%s' }}}}">
+  <link rel="stylesheet" href="assets/css/lab.css?v={{{{ site.time | date: '%s' }}}}">{print_link}
 </head>
 <body>
 
@@ -260,7 +308,7 @@ permalink: {'/' if live else '/lab.html'}
       <div class="ap-text">
         <h2>About</h2>
         <div class="ap-desc">
-{chr(10).join(about)}
+{chr(10).join(about_out)}
         </div>
       </div>
     </section>
@@ -290,28 +338,26 @@ permalink: {'/' if live else '/lab.html'}
         <p class="ap-kicker">Research</p>
         <h2>Ongoing Projects</h2>
       </div>
-{''.join(card_html(c) for c in projects)}    </section>
+{''.join(card_html(c) for c in projects_out)}    </section>
 
     <section id="publications" class="ap-group">
       <div class="section ap-head">
         <p class="ap-kicker">Writing and talks</p>
         <h2>Selected Publications and Presentations</h2>
       </div>
-{''.join(card_html(c) for c in pubs)}    </section>
+{''.join(card_html(c) for c in pubs_out)}    </section>
 
     <section id="skills" class="section ap-card">
       <div class="ap-text">
         <p class="ap-kicker">Tools</p>
         <h2>Technical Skills</h2>
-        <ul class="interests-list ap-pills">
-{skills_html}
-        </ul>
+{skills_block}
       </div>
     </section>
 
   </main>
 
-{foot}
+{foot_out}
   <a href="#home" class="to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 14l6-6 6 6"/></svg></a>
   <script src="assets/js/site.js?v={{{{ site.time | date: '%s' }}}}"></script>
   <script src="assets/js/lab-top.js?v={{{{ site.time | date: '%s' }}}}"></script>{navjs}
