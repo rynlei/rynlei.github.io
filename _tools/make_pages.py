@@ -127,7 +127,7 @@ HERO = {'live': 'split', 'lab': 'split'}
 # Visible section links in the header on wide screens (the hamburger stays for phones). Lab experiment.
 DESKTOP_NAV = {'live': 'apple', 'lab': 'apple'}
 # The More menu: 'panel' (small dropdown under the button) or 'mega' (full-width black sheet, as Apple's global menu). Lab experiment: mega.
-MORE_STYLE = {'live': 'panel', 'lab': 'mega'}  # False, True (pill), or 'apple' (thin full-width local nav)
+MORE_STYLE = {'live': 'mega', 'lab': 'mega'}  # False, True (pill), or 'apple' (thin full-width local nav)
 
 def render(live):
     hero = HERO['live' if live else 'lab']
