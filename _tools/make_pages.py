@@ -171,13 +171,10 @@ def render(live):
         footer_out = footer_out.replace('    <p>&copy; Copyright 2026 Darin Lei. Hosted by GitHub Pages.</p>',
             '    <p class="footer-email"><a href="mailto:darin.lei@mail.utoronto.ca">darin.lei@mail.utoronto.ca</a></p>\n    <p>&copy; Copyright 2026 Darin Lei. Hosted by GitHub Pages.</p>')
         groups = [('Programming &amp; data analysis', 'R, Python, MATLAB, JavaScript, HTML5/CSS, jamovi, JASP, NVivo (qualitative analysis), Taguette'),
-                  ('Neuroimaging software', 'FSL (FEAT, FLIRT, BET, MELODIC, TBSS, FSLeyes), FreeSurfer'),
+                  ('Neuroimaging', 'FSL (FEAT, FLIRT, BET, MELODIC, TBSS, FSLeyes), FreeSurfer'),
                   ('Experiment design &amp; programming', 'PsychoPy, Psychtoolbox (MATLAB), Qualtrics, Lookit, REDCap'),
-                  ('Technical equipment', 'EyeLink 1000 Plus, EyeLink Data Viewer, EDF2ASC'),
-                  ('Databases &amp; literature review', 'Zotero, PubMed, PsycINFO, Google Scholar, Excel'),
                   ('Design &amp; graphics', 'Adobe Photoshop, Adobe Lightroom, Figma, Canva, Blender'),
-                  ('User app testing', 'TestFlight (user testing as a UX researcher)'),
-                  ('Training &amp; certification', 'TCPS 2 CORE (research ethics); CIHR Institute of Gender and Health modules on sex and gender in biomedical research, primary data collection with human participants, and analysis of secondary data; Montreal Cognitive Assessment (MoCA) certification; Johns Hopkins Fundamental Neuroscience for Neuroimaging; MathWorks Core MATLAB Skills, Computer Vision and Deep Learning Onramps; WHMIS')]
+                  ('Training &amp; certification', 'TCPS 2 CORE (research ethics); CIHR Institute of Gender and Health modules; Montreal Cognitive Assessment (MoCA) certification')]
         skills_block = '        <dl class="ap-skills">\n' + '\n'.join(f'          <div class="ap-skill"><dt>{k}</dt><dd>{v}</dd></div>' for k, v in groups) + '\n        </dl>'
         print_link = "\n  <link rel=\"stylesheet\" href=\"assets/css/print.css?v={{ site.time | date: '%s' }}\" media=\"print\">"
         LABS = [
