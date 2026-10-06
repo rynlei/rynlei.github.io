@@ -751,9 +751,8 @@ main.ap { padding-bottom: 0; }
   .drawer-full .drawer-foot { padding-top: 1rem; font-size: 0.78rem; }
 }
 
-/* Lab experiments: a slow pulse on the project status dot, and the hero
-   without its blue wash. Both scoped to the lab page's body class. */
+/* Live indicator: the dot before a status that is genuinely in motion
+   (data collection) breathes on a slow cycle; stage statuses stay still. */
 @keyframes status-pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.35; transform: scale(0.8); } }
-.lab .ap-status::before { animation: status-pulse 3s ease-in-out infinite; }
-@media (prefers-reduced-motion: reduce) { .lab .ap-status::before { animation: none; } }
-.lab .ap-hero-split::before { display: none; }
+.ap-status.is-live::before { animation: status-pulse 3s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .ap-status.is-live::before { animation: none; } }
