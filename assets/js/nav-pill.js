@@ -76,9 +76,9 @@
   // when it leaves both the header and the sheet.
   if (mega) {
     var header = document.querySelector('.site-header');
-    function armClose() { clearTimeout(hoverTimer); hoverTimer = setTimeout(function () { setOpen(false); }, 180); }
+    function armClose() { clearTimeout(hoverTimer); hoverTimer = setTimeout(function () { setOpen(false); }, 450); }  // grace for the pointer to cross from the row into the sheet
     function cancelClose() { clearTimeout(hoverTimer); }
-    btn.addEventListener('mouseenter', function () { if (!wide()) return; clearTimeout(hoverTimer); hoverTimer = setTimeout(function () { if (!isOpen()) { hoverOpened = true; setOpen(true); } }, 320); });  // the pointer has to rest on More, not just cross it
+    btn.addEventListener('mouseenter', function () { if (!wide()) return; clearTimeout(hoverTimer); hoverTimer = setTimeout(function () { if (!isOpen()) { hoverOpened = true; setOpen(true); } }, 260); });  // the pointer has to rest on More, not just cross it
     btn.addEventListener('mouseleave', function () { clearTimeout(hoverTimer); });
     [header, mega].forEach(function (el) {
       el.addEventListener('mouseleave', function () { if (isOpen()) armClose(); });
