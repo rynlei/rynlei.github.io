@@ -16,7 +16,7 @@ header = header.replace('href="#home"', 'href="index.html"')
 # current-section highlight works here. The home page's sections move to the
 # More sheet, where leaving the page belongs.
 ROW = [('program', 'Program'), ('expect', 'Memory'), ('cues', 'Cues'), ('practice', 'Activity'), ('prototype', 'Prototype')]
-MORE_HERE = [('normal', 'Brain Changes'), ('worried', 'Factsheets'), ('numbers', 'Educational Graphs'), ('habits', 'Memory Strategies'), ('quiz', 'Optional Quizzes &amp; Activities'), ('prototype', 'Interactive Prototype'), ('study', 'The study')]
+MORE_HERE = [('normal', 'Brain Changes'), ('worried', 'Factsheets'), ('numbers', 'Educational Graphs'), ('habits', 'Memory Strategies'), ('quiz', 'Optional Quizzes &amp; Activities'), ('study', 'The Study')]
 HOME = [('index.html', 'Home'), ('index.html#about', 'About'), ('index.html#experience', 'Research Experience'), ('index.html#projects', 'Projects'), ('index.html#publications', 'Publications'), ('index.html#contact', 'Contact')]
 row_links = ''.join(f'<a href="#{h}">{l}</a>' for h, l in ROW)
 header = re.sub(r'(<nav class="site-nav" aria-label="Sections">).*?(<div class="site-nav-more)', lambda m_: m_.group(1) + row_links + m_.group(2), header, flags=re.S)
