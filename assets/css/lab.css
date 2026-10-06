@@ -710,8 +710,8 @@ main.ap { padding-bottom: 0; }
 }
 
 /* Committee-review prototype pieces */
-.ap-status { margin: -0.6rem 0 1rem; font-size: 0.9rem; font-weight: 600; color: var(--accent); }
-.ap-status::before { content: ""; display: inline-block; width: 0.45rem; height: 0.45rem; margin-right: 0.5rem; border-radius: 50%; background: var(--accent); vertical-align: 0.1em; }
+.ap-status { margin: -0.6rem 0 1rem; font-size: 0.9rem; font-weight: 600; color: #9fd6c6; }
+.ap-status::before { content: ""; display: inline-block; width: 0.45rem; height: 0.45rem; margin-right: 0.5rem; border-radius: 50%; background: #3dbfa6; vertical-align: 0.1em; }
 .ap-skills { margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem 3rem; }
 .ap-skill dt { margin: 0 0 0.3rem; font-size: 0.85rem; font-weight: 600; color: var(--ap-grey); }
 .ap-skill dd { margin: 0; font-size: 1.05rem; font-weight: 500; line-height: 1.5; color: var(--ap-text); }
