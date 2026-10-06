@@ -125,18 +125,23 @@ avatar = one(r'<img class="hero-avatar"[^>]*src="([^"]+)"', src).group(1)
 # Hero style per output: 'split' (portrait panel) or 'avatar' (centred circle). Lab experiment: avatar.
 HERO = {'live': 'split', 'lab': 'split'}
 # Visible section links in the header on wide screens (the hamburger stays for phones). Lab experiment.
-DESKTOP_NAV = {'live': False, 'lab': 'apple'}  # False, True (pill), or 'apple' (thin full-width local nav)
+DESKTOP_NAV = {'live': 'apple', 'lab': 'apple'}  # False, True (pill), or 'apple' (thin full-width local nav)
 
 def render(live):
     hero = HERO['live' if live else 'lab']
     nav = ''; hdr_cls = 'site-header'; navjs = ''
     mode = DESKTOP_NAV['live' if live else 'lab']
     if mode:
-        links = ''.join(f'<a href="#{h}">{l}</a>' for h, l in [('about','About'),('highlights','Highlights'),('news','News'),('projects','Projects'),('publications','Publications'),('skills','Skills'),('contact','Contact')])
+        links = ''.join(f'<a href="#{h}">{l}</a>' for h, l in [('about','About'),('highlights','Highlights'),('news','News'),('projects','Projects'),('publications','Publications')])
         if mode == 'apple':
             hdr_cls = 'site-header nav-apple'
+            links += ('<div class="site-nav-more"><button class="site-nav-more-btn" type="button" aria-haspopup="true" aria-expanded="false">More <svg viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4.5l3.5 3.5 3.5-3.5"/></svg></button>'
+                      '<div class="site-nav-panel"><a href="#skills"><span class="site-nav-panel-title">Technical Skills</span><span class="site-nav-panel-sub">Tools and methods</span></a>'
+                      '<a href="#contact"><span class="site-nav-panel-title">Contact</span><span class="site-nav-panel-sub">Email and profiles</span></a></div></div>')
             links += f'<a class="site-nav-cta" href="{cv}">Download CV</a>'
             navjs = '\n  <script src="assets/js/nav-pill.js?v={{ site.time | date: \'%s\' }}"></script>'
+        else:
+            links += ''.join(f'<a href="#{h}">{l}</a>' for h, l in [('skills','Skills'),('contact','Contact')])
         nav = '\n      <nav class="site-nav" aria-label="Sections">' + links + '</nav>'
     title = 'Darin Lei' if live else 'Darin Lei &mdash; Lab'
     robots = '' if live else '<meta name="robots" content="noindex, nofollow">' + chr(10) + '  '

@@ -6,12 +6,13 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 lab = (ROOT / 'index.html').read_text()
 def one(p, s, flags=re.S):
     m = re.search(p, s, flags); assert m, p; return m
-header = one(r'<header class="site-header">.*?</header>', lab).group(0)
+header = one(r'<header class="site-header[^"]*">.*?</header>', lab).group(0)
 drawer = one(r'<div class="drawer-scrim".*?</aside>', lab).group(0)
 footer = one(r'<footer id="contact".*?</footer>', lab).group(0)
 for frag in ('header', 'drawer'):
     pass
 header = header.replace('href="#home"', 'href="index.html"')
+header = re.sub(r'href="#([a-z]+)"', r'href="index.html#\1"', header)  # section links point back to the home page
 drawer = re.sub(r'href="#([a-z]+)"', r'href="index.html#\1"', drawer)
 drawer = drawer.replace('Experimental layout &mdash; not the live site.', 'Experimental project page &mdash; not the live site.')
 footer = footer.replace('Experimental layout &mdash; not the live site.', 'Experimental project page &mdash; not the live site.')
@@ -183,6 +184,7 @@ permalink: /project-hckh.html
   <a href="#top" class="to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 14l6-6 6 6"/></svg></a>
   <script src="assets/js/site.js?v={V}"></script>
   <script src="assets/js/lab-top.js?v={V}"></script>
+  <script src="assets/js/nav-pill.js?v={V}"></script>
   <script src="assets/js/hckh-embed.js?v={V}"></script>
 </body>
 </html>

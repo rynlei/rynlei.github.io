@@ -624,9 +624,9 @@ main.ap { padding-bottom: 0; }
   .nav-apple .site-header-inner .menu-toggle { display: none; }
   .nav-apple .brand-mark { font-size: 1.3rem; font-weight: 600; letter-spacing: -0.02em; }
   .nav-apple .site-nav { display: flex; align-items: center; gap: 0; }
-  .nav-apple .site-nav a { padding: 0.35rem 0.7rem; border-radius: 0; font-size: 0.8rem; font-weight: 500; letter-spacing: -0.01em; color: #d2d2d7; background: none; }
+  .nav-apple .site-nav a { padding: 0.35rem 0.7rem; border-radius: 0; font-size: 0.875rem; font-weight: 500; letter-spacing: -0.01em; color: #d2d2d7; background: none; }
   .nav-apple .site-nav a:hover { color: #fff; background: none; }
-  .nav-apple .site-nav .site-nav-cta { margin-left: 0.75rem; padding: 0.3rem 0.8rem; border-radius: 999px; background: var(--accent-strong); color: #fff; font-weight: 500; }
+  .nav-apple .site-nav .site-nav-cta { margin-left: 0.75rem; padding: 0.35rem 0.9rem; border-radius: 999px; background: var(--accent-strong); color: #fff; font-weight: 500; }
   .nav-apple .site-nav .site-nav-cta:hover { background: var(--accent); }
   /* Scrolled: the floating pill */
   .nav-compact .nav-apple .site-header-inner {
@@ -638,9 +638,36 @@ main.ap { padding-bottom: 0; }
   .menu-open .nav-apple .site-header-inner { background: transparent; border-color: transparent; box-shadow: none; }
 }
 @media (min-width: 48.0625em) and (max-width: 64em) {
-  .nav-apple .site-nav a { padding: 0.35rem 0.5rem; font-size: 0.78rem; }
-  .nav-compact .nav-apple .site-header-inner { max-width: 48rem; }
+  .nav-apple .site-nav a { padding: 0.35rem 0.5rem; font-size: 0.82rem; }
+  .nav-compact .nav-apple .site-header-inner { max-width: 50rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   .nav-apple .site-header-inner { transition: none; }
+}
+
+/* "More" menu in the Apple-style header: a small dark panel under the
+   button holding the secondary sections, opened on hover, focus or tap. */
+@media (min-width: 48.0625em) {
+  .site-nav-more { position: relative; display: flex; align-items: center; }
+  .site-nav-more-btn { display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.35rem 0.7rem; border: 0; background: none; font: inherit; font-size: 0.875rem; font-weight: 500; letter-spacing: -0.01em; color: #d2d2d7; cursor: pointer; }
+  .site-nav-more-btn svg { transition: transform 0.25s ease; }
+  .site-nav-more:hover .site-nav-more-btn, .site-nav-more:focus-within .site-nav-more-btn, .site-nav-more.is-open .site-nav-more-btn { color: #fff; }
+  .site-nav-more:hover .site-nav-more-btn svg, .site-nav-more:focus-within .site-nav-more-btn svg, .site-nav-more.is-open .site-nav-more-btn svg { transform: rotate(180deg); }
+  .site-nav-more-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 0.4rem; }
+  .site-nav-panel {
+    position: absolute; top: calc(100% + 0.55rem); right: 0; min-width: 13.5rem; padding: 0.45rem;
+    background: rgba(22, 22, 25, 0.97); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 0.9rem;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+    opacity: 0; visibility: hidden; transform: translateY(-0.35rem);
+    transition: opacity 0.2s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 0.25s;
+  }
+  .site-nav-more::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 0.6rem; }  /* keeps hover alive across the gap */
+  .site-nav-more:hover .site-nav-panel, .site-nav-more:focus-within .site-nav-panel, .site-nav-more.is-open .site-nav-panel { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+  .nav-apple .site-nav .site-nav-panel a { display: flex; flex-direction: column; gap: 0.1rem; padding: 0.55rem 0.75rem; border-radius: 0.6rem; color: #fff; }
+  .nav-apple .site-nav .site-nav-panel a:hover { background: rgba(255, 255, 255, 0.07); }
+  .site-nav-panel-title { font-size: 0.925rem; font-weight: 600; }
+  .site-nav-panel-sub { font-size: 0.78rem; font-weight: 500; color: #86868b; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-nav-panel, .site-nav-more-btn svg { transition: none; }
 }
