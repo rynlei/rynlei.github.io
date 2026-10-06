@@ -727,6 +727,7 @@ main.ap { padding-bottom: 0; }
 .ap-exp-lab { font-size: clamp(1.15rem, 1.8vw, 1.4rem); font-weight: 600; letter-spacing: -0.01em; color: var(--ap-text); }
 .ap-exp-when { font-size: 0.95rem; font-weight: 500; color: var(--ap-grey); white-space: nowrap; }
 .ap-exp-role { margin: 0.3rem 0 0; font-size: 0.98rem; font-weight: 500; color: var(--ap-grey); }
+.ap-exp-role .ap-exp-title { color: var(--accent); font-weight: 600; }
 .ap-exp-role .ap-exp-pi { color: var(--ap-text); }
 
 /* Tighter project cards (prototype): a notch less padding and gap */
