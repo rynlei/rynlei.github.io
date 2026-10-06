@@ -12,12 +12,30 @@ footer = one(r'<footer id="contact".*?</footer>', lab).group(0)
 for frag in ('header', 'drawer'):
     pass
 header = header.replace('href="#home"', 'href="index.html"')
-header = re.sub(r'href="#([a-z]+)"', r'href="index.html#\1"', header)  # section links point back to the home page
-# The "More" sheet (if the home page has one) comes along, with its section links pointing home too
+# Page-local row (Apple's product-page bar): this page's own sections, so the
+# current-section highlight works here. The home page's sections move to the
+# More sheet, where leaving the page belongs.
+ROW = [('program', 'Program'), ('expect', 'Memory'), ('cues', 'Cues'), ('practice', 'Activity'), ('prototype', 'Prototype')]
+MORE_HERE = [('normal', 'Normal aging'), ('worried', 'Should I be worried?'), ('numbers', 'The numbers'), ('habits', 'Maintaining memory'), ('quiz', 'Quizzes'), ('study', 'The study')]
+HOME = [('index.html', 'Home'), ('index.html#about', 'About'), ('index.html#experience', 'Research Experience'), ('index.html#projects', 'Projects'), ('index.html#publications', 'Publications'), ('index.html#contact', 'Contact')]
+row_links = ''.join(f'<a href="#{h}">{l}</a>' for h, l in ROW)
+header = re.sub(r'(<nav class="site-nav" aria-label="Sections">).*?(<div class="site-nav-more)', lambda m_: m_.group(1) + row_links + m_.group(2), header, flags=re.S)
+assert '#program' in header and 'index.html#about' not in header
 m = re.search(r'\n  <div class="mega-scrim".*?\n  </div>', lab, re.S)
-mega = re.sub(r'href="#([a-z]+)"', r'href="index.html#\1"', m.group(0)) if m else ''
-mega = mega.replace('<a href="project-hckh.html">HippoCamera Knowledge Hub</a>', '<a href="project-hckh.html" aria-current="page">HippoCamera Knowledge Hub</a>')
-drawer = re.sub(r'href="#([a-z]+)"', r'href="index.html#\1"', drawer)
+mega = m.group(0) if m else ''
+if mega:
+    col1 = '      <div class="mega-col mega-col-lead">\n        <p class="mega-label">On this page</p>\n' + ''.join(f'        <a href="#{h}">{l}</a>\n' for h, l in MORE_HERE) + '      </div>'
+    col2 = '      <div class="mega-col">\n        <p class="mega-label">Darin Lei</p>\n' + ''.join(f'        <a href="{h}">{l}</a>\n' for h, l in HOME) + '      </div>'
+    cols = re.findall(r'      <div class="mega-col[^"]*">.*?      </div>', mega, re.S)
+    assert len(cols) == 3, len(cols)
+    contact = cols[1]
+    mega = mega.replace(cols[0], col1).replace(cols[1], contact).replace(cols[2], col2)
+    mega = re.sub(r'href="#([a-z]+)"(?![^<]*</a>\s*\n\s*(?:<a|</div>))', r'href="#\1"', mega)  # keep page anchors as they are
+# Phone menu: this page's sections first, then a Home group
+nav_here = ''.join(f'      <a href="#{h}">{l}</a>\n' for h, l in ROW + MORE_HERE)
+nav_home = ''.join(f'      <a href="{h}" class="drawer-home">{l}</a>\n' for h, l in HOME)
+drawer = re.sub(r'(<nav class="drawer-nav" aria-label="Site">\n).*?(    </nav>)', lambda m_: m_.group(1) + '      <p class="drawer-group">HippoCamera Knowledge Hub</p>\n' + nav_here + '      <p class="drawer-group">Darin Lei</p>\n' + nav_home + m_.group(2), drawer, flags=re.S)
+assert '#program' in drawer and 'index.html#about' in drawer
 drawer = drawer.replace('Experimental layout &mdash; not the live site.', 'Experimental project page &mdash; not the live site.')
 footer = footer.replace('Experimental layout &mdash; not the live site.', 'Experimental project page &mdash; not the live site.')
 

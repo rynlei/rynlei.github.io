@@ -193,3 +193,17 @@ main.ap.hk { padding-bottom: 0; }
 /* Header CV button in the demo page's teal */
 body:has(main.hk) .nav-apple .site-nav .site-nav-cta { background: #1a7062; }
 body:has(main.hk) .nav-apple .site-nav .site-nav-cta:hover { background: #22907d; }
+
+/* Demo page menu: group labels in the phone sheet, and smaller type so
+   the longer list fits; home links sit in grey below this page's. */
+.drawer-group { margin: 0.9rem 0 0.2rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #86868b; }
+.drawer-group:first-child { margin-top: 0; }
+.drawer-full .drawer-nav a.drawer-home { color: #6e6e73; }
+@media (max-width: 48em) {
+  body:has(main.hk) .drawer.drawer-full { padding-top: 4.5rem; }
+  body:has(main.hk) .drawer-full .drawer-label { display: none; }
+  body:has(main.hk) .drawer-full .drawer-nav a { font-size: 1.05rem; padding: 0.4rem 0; }
+  body:has(main.hk) .drawer-full .drawer-foot { display: none; }
+}
+/* Current-section underline in the demo page's teal */
+body:has(main.hk) .nav-apple .site-nav a::after, body:has(main.hk) .nav-apple .site-nav-more-btn::after { background: #3dbfa6; }
