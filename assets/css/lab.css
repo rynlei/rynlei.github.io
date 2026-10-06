@@ -653,7 +653,7 @@ main.ap { padding-bottom: 0; }
   .site-nav-more-btn { display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.4rem 0.95rem; border: 0; background: none; font: inherit; font-size: 0.875rem; font-weight: 500; letter-spacing: -0.01em; color: #d2d2d7; cursor: pointer; }
   .site-nav-more-btn svg { transition: transform 0.25s ease; }
   .site-nav-more:hover .site-nav-more-btn, .site-nav-more:focus-within .site-nav-more-btn, .site-nav-more.is-open .site-nav-more-btn { color: #fff; }
-  .site-nav-more:hover .site-nav-more-btn svg, .site-nav-more:focus-within .site-nav-more-btn svg, .site-nav-more.is-open .site-nav-more-btn svg { transform: rotate(180deg); }
+  .site-nav-more:not(.site-nav-more-mega):hover .site-nav-more-btn svg, .site-nav-more:not(.site-nav-more-mega):focus-within .site-nav-more-btn svg, .site-nav-more.is-open .site-nav-more-btn svg { transform: rotate(180deg); }
   .site-nav-more-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 0.4rem; }
   .site-nav-panel {
     position: absolute; top: calc(100% + 0.55rem); right: 0; min-width: 13.5rem; padding: 0.45rem;
@@ -698,9 +698,9 @@ main.ap { padding-bottom: 0; }
   /* The header sits on the black sheet while it is open */
   .more-open .nav-apple .site-header-inner { background: transparent; border-color: transparent; box-shadow: none; }
   .more-open .site-nav-more-mega .site-nav-more-btn { color: #fff; }
+  /* Sheet mode: the chevron follows the open state only (v closed, ^ open) */
+  .site-nav-more-mega .site-nav-more-btn svg { transform: none; transition: transform 0.3s ease; }
   .more-open .site-nav-more-mega .site-nav-more-btn svg { transform: rotate(180deg); }
-  .site-nav-more-mega:hover .site-nav-more-btn svg { transform: none; }
-  .more-open .site-nav-more-mega:hover .site-nav-more-btn svg { transform: rotate(180deg); }
 }
 @media (max-width: 48em) { .mega, .mega-scrim { display: none; } }
 @media (prefers-reduced-motion: reduce) { .mega, .mega-inner, .mega-scrim { transition: none; } }
