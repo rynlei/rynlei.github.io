@@ -750,3 +750,10 @@ main.ap { padding-bottom: 0; }
   .drawer-full .drawer-nav a { font-size: clamp(1.2rem, 5vw, 1.45rem); padding: 0.55rem 0; }
   .drawer-full .drawer-foot { padding-top: 1rem; font-size: 0.78rem; }
 }
+
+/* Lab experiments: a slow pulse on the project status dot, and the hero
+   without its blue wash. Both scoped to the lab page's body class. */
+@keyframes status-pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.35; transform: scale(0.8); } }
+.lab .ap-status::before { animation: status-pulse 3s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .lab .ap-status::before { animation: none; } }
+.lab .ap-hero-split::before { display: none; }
