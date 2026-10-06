@@ -671,3 +671,39 @@ main.ap { padding-bottom: 0; }
 @media (prefers-reduced-motion: reduce) {
   .site-nav-panel, .site-nav-more-btn svg { transition: none; }
 }
+
+/* "More" as a full-width sheet (Apple's global menu): a black panel
+   drops from beneath the header, the page behind it dims, and the
+   links sit in columns aligned with the content. Wide screens only. */
+@media (min-width: 48.0625em) {
+  .mega-scrim { position: fixed; inset: 0; z-index: 30; background: rgba(0, 0, 0, 0.55); opacity: 0; visibility: hidden; transition: opacity 0.35s ease, visibility 0s linear 0.35s; }
+  .mega {
+    position: fixed; left: 0; right: 0; top: 0; z-index: 35;
+    background: #000; border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 5.25rem 0 3rem;
+    clip-path: inset(0 0 100% 0);
+    visibility: hidden;
+    transition: clip-path 0.45s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 0.45s;
+  }
+  .mega-inner { max-width: var(--ap-width); margin: 0 auto; padding: 0 1rem; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 2rem 3rem; opacity: 0; transform: translateY(-0.4rem); transition: opacity 0.25s ease, transform 0.35s ease; }
+  .mega-col { display: flex; flex-direction: column; gap: 0.55rem; }
+  .mega-label { margin: 0 0 0.35rem; font-size: 0.75rem; font-weight: 500; color: #86868b; }
+  .mega-col a { color: #d2d2d7; text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.15s ease; }
+  .mega-col a:hover { color: #fff; }
+  .mega-col-lead a { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; color: #f5f5f7; }
+  .more-open .mega-scrim { opacity: 1; visibility: visible; transition-delay: 0s; }
+  .more-open .mega { clip-path: inset(0); visibility: visible; transition-delay: 0s; }
+  .more-open .mega-inner { opacity: 1; transform: none; transition-delay: 0.12s; }
+  /* The header sits on the black sheet while it is open */
+  .more-open .nav-apple .site-header-inner { background: transparent; border-color: transparent; box-shadow: none; }
+  .more-open .site-nav-more-mega .site-nav-more-btn { color: #fff; }
+  .more-open .site-nav-more-mega .site-nav-more-btn svg { transform: rotate(180deg); }
+  .site-nav-more-mega:hover .site-nav-more-btn svg { transform: none; }
+  .more-open .site-nav-more-mega:hover .site-nav-more-btn svg { transform: rotate(180deg); }
+}
+@media (max-width: 48em) { .mega, .mega-scrim { display: none; } }
+@media (prefers-reduced-motion: reduce) { .mega, .mega-inner, .mega-scrim { transition: none; } }
+@media (min-width: 48.0625em) {
+  /* While the sheet is open the condensed pill widens back to the content column so the name aligns with the first column */
+  .more-open.nav-compact .nav-apple .site-header-inner { max-width: var(--ap-width); }
+}
