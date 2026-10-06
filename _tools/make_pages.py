@@ -161,8 +161,9 @@ def render(live):
         links = ''.join(f'<a href="#{h}">{l}</a>' for h, l in [('about','About'),('highlights','Highlights'),('news','News'),('projects','Projects'),('publications','Publications')])
         if mode == 'apple':
             hdr_cls = 'site-header nav-apple'
-            more_btn = '<button class="site-nav-more-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="site-mega">More <svg viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4.5l3.5 3.5 3.5-3.5"/></svg></button>'
-            if MORE_STYLE['live' if live else 'lab'] == 'mega':
+            is_mega = MORE_STYLE['live' if live else 'lab'] == 'mega'
+            more_btn = '<button class="site-nav-more-btn" type="button" aria-haspopup="true" aria-expanded="false"' + (' aria-controls="site-mega"' if is_mega else '') + '>More <svg viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4.5l3.5 3.5 3.5-3.5"/></svg></button>'
+            if is_mega:
                 links += '<div class="site-nav-more site-nav-more-mega">' + more_btn + '</div>'
             else:
                 links += ('<div class="site-nav-more">' + more_btn +
