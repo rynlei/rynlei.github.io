@@ -13,6 +13,10 @@ for frag in ('header', 'drawer'):
     pass
 header = header.replace('href="#home"', 'href="index.html"')
 header = re.sub(r'href="#([a-z]+)"', r'href="index.html#\1"', header)  # section links point back to the home page
+# The "More" sheet (if the home page has one) comes along, with its section links pointing home too
+m = re.search(r'\n  <div class="mega-scrim".*?\n  </div>', lab, re.S)
+mega = re.sub(r'href="#([a-z]+)"', r'href="index.html#\1"', m.group(0)) if m else ''
+mega = mega.replace('<a href="project-hckh.html">HippoCamera Knowledge Hub</a>', '<a href="project-hckh.html" aria-current="page">HippoCamera Knowledge Hub</a>')
 drawer = re.sub(r'href="#([a-z]+)"', r'href="index.html#\1"', drawer)
 drawer = drawer.replace('Experimental layout &mdash; not the live site.', 'Experimental project page &mdash; not the live site.')
 footer = footer.replace('Experimental layout &mdash; not the live site.', 'Experimental project page &mdash; not the live site.')
@@ -157,7 +161,7 @@ permalink: /project-hckh.html
 </head>
 <body>
 
-  {header}
+  {header}{mega}
 
   {drawer}
 
