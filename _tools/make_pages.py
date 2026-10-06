@@ -174,8 +174,7 @@ def render(live):
                   ('Technical equipment', 'EyeLink 1000 Plus, EyeLink Data Viewer, EDF2ASC'),
                   ('Databases &amp; literature review', 'Zotero, PubMed, PsycINFO, Google Scholar, Excel'),
                   ('Design &amp; graphics', 'Adobe Photoshop, Adobe Lightroom, Figma, Canva, Blender'),
-                  ('User app testing', 'TestFlight (user testing as a UX researcher)'),
-                  ('Languages', 'English and Mandarin (native); Cantonese and Taiwanese Hokkien (heritage, fluent); French and Japanese (conversational)')]
+                  ('User app testing', 'TestFlight (user testing as a UX researcher)')]
         skills_block = '        <dl class="ap-skills">\n' + '\n'.join(f'          <div class="ap-skill"><dt>{k}</dt><dd>{v}</dd></div>' for k, v in groups) + '\n        </dl>'
         print_link = "\n  <link rel=\"stylesheet\" href=\"assets/css/print.css?v={{ site.time | date: '%s' }}\" media=\"print\">"
     nav = ''; hdr_cls = 'site-header'; navjs = ''; mega = ''
