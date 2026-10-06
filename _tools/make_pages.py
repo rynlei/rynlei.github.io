@@ -296,7 +296,7 @@ permalink: {'/' if live else '/lab.html'}
   <link rel="stylesheet" href="assets/css/onepage.css?v={{{{ site.time | date: '%s' }}}}">
   <link rel="stylesheet" href="assets/css/lab.css?v={{{{ site.time | date: '%s' }}}}">{print_link}
 </head>
-<body{' class="proto"' if proto else ''}>
+<body class="{' '.join(c for c in (('proto' if proto else ''), ('' if live else 'lab')) if c)}">
 
   <header class="{hdr_cls}">
     <div class="site-header-inner">
