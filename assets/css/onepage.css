@@ -22,7 +22,10 @@
 
 html {
   scroll-behavior: smooth;
+  /* clip rather than hidden: hidden on the root makes iOS Safari treat it
+     as a scroll container and misplace position: fixed elements */
   overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
