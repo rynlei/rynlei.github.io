@@ -12,14 +12,21 @@
   var sections = navLinks.map(function (a) { return a.getAttribute('href').slice(1); }).concat(moreIds)
     .map(function (id) { return document.getElementById(id); }).filter(Boolean)
     .sort(function (p, q) { return p.offsetTop - q.offsetTop; });
-  var currentId = null;
+  var currentId = null, tops = [], pageH = 0;
+  function measure() {
+    tops = sections.map(function (s) { return s.offsetTop; });
+    pageH = document.documentElement.scrollHeight;
+  }
+  measure();
+  window.addEventListener('load', measure);
+  window.addEventListener('resize', measure);
   function highlight() {
     if (!sections.length) return;
     var line = window.scrollY + Math.min(window.innerHeight * 0.33, 240);
     var cur = null;
-    for (var i = 0; i < sections.length; i++) { if (sections[i].offsetTop <= line) cur = sections[i]; }
+    for (var i = 0; i < tops.length; i++) { if (tops[i] <= line) cur = sections[i]; }
     var id = cur ? cur.id : null;
-    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) id = sections[sections.length - 1].id;
+    if (window.innerHeight + window.scrollY >= pageH - 2) id = sections[sections.length - 1].id;
     if (id === currentId) return;
     currentId = id;
     navLinks.forEach(function (a) { a.classList.toggle('is-current', a.getAttribute('href') === '#' + id); });
@@ -76,7 +83,7 @@
   // when it leaves both the header and the sheet.
   if (mega) {
     var header = document.querySelector('.site-header');
-    function armClose() { clearTimeout(hoverTimer); hoverTimer = setTimeout(function () { setOpen(false); }, 450); }  // grace for the pointer to cross from the row into the sheet
+    function armClose() { clearTimeout(hoverTimer); hoverTimer = setTimeout(function () { setOpen(false); }, 300); }  // grace for the pointer to cross from the row into the sheet
     function cancelClose() { clearTimeout(hoverTimer); }
     btn.addEventListener('mouseenter', function () { if (!wide()) return; clearTimeout(hoverTimer); hoverTimer = setTimeout(function () { if (!isOpen()) { hoverOpened = true; setOpen(true); } }, 260); });  // the pointer has to rest on More, not just cross it
     btn.addEventListener('mouseleave', function () { clearTimeout(hoverTimer); });
