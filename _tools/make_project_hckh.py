@@ -15,7 +15,7 @@ header = header.replace('href="#home"', 'href="index.html"')
 # Page-local row (Apple's product-page bar): this page's own sections, so the
 # current-section highlight works here. The home page's sections move to the
 # More sheet, where leaving the page belongs.
-ROW = [('program', 'Program'), ('expect', 'Memory'), ('cues', 'Cues'), ('practice', 'Activity'), ('prototype', 'Prototype')]
+ROW = [('program', 'Overview'), ('expect', 'Memory'), ('cues', 'Cues'), ('practice', 'Activity'), ('prototype', 'Prototype')]
 MORE_HERE = [('normal', 'Brain Changes'), ('worried', 'Factsheets'), ('numbers', 'Educational Graphs'), ('habits', 'Memory Strategies'), ('quiz', 'Optional Quizzes &amp; Activities'), ('study', 'The Study')]
 HOME = [('index.html', 'Home'), ('index.html#about', 'About'), ('index.html#experience', 'Research Experience'), ('index.html#projects', 'Projects'), ('index.html#publications', 'Publications'), ('index.html#contact', 'Contact')]
 row_links = ''.join(f'<a href="#{h}">{l}</a>' for h, l in ROW)
@@ -25,7 +25,7 @@ m = re.search(r'\n  <div class="mega-scrim".*?\n  </div>', lab, re.S)
 mega = m.group(0) if m else ''
 if mega:
     col1 = '      <div class="mega-col mega-col-lead">\n        <p class="mega-label">On this page</p>\n' + ''.join(f'        <a href="#{h}">{l}</a>\n' for h, l in MORE_HERE) + '      </div>'
-    col2 = '      <div class="mega-col">\n        <p class="mega-label">Darin Lei</p>\n' + ''.join(f'        <a href="{h}">{l}</a>\n' for h, l in HOME) + '      </div>'
+    col2 = '      <div class="mega-col">\n        <p class="mega-label">Main site</p>\n' + ''.join(f'        <a href="{h}">{l}</a>\n' for h, l in HOME) + '      </div>'
     cols = re.findall(r'      <div class="mega-col[^"]*">.*?      </div>', mega, re.S)
     assert len(cols) == 3, len(cols)
     contact = cols[1]
@@ -34,7 +34,7 @@ if mega:
 # Phone menu: this page's sections first, then a Home group
 nav_here = ''.join(f'      <a href="#{h}">{l}</a>\n' for h, l in ROW + MORE_HERE)
 nav_home = ''.join(f'      <a href="{h}" class="drawer-home">{l}</a>\n' for h, l in HOME)
-drawer = re.sub(r'(<nav class="drawer-nav" aria-label="Site">\n).*?(    </nav>)', lambda m_: m_.group(1) + '      <p class="drawer-group">HippoCamera Knowledge Hub</p>\n' + nav_here + '      <p class="drawer-group">Darin Lei</p>\n' + nav_home + m_.group(2), drawer, flags=re.S)
+drawer = re.sub(r'(<nav class="drawer-nav" aria-label="Site">\n).*?(    </nav>)', lambda m_: m_.group(1) + '      <p class="drawer-group">HippoCamera Knowledge Hub</p>\n' + nav_here + '      <p class="drawer-group">Main site</p>\n' + nav_home + m_.group(2), drawer, flags=re.S)
 assert '#program' in drawer and 'index.html#about' in drawer
 drawer = drawer.replace('Experimental layout &mdash; not the live site.', 'Experimental project page &mdash; not the live site.')
 footer = footer.replace('Experimental layout &mdash; not the live site.', 'Experimental project page &mdash; not the live site.')
