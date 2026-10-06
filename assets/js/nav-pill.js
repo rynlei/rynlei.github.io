@@ -54,7 +54,15 @@
   }
   function wide() { return getComputedStyle(btn).display !== 'none'; }
 
-  btn.addEventListener('click', function (e) { e.stopPropagation(); setOpen(!isOpen()); });
+  // A click opens the menu. If hover already opened it, the click keeps it
+  // open (and pins it) rather than toggling it shut under the pointer.
+  var hoverOpened = false;
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation(); clearTimeout(hoverTimer);
+    if (!isOpen()) { hoverOpened = false; setOpen(true); }
+    else if (hoverOpened) { hoverOpened = false; }
+    else { setOpen(false); }
+  });
   document.addEventListener('click', function (e) {
     if (!isOpen()) return;
     if (more.contains(e.target) || (mega && mega.contains(e.target))) { if (e.target.closest('a')) setOpen(false); return; }
@@ -70,7 +78,7 @@
     var header = document.querySelector('.site-header');
     function armClose() { clearTimeout(hoverTimer); hoverTimer = setTimeout(function () { setOpen(false); }, 180); }
     function cancelClose() { clearTimeout(hoverTimer); }
-    btn.addEventListener('mouseenter', function () { if (!wide()) return; clearTimeout(hoverTimer); hoverTimer = setTimeout(function () { setOpen(true); }, 320); });  // the pointer has to rest on More, not just cross it
+    btn.addEventListener('mouseenter', function () { if (!wide()) return; clearTimeout(hoverTimer); hoverTimer = setTimeout(function () { if (!isOpen()) { hoverOpened = true; setOpen(true); } }, 320); });  // the pointer has to rest on More, not just cross it
     btn.addEventListener('mouseleave', function () { clearTimeout(hoverTimer); });
     [header, mega].forEach(function (el) {
       el.addEventListener('mouseleave', function () { if (isOpen()) armClose(); });
