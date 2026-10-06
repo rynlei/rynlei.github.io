@@ -157,7 +157,8 @@ def render(live):
             cta='<a href="https://youtu.be/lrgng-rhZew">Watch the talk <span aria-hidden="true">&rarr;</span></a>',
             desc='A talk at the AGE-WELL Early Professionals, Inspired Careers in AgeTech conference on the Knowledge Hub: how the program was designed with older adults, what the interviews showed about engagement with technology-based memory tools, and where the program goes next.')
         # order: the two papers, then presentations newest first
-        papers, posters = pubs_out[:2], pubs_out[2:]
+        papers, posters = [dict(c) for c in pubs_out[:2]], pubs_out[2:]
+        for c in papers: c['meta'] = c['meta'] + ', student-reviewed'
         star = [c for c in posters if 'STAR' in c['meta']]; purc = [c for c in posters if 'Undergraduate Research Community' in c['meta']]
         pubs_out = papers + [osnc] + star + [epic] + purc
         STATUS = {'assets/img/lab/rns-illustration.jpg': 'Data collection &middot; October 2026',
@@ -165,7 +166,7 @@ def render(live):
                   'assets/img/lab/hckh-program-towel.webp': 'Manuscript writing &middot; August 2026'}
         for c in projects_out:
             if c['src'] in STATUS: c['status'] = STATUS[c['src']]
-        about_out[0] = about_out[0].replace('</a></strong>.</p>', '</a></strong>. I expect to graduate in <strong>June 2027</strong>.</p>')
+        about_out[0] = about_out[0].replace('</a></strong>.</p>', '</a></strong>. I expect to graduate in <strong>June 2027</strong> and am applying to <strong>PhD programmes in cognitive neuroscience</strong> for entry in autumn 2027.</p>')
         assert 'June 2027' in about_out[0]
         footer_out = footer_out.replace('    <p>&copy; Copyright 2026 Darin Lei. Hosted by GitHub Pages.</p>',
             '    <p class="footer-email"><a href="mailto:darin.lei@mail.utoronto.ca">darin.lei@mail.utoronto.ca</a></p>\n    <p>&copy; Copyright 2026 Darin Lei. Hosted by GitHub Pages.</p>')
@@ -175,7 +176,8 @@ def render(live):
                   ('Technical equipment', 'EyeLink 1000 Plus, EyeLink Data Viewer, EDF2ASC'),
                   ('Databases &amp; literature review', 'Zotero, PubMed, PsycINFO, Google Scholar, Excel'),
                   ('Design &amp; graphics', 'Adobe Photoshop, Adobe Lightroom, Figma, Canva, Blender'),
-                  ('User app testing', 'TestFlight (user testing as a UX researcher)')]
+                  ('User app testing', 'TestFlight (user testing as a UX researcher)'),
+                  ('Training &amp; certification', 'TCPS 2 CORE (research ethics); CIHR Institute of Gender and Health modules on sex and gender in biomedical research, primary data collection with human participants, and analysis of secondary data; Montreal Cognitive Assessment (MoCA) certification; Johns Hopkins Fundamental Neuroscience for Neuroimaging; MathWorks Core MATLAB Skills, Computer Vision and Deep Learning Onramps; WHMIS')]
         skills_block = '        <dl class="ap-skills">\n' + '\n'.join(f'          <div class="ap-skill"><dt>{k}</dt><dd>{v}</dd></div>' for k, v in groups) + '\n        </dl>'
         print_link = "\n  <link rel=\"stylesheet\" href=\"assets/css/print.css?v={{ site.time | date: '%s' }}\" media=\"print\">"
         LABS = [
@@ -220,12 +222,12 @@ def render(live):
         <a href="mailto:darin.lei@mail.utoronto.ca">Email</a>
         <a href="https://www.linkedin.com/in/darin-lei/">LinkedIn</a>
         <a href="https://www.researchgate.net/profile/Darin-Lei">ResearchGate</a>
-        <a href="https://scholar.google.ca/citations?user=8aW8a2gAAAAJ&amp;hl=en">Google Scholar</a>
+        <a href="https://scholar.google.ca/citations?user=8aW8a2gAAAAJ&amp;hl=en">Google Scholar</a>{chr(10) + '        <a href="https://orcid.org/0009-0009-2868-4305">ORCID</a>' if proto else ''}
       </div>
       <div class="mega-col">
         <p class="mega-label">Elsewhere</p>
         <a href="project-hckh.html">HippoCamera Knowledge Hub</a>
-        <a href="{cv}">Curriculum vitae (PDF)</a>
+        <a href="{cv}">Curriculum vitae (PDF{', September 2026' if proto else ''})</a>
       </div>
     </div>
   </div>'''
@@ -252,6 +254,16 @@ def render(live):
     df = '    <p class="drawer-foot">&copy; Copyright 2026 Darin Lei. Hosted by GitHub Pages.</p>' if live else drawer_foot
     foot = footer if live else footer.replace('    <p>&copy; Copyright 2026 Darin Lei. Hosted by GitHub Pages.</p>', '    <p>&copy; Copyright 2026 Darin Lei. Hosted by GitHub Pages.</p>' + chr(10) + '    <p class="lab-note">Experimental layout &mdash; not the live site.</p>')
     foot_out = foot.replace('    <p>&copy; Copyright 2026 Darin Lei. Hosted by GitHub Pages.</p>', '    <p class="footer-email"><a href="mailto:darin.lei@mail.utoronto.ca">darin.lei@mail.utoronto.ca</a></p>\n    <p>&copy; Copyright 2026 Darin Lei. Hosted by GitHub Pages.</p>') if proto else foot
+    if proto:
+        orcid = '''      <a href="https://orcid.org/0009-0009-2868-4305" title="ORCID">
+        <svg class="contact-icon" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true">
+          <path d="M128 0C57.3 0 0 57.3 0 128s57.3 128 128 128 128-57.3 128-128S198.7 0 128 0zm0 232C70.6 232 24 185.4 24 128S70.6 24 128 24s104 46.6 104 104-46.6 104-104 104zM86.3 186.2H70.9V79.1h15.4v107.1zM78.6 66.9c-5.8 0-10.5-4.7-10.5-10.5s4.7-10.5 10.5-10.5 10.5 4.7 10.5 10.5-4.7 10.5-10.5 10.5zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7 0-21.5-13.7-39.7-43.7-39.7h-23.7v79.4z"/>
+        </svg>
+      </a>
+'''
+        foot_out = foot_out.replace('    </div>\n    <p class="footer-email">', orcid + '    </div>\n    <p class="footer-email">', 1)
+        assert 'orcid.org' in foot_out
+        foot_out = foot_out.replace('    <p>&copy; Copyright 2026 Darin Lei. Hosted by GitHub Pages.</p>', "    <p>&copy; Copyright 2026 Darin Lei. Hosted by GitHub Pages. Last updated {{ site.time | date: '%B %Y' }}.</p>", 1)
     page = f'''---
 layout: null
 title: {'Darin Lei' if live else 'Darin Lei (Lab)'}
@@ -346,7 +358,7 @@ permalink: {'/' if live else '/lab.html'}
         <ul class="ap-stats">
 {highlights_html}
         </ul>
-        <p class="section-cta"><a href="{cv}">Download the full CV <span aria-hidden="true">&rarr;</span></a></p>
+        <p class="section-cta"><a href="{cv}">Download the full CV{' (September 2026)' if proto else ''} <span aria-hidden="true">&rarr;</span></a></p>
       </div>
     </section>
 {experience}
