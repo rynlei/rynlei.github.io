@@ -189,3 +189,7 @@ main.ap.hk { padding-bottom: 0; }
 
 /* Credit line under the closing card's buttons */
 .hk-credit { margin: 2rem 0 0; max-width: 44rem; font-size: 0.95rem; line-height: 1.5; color: var(--ap-grey); }
+
+/* Header CV button in the demo page's teal */
+body:has(main.hk) .nav-apple .site-nav .site-nav-cta { background: #1a7062; }
+body:has(main.hk) .nav-apple .site-nav .site-nav-cta:hover { background: #22907d; }
