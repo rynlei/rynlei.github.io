@@ -190,8 +190,7 @@ def render(live):
         ]
         exp_rows = '\n'.join(f'''          <li class="ap-exp-item">
             <div class="ap-exp-head"><span class="ap-exp-lab">{lab}</span><span class="ap-exp-when">{when}</span></div>
-            <p class="ap-exp-role">{role} &middot; {pi}</p>
-            <p class="ap-exp-desc">{desc}</p>
+            <p class="ap-exp-role">{role} &middot; <span class="ap-exp-pi">{pi}</span></p>
           </li>''' for lab, pi, role, when, desc in LABS)
         experience = f'''
     <section id="experience" class="section ap-card">
