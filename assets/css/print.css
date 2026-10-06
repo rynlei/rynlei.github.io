@@ -1,0 +1,56 @@
+/* Print: a white, single-column version of the page. Header, menus,
+   motion and the back-to-top control are dropped; cards lose their
+   dark fill; links keep their text and show their address. */
+@page { margin: 16mm 14mm; }
+html, body { background: #fff !important; color: #111 !important; }
+body { font-size: 11pt; line-height: 1.45; }
+.site-header, .drawer, .drawer-scrim, .mega, .mega-scrim, .to-top, .lab-note, .ap-actions, .section-cta, .menu-toggle { display: none !important; }
+.js .reveal, .js .reveal-child { opacity: 1 !important; transform: none !important; transition: none !important; }
+main.ap { padding: 0 !important; }
+.ap-hero, .ap-card, .project-card.ap-card, .ap-head, .site-footer {
+  max-width: none !important; margin: 0 0 8mm !important; padding: 0 !important;
+  background: none !important; border: 0 !important; border-radius: 0 !important; box-shadow: none !important; color: #111 !important;
+  break-inside: avoid; page-break-inside: avoid;
+}
+.ap-hero::before, .ap-hero-split::before { display: none !important; }
+.ap-hero-split { display: grid !important; grid-template-columns: 38mm 1fr !important; column-gap: 8mm !important; min-height: 0 !important; align-items: start !important; }
+.ap-hero-split .ap-hero-media img { width: 38mm !important; height: auto !important; aspect-ratio: 4 / 5 !important; object-fit: cover !important; border-radius: 2mm !important; }
+.ap-text { padding: 0 !important; }
+h1, h2, h3, .ap-stat-title, .ap-desc strong, .ap-desc, .ap-desc p, .ap-tagline, .ap-kicker, .ap-meta, .ap-date, .ap-pills li, .ap-skills dt, .ap-skills dd, .ap-status { color: #111 !important; }
+h1 { font-size: 22pt !important; margin: 0 0 2mm !important; }
+h2 { font-size: 16pt !important; margin: 0 0 3mm !important; }
+h3 { font-size: 12.5pt !important; margin: 0 0 1.5mm !important; }
+.ap-head { padding-top: 4mm !important; margin-bottom: 3mm !important; }
+.ap-kicker { font-size: 9pt !important; color: #555 !important; margin: 0 0 1mm !important; }
+.ap-tagline { font-size: 11pt !important; margin: 0 0 3mm !important; }
+.ap-desc, .ap-desc p, .project-card.ap-card .ap-desc { font-size: 10.5pt !important; font-weight: 400 !important; line-height: 1.45 !important; }
+.ap-desc strong { font-weight: 600 !important; }
+.ap-meta, .ap-status, .ap-date { font-size: 9.5pt !important; color: #444 !important; }
+.ap-meta em { color: #111 !important; }
+.ap-hero .ap-pills { border-top: 0 !important; margin: 0 !important; }
+.ap-hero .ap-pills li { padding: 0.8mm 0 !important; border-bottom: 0 !important; font-size: 10pt !important; }
+.ap-hero .ap-pills li::before { content: "\2022  "; color: #888; }
+.ap-stats li { border-color: #ddd !important; padding: 2mm 0 !important; }
+.ap-stat-meta { color: #555 !important; }
+.ap-about-media { display: none !important; }
+.ap-media.contain { background: none !important; }
+.project-card.ap-card .ap-media.contain img { width: 42mm !important; aspect-ratio: auto !important; max-height: 40mm !important; object-fit: contain !important; object-position: left top !important; padding: 0 !important; filter: none !important; }
+.project-card.ap-card { display: grid !important; grid-template-columns: 42mm 1fr !important; column-gap: 6mm !important; padding: 3mm 0 !important; border-top: 0.3pt solid #ccc !important; }
+.project-card.ap-card .ap-media img { width: 42mm !important; height: auto !important; aspect-ratio: 4 / 3 !important; object-fit: cover !important; border-radius: 1.5mm !important; }
+#publications.ap-group { display: block !important; }
+#publications .project-card.ap-card { margin: 0 !important; }
+.ap-card .news-item.has-media { grid-template-columns: 1fr 36mm !important; gap: 5mm !important; }
+.ap-news-media img { border-radius: 1.5mm !important; }
+.ap-card .news-item + .news-item { border-color: #ddd !important; margin-top: 3mm !important; padding-top: 3mm !important; }
+a { color: #111 !important; text-decoration: underline !important; text-decoration-color: #999 !important; }
+.card-cta a[href^="http"]::after, .ap-desc a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 8.5pt; color: #555; word-break: break-all; }
+.card-cta, .ap-card .card-cta { font-size: 9.5pt !important; margin-top: 1.5mm !important; }
+.ap-skills { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 2mm 8mm !important; }
+.ap-skill dt { font-size: 9pt !important; }
+.ap-skill dd { font-size: 10pt !important; font-weight: 400 !important; }
+.ap-skill dt { color: #111 !important; }
+.interests-list.ap-pills li { background: none !important; border: 0.3pt solid #bbb !important; color: #111 !important; }
+.site-footer { text-align: left !important; border-top: 0.3pt solid #ccc !important; padding-top: 3mm !important; font-size: 9pt !important; color: #444 !important; }
+.site-footer .contact-icons { display: none !important; }
+.footer-email a { color: #111 !important; font-size: 10pt !important; }
+.site-footer-inner::after { content: "rynlei.github.io"; display: block; color: #666; }
