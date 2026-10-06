@@ -18,7 +18,20 @@
   });
   scrim.addEventListener('click', function () { setOpen(false); });
   drawer.addEventListener('click', function (e) {
-    if (e.target.closest('a')) setOpen(false);
+    var a = e.target.closest('a');
+    if (!a) return;
+    // Same-page section links: close the menu first, then scroll once the
+    // page's scroll lock has lifted. Letting the browser jump in the same
+    // instant as the close loses the jump on iOS Safari now and then.
+    var hash = a.getAttribute('href') || '';
+    var target = hash.charAt(0) === '#' && hash.length > 1 ? document.getElementById(hash.slice(1)) : null;
+    setOpen(false);
+    if (!target) return;
+    e.preventDefault();
+    setTimeout(function () {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (history.pushState) history.pushState(null, '', hash);
+    }, 60);
   });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && root.classList.contains('menu-open')) {
