@@ -3,10 +3,15 @@
 // Also drives the "More" menu, as a small panel or a full-width sheet.
 (function () {
   var root = document.documentElement;
-  var ticking = false;
+  var ticking = false, compact = false;
+  // Hysteresis: condense once the reader is clearly past the top, and only
+  // widen again close to it, so the header never flickers near the line.
   function update() {
     ticking = false;
-    root.classList.toggle('nav-compact', window.scrollY > 48);
+    var y = window.scrollY;
+    if (!compact && y > 96) compact = true;
+    else if (compact && y < 12) compact = false;
+    root.classList.toggle('nav-compact', compact);
   }
   function onScroll() { if (!ticking) { ticking = true; window.requestAnimationFrame(update); } }
   window.addEventListener('scroll', onScroll, { passive: true });
@@ -43,7 +48,7 @@
     var header = document.querySelector('.site-header');
     function armClose() { clearTimeout(hoverTimer); hoverTimer = setTimeout(function () { setOpen(false); }, 180); }
     function cancelClose() { clearTimeout(hoverTimer); }
-    btn.addEventListener('mouseenter', function () { if (!wide()) return; clearTimeout(hoverTimer); hoverTimer = setTimeout(function () { setOpen(true); }, 120); });
+    btn.addEventListener('mouseenter', function () { if (!wide()) return; clearTimeout(hoverTimer); hoverTimer = setTimeout(function () { setOpen(true); }, 320); });  // the pointer has to rest on More, not just cross it
     btn.addEventListener('mouseleave', function () { clearTimeout(hoverTimer); });
     [header, mega].forEach(function (el) {
       el.addEventListener('mouseleave', function () { if (isOpen()) armClose(); });
