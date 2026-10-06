@@ -729,6 +729,7 @@ main.ap { padding-bottom: 0; }
 .ap-exp-role { margin: 0.3rem 0 0; font-size: 0.98rem; font-weight: 500; color: var(--ap-grey); }
 .ap-exp-role .ap-exp-title { color: var(--accent); font-weight: 600; }
 .ap-exp-role .ap-exp-pi { color: var(--ap-text); }
+.ap-exp-desc { margin: 0.5rem 0 0; font-size: 1.02rem; line-height: 1.5; color: var(--ap-grey); }
 
 /* Tighter project cards (prototype): a notch less padding and gap */
 .proto #projects .project-card.ap-card { margin-top: 1rem; }
