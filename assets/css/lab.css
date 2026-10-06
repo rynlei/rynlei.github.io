@@ -740,3 +740,13 @@ main.ap { padding-bottom: 0; }
   .proto #projects .project-card.ap-card .ap-text { padding: 1.5rem 1.5rem 1.75rem; }
   .ap-exp-head { flex-direction: column; gap: 0.15rem; }
 }
+
+/* Phone menu sheet: sized so nine entries fit on a 667px-tall screen
+   without scrolling; if a shorter screen still scrolls, the list starts
+   below the header rather than under it. */
+@media (max-width: 48em) {
+  .drawer.drawer-full { padding: 5.25rem 1.5rem 1.25rem; scroll-padding-top: 5.25rem; }
+  .drawer-full .drawer-label { margin-bottom: 0.6rem; }
+  .drawer-full .drawer-nav a { font-size: clamp(1.2rem, 5vw, 1.45rem); padding: 0.55rem 0; }
+  .drawer-full .drawer-foot { padding-top: 1rem; font-size: 0.78rem; }
+}
