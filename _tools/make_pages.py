@@ -169,7 +169,7 @@ def render(live):
                   'assets/img/lab/hckh-program-towel.webp': 'Manuscript writing &middot; August 2026'}
         for c in projects_out:
             if c['src'] in STATUS: c['status'] = STATUS[c['src']]
-        about_out[0] = about_out[0].replace('</a></strong>.</p>', '</a></strong>. I expect to graduate in <strong>June 2027</strong> and am applying to <strong>PhD programmes in cognitive neuroscience</strong> for entry in autumn 2027.</p>')
+        about_out[0] = about_out[0].replace('</a></strong>.</p>', '</a></strong>. I expect to graduate in <strong>June 2027</strong> and am applying to <strong>PhD programs in clinical neurosciences, psychiatry, experimental psychology, and cognitive science</strong> for entry in Fall 2027.</p>')
         assert 'June 2027' in about_out[0]
         footer_out = footer_out.replace('    <p>&copy; Copyright 2026 Darin Lei. Hosted by GitHub Pages.</p>',
             '    <p class="footer-email"><a href="mailto:darin.lei@mail.utoronto.ca">darin.lei@mail.utoronto.ca</a></p>\n    <p>&copy; Copyright 2026 Darin Lei. Hosted by GitHub Pages.</p>')
