@@ -772,13 +772,14 @@ main.ap { padding-bottom: 0; }
 }
 @media (prefers-reduced-motion: reduce) { .nav-apple .site-nav a::after, .nav-apple .site-nav-more-btn::after { transition: none; } }
 
-/* Lab experiment: frosted pill. Translucent fill with a backdrop blur so
-   content behind reads as tone rather than letters. Lab only. */
+/* Lab experiment: Apple-tuned pill. Mostly opaque fill with a plain blur
+   and no saturation boost, so colour beneath shows as a muted tint and
+   text beneath as a haze, as on apple.com's product pill. Lab only. */
 @media (min-width: 48.0625em) {
   .lab .nav-compact .nav-apple .site-header-inner {
-    background: rgba(22, 22, 25, 0.72);
-    backdrop-filter: saturate(180%) blur(18px);
-    -webkit-backdrop-filter: saturate(180%) blur(18px);
+    background: rgba(22, 22, 25, 0.84);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
   }
   .lab .more-open .nav-apple .site-header-inner { backdrop-filter: none; -webkit-backdrop-filter: none; }
 }
