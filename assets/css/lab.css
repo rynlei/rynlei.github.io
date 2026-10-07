@@ -632,7 +632,7 @@ main.ap { padding-bottom: 0; }
   /* Scrolled: the floating pill */
   .nav-compact .nav-apple .site-header-inner {
     max-width: 60rem;
-    background: rgba(22, 22, 25, 0.92);
+    background: #161619;
     border-color: rgba(255, 255, 255, 0.12);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
   }
