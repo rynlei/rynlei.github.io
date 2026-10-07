@@ -67,13 +67,13 @@ def lead_bold(text):
 # About copy (overrides the paragraphs in _src/home.html).
 about_ps = [
     'I am an undergraduate thesis student at the University of Toronto (St. George Campus) pursuing the Psychology Research Specialist Program and a major in Cognitive Science, advised by <a href="https://www.psych.utoronto.ca/people/directories/all-faculty/morgan-barense/">Dr. Morgan D. Barense</a>.',
-    'An aspiring cognitive neuroscientist, I wish to contribute to a scientific account of consciousness. Drawing on converging lines of research in psychology and the computational, clinical, and systems neurosciences, I am interested in how consciousness arises from the interaction between the brain and body. My current work on temporal context recovery in autobiographical memory is one approach to answering questions about the nature of consciousness and its cognitive implementation. In the longer term, I aim to use altered states of consciousness, such as psychedelic experiences, dream states, epilepsy, and mystical experiences, as a vantage point from which to carve consciousness at its joints.',
+    'An aspiring cognitive scientist, I am interested in contributing to a scientific account of consciousness. In the longer term, I aim to achieve this by exploring what insights altered states of consciousness, such as anesthesia, psychedelics, and meditative practices, can reveal about what it means to be conscious. My current work on temporal context recovery in autobiographical memory is one approach to answering questions about the nature of consciousness and its cognitive implementation.',
     'Beyond research aspirations, I train karate, cycle, and practice yoga. Please feel free to contact me if we share interests!',
 ]
 # About: bold affiliation, programme and advisor, plus a few anchors of the argument.
 about = []
 for i, p in enumerate(about_ps):
-    for k in ['University of Toronto (St. George Campus)', 'Psychology Research Specialist Program', 'An aspiring cognitive neuroscientist',
+    for k in ['University of Toronto (St. George Campus)', 'Psychology Research Specialist Program', 'An aspiring cognitive scientist',
               'Cognitive Science', 'altered states of consciousness']:
         p = p.replace(k, f'<strong>{k}</strong>', 1)
     p = re.sub(r'(<a href="[^"]+">Dr\. Morgan D\. Barense</a>)', r'<strong>\1</strong>', p)
