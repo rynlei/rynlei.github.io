@@ -771,3 +771,31 @@ main.ap { padding-bottom: 0; }
   .nav-apple .site-nav .site-nav-cta::after { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .nav-apple .site-nav a::after, .nav-apple .site-nav-more-btn::after { transition: none; } }
+
+/* Lab experiment: the current-section underline draws in from the left
+   and retracts to the right, as on Carhart-Harris's site, instead of
+   fading in place. */
+@media (min-width: 48.0625em) {
+  .lab .nav-apple .site-nav a::after, .lab .nav-apple .site-nav-more-btn::after {
+    opacity: 1;
+    transform: scaleX(0);
+    transform-origin: right center;
+    transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  .lab .nav-apple .site-nav a.is-current::after, .lab .nav-apple .site-nav-more-btn.is-current::after {
+    transform: scaleX(1);
+    transform-origin: left center;
+  }
+}
+@media (prefers-reduced-motion: reduce) { .lab .nav-apple .site-nav a::after, .lab .nav-apple .site-nav-more-btn::after { transition: none; } }
+
+/* Lab experiment: frosted pill. Translucent fill with a backdrop blur so
+   content behind reads as tone rather than letters. Lab only. */
+@media (min-width: 48.0625em) {
+  .lab .nav-compact .nav-apple .site-header-inner {
+    background: rgba(22, 22, 25, 0.72);
+    backdrop-filter: saturate(180%) blur(18px);
+    -webkit-backdrop-filter: saturate(180%) blur(18px);
+  }
+  .lab .more-open .nav-apple .site-header-inner { backdrop-filter: none; -webkit-backdrop-filter: none; }
+}
