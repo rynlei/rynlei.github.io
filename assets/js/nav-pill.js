@@ -4,10 +4,11 @@
 (function () {
   var root = document.documentElement;
   var ticking = false, compact = false;
-  // Section highlighting: the row link (or "More") for the section the
-  // reader is in carries .is-current. Styled per page in CSS.
+  // Section highlighting: the row link for the section the reader is in
+  // carries .is-current (styled per page in CSS). Sections that live only
+  // under "More" clear the underline rather than moving it to the button,
+  // so it never jumps across the row.
   var navLinks = Array.prototype.slice.call(document.querySelectorAll('.site-nav a[href^="#"]'));
-  var moreBtn = document.querySelector('.site-nav-more-btn');
   var moreIds = Array.prototype.map.call(document.querySelectorAll('.mega a[href^="#"], .site-nav-panel a[href^="#"]'), function (a) { return a.getAttribute('href').slice(1); });
   var sections = navLinks.map(function (a) { return a.getAttribute('href').slice(1); }).concat(moreIds)
     .map(function (id) { return document.getElementById(id); }).filter(Boolean)
@@ -30,7 +31,6 @@
     if (id === currentId) return;
     currentId = id;
     navLinks.forEach(function (a) { a.classList.toggle('is-current', a.getAttribute('href') === '#' + id); });
-    if (moreBtn) moreBtn.classList.toggle('is-current', moreIds.indexOf(id) >= 0);
   }
   // Hysteresis: condense once the reader is clearly past the top, and only
   // widen again close to it, so the header never flickers near the line.
