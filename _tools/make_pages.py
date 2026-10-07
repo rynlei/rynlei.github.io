@@ -10,7 +10,7 @@ def section(id_):
     return one(r'<section id="%s"[^>]*>(.*?)</section>' % id_, src).group(1)
 
 tagline = one(r'<p class="hero-tagline">(.*?)</p>', src).group(1)
-lead = 'What do altered states tell us about how the mind gives rise to consciousness?'  # lab-only hero statement
+lead = 'What do altered states tell us about how the brain and body give rise to consciousness?'  # lab-only hero statement
 interests = re.findall(r'<li>(.*?)</li>', one(r'<ul class="interests-list">(.*?)</ul>', src).group(0))
 interests = ['Altered states of consciousness' if i.startswith('Altered states of consciousness') else i for i in interests]  # lab: short form; examples live in About
 cv = one(r'<a class="btn" href="([^"]+)">Download CV</a>', src).group(1)
