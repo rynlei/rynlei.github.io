@@ -73,7 +73,7 @@ about_ps = [
 # About: bold affiliation, programme and advisor, plus a few anchors of the argument.
 about = []
 for i, p in enumerate(about_ps):
-    for k in ['University of Toronto (St. George Campus)', 'Psychology Research Specialist Program',
+    for k in ['University of Toronto (St. George Campus)', 'Psychology Research Specialist Program', 'An aspiring cognitive neuroscientist',
               'Cognitive Science', 'altered states of consciousness', 'academic writing, data analysis, and graphic design']:
         p = p.replace(k, f'<strong>{k}</strong>', 1)
     p = re.sub(r'(<a href="[^"]+">Dr\. Morgan D\. Barense</a>)', r'<strong>\1</strong>', p)
