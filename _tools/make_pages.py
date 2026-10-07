@@ -66,8 +66,8 @@ def lead_bold(text):
 
 # About copy (overrides the paragraphs in _src/home.html).
 about_ps = [
-    'I am an undergraduate thesis student at the University of Toronto (St. George Campus) pursuing the <a href="https://www.psych.utoronto.ca/undergraduate/research-specialist">Psychology Research Specialist Program</a>, a limited-enrolment stream of about fifteen students a year, and a major in Cognitive Science, advised by <a href="https://www.psych.utoronto.ca/people/directories/all-faculty/morgan-barense/">Dr. Morgan D. Barense</a>.',
-    '<strong>An aspiring cognitive scientist</strong>, I wish to unravel the nature and function of consciousness. My current work on temporal context recovery in autobiographical memory is one approach to these questions. In the longer term, I aim to use <strong>altered states of consciousness such as psychedelics, dreams, and meditation</strong> as explorative tools through which to carve consciousness at its joints.',
+    'I am an undergraduate thesis student at the University of Toronto (St. George Campus), advised by <a href="https://www.psych.utoronto.ca/people/directories/all-faculty/morgan-barense/">Dr. Morgan D. Barense</a>. I am pursuing the <a href="https://www.psych.utoronto.ca/undergraduate/research-specialist">Psychology Research Specialist Program</a>, a limited-enrolment stream of about fifteen students a year, alongside a major in Cognitive Science.',
+    '<strong>An aspiring cognitive scientist</strong>, I wish to unravel the nature and function of consciousness. My current work on temporal context recovery in autobiographical memory is one approach to these questions. In the longer term, I aim to use <strong>altered states of consciousness such as psychedelics, dreams, and meditation</strong> as explorative tools with which to carve consciousness at its joints.',
     'Beyond research aspirations, I am a <strong>martial artist, an avid yogi, and a graphic designer</strong>. Feel free to get in touch if we share interests.',
 ]
 # About: bold affiliation, programme and advisor, plus a few anchors of the argument.
@@ -169,7 +169,7 @@ def render(live):
                   'assets/img/lab/hckh-program-towel.webp': 'Manuscript writing &middot; August 2026'}
         for c in projects_out:
             if c['src'] in STATUS: c['status'] = STATUS[c['src']]
-        about_out[0] = about_out[0].replace('</a></strong>.</p>', '</a></strong>. I expect to graduate in <strong>June 2027</strong> and am applying to <strong>PhD programs</strong> in psychology, psychiatry, and neuroscience for entry in <strong>Fall 2027</strong>.</p>')
+        about_out[0] = about_out[0].replace('Cognitive Science</strong>.</p>', 'Cognitive Science</strong>. I expect to graduate in <strong>June 2027</strong> and am applying to <strong>PhD programs</strong> in psychology, psychiatry, and neuroscience for entry in <strong>Fall 2027</strong>.</p>')
         assert 'June 2027' in about_out[0]
         footer_out = footer_out.replace('    <p>&copy; Copyright 2026 Darin Lei. Hosted by GitHub Pages.</p>',
             '    <p class="footer-email"><a href="mailto:darin.lei@mail.utoronto.ca">darin.lei@mail.utoronto.ca</a></p>\n    <p>&copy; Copyright 2026 Darin Lei. Hosted by GitHub Pages.</p>')
