@@ -66,7 +66,7 @@ def lead_bold(text):
 
 # About copy (overrides the paragraphs in _src/home.html).
 about_ps = [
-    'I am an undergraduate thesis student at the University of Toronto (St. George Campus) pursuing the Psychology Research Specialist Program and a major in Cognitive Science, advised by <a href="https://www.psych.utoronto.ca/people/directories/all-faculty/morgan-barense/">Dr. Morgan D. Barense</a>.',
+    'I am an undergraduate thesis student at the University of Toronto (St. George Campus) pursuing the <a href="https://www.psych.utoronto.ca/undergraduate/research-specialist">Psychology Research Specialist Program</a>, a limited-enrolment stream of about fifteen students a year, and a major in Cognitive Science, advised by <a href="https://www.psych.utoronto.ca/people/directories/all-faculty/morgan-barense/">Dr. Morgan D. Barense</a>.',
     '<strong>An aspiring cognitive scientist</strong>, I wish to unravel the nature and function of consciousness. My current work on temporal context recovery in autobiographical memory is one approach to these questions. In the longer term, I aim to use <strong>altered states of consciousness such as psychedelics, dreams, and meditation</strong> as explorative tools through which to carve consciousness at its joints.',
     'Beyond research aspirations, I am a <strong>martial artist, an avid yogi, and a graphic designer</strong>. Feel free to get in touch if we share interests.',
 ]
