@@ -164,7 +164,7 @@ def render(live):
         for c in papers: c['meta'] = c['meta'] + ', student-reviewed'
         star = [c for c in posters if 'STAR' in c['meta']]; purc = [c for c in posters if 'Undergraduate Research Community' in c['meta']]
         pubs_out = papers + [osnc] + star + [epic] + purc
-        STATUS = {'assets/img/lab/rns-illustration.jpg': 'Data collection &middot; October 2026',
+        STATUS = {'assets/img/lab/rns-illustration.jpg': 'Data analysis &middot; October 2026',
                   'assets/img/lab/sleep-memory-1600.jpg': 'Data collection &middot; August 2026',
                   'assets/img/lab/hckh-program-towel.webp': 'Manuscript writing &middot; August 2026'}
         for c in projects_out:
