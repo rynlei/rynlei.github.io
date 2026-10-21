@@ -150,7 +150,7 @@ def render(live):
         osnc = dict(src='assets/img/lab/osnc-neurons.jpg', alt='Rendered neurons with glowing cell bodies against a dark background', photo=True,
             kicker='Poster presentation &middot; Best Undergraduate Poster Award',
             title='Determining the Mechanisms of Temporal Context Recovery in Autobiographical Memory with Ambulatory Intracranial Recording',
-            meta='<em>Lei, D.</em>, Barense, M. D., Seger, S., Lohnas, L., &amp; Lega, B. (2026) &middot; Ontario Student Neuroscience Conference (OSNC)',
+            meta='<em>Lei, D.</em>, Lohnas, L., Seger, S., Lega, B., &amp; Barense, M. D. (2026) &middot; Ontario Student Neuroscience Conference (OSNC)',
             cta='<a href="assets/pdf/DL_OSNC-2026_poster.pdf">View the poster <span aria-hidden="true">&rarr;</span></a>',
             desc='Retrieved-context theory predicts that recalling an event reinstates its temporal context, yet this has only been tested in the laboratory. This poster reports the behavioural phase of the thesis, which tests the prediction in real-world autobiographical memory with HippoCamera, and sets out the planned ambulatory intracranial recordings in patients implanted with the NeuroPace RNS system.')
         epic = dict(src='assets/img/lab/epic-at-title.webp', alt='Title slide of The HippoCamera Knowledge Hub Program talk at the AGE-WELL EPIC 2026 conference, with an older man in a cap smiling and the partner logos', photo=True,
