@@ -68,7 +68,7 @@ def lead_bold(text):
 about_ps = [
     'I am an undergraduate thesis student at the University of Toronto (St. George Campus), advised by <a href="https://www.psych.utoronto.ca/people/directories/all-faculty/morgan-barense/">Dr. Morgan D. Barense</a>. I am pursuing the <a href="https://www.psych.utoronto.ca/undergraduate/research-specialist">Psychology Research Specialist Program</a>, a limited-enrolment stream of about fifteen students a year, alongside a major in Cognitive Science.',
     '<strong>An aspiring cognitive scientist</strong>, I wish to unravel the nature and function of consciousness. My current work on temporal context recovery in autobiographical memory is one approach to these questions. In the longer term, I aim to use <strong>altered states of consciousness such as psychedelics, dreams, and meditation</strong> as explorative tools with which to carve consciousness at its joints.',
-    'Beyond research aspirations, I am a <strong>martial artist, an avid yogi, and a graphic designer</strong>. Feel free to get in touch if we share interests.',
+    'Beyond research aspirations, I am a <strong>martial artist, an avid yogi, and a graphic designer</strong>. Feel free to <strong><a href="#contact">get in touch</a></strong> if we share interests.',
 ]
 # About: bold affiliation, programme and advisor, plus a few anchors of the argument.
 about = []
