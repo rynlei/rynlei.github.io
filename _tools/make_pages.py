@@ -147,6 +147,11 @@ def render(live):
         </ul>'''
     print_link = ''
     if proto:
+        cns = dict(src='assets/img/lab/cns-neuron.jpg', alt='Violet and cyan filaments radiating from a bright centre against a black background', photo=True,
+            kicker='Poster presentation &middot; Accepted',
+            title='Context as an Anchor of Episodic Recollection: A Test of the Context Maintenance and Retrieval (CMR) Framework in the Real World',
+            meta='<em>Lei, D.</em>, Lohnas, L., Seger, S., Lega, B., &amp; Barense, M. D. (2027) &middot; Cognitive Neuroscience Society 34th Annual Meeting, Boston &middot; March 2027',
+            desc='Retrieved-context models such as CMR hold that recalling a memory reinstates its temporal context, which then guides what comes to mind next. This poster takes that account out of the laboratory, testing its predictions against real-world autobiographical memories recorded with HippoCamera.')
         osnc = dict(src='assets/img/lab/osnc-neurons.jpg', alt='Rendered neurons with glowing cell bodies against a dark background', photo=True,
             kicker='Poster presentation &middot; Best Undergraduate Poster Award',
             title='Determining the Mechanisms of Temporal Context Recovery in Autobiographical Memory with Ambulatory Intracranial Recording',
@@ -163,7 +168,7 @@ def render(live):
         papers, posters = [dict(c) for c in pubs_out[:2]], pubs_out[2:]
         for c in papers: c['meta'] = c['meta'] + ', student-reviewed'
         star = [c for c in posters if 'STAR' in c['meta']]; purc = [c for c in posters if 'Undergraduate Research Community' in c['meta']]
-        pubs_out = papers + [osnc] + star + [epic] + purc
+        pubs_out = papers + [cns, osnc] + star + [epic] + purc
         STATUS = {'assets/img/lab/rns-illustration.jpg': 'Data analysis &middot; October 2026',
                   'assets/img/lab/sleep-memory-1600.jpg': 'Data collection &middot; August 2026',
                   'assets/img/lab/hckh-program-towel.webp': 'Manuscript writing &middot; August 2026'}
@@ -185,8 +190,10 @@ def render(live):
              'Thesis on temporal context recovery in autobiographical memory using HippoCamera; led the HippoCamera Knowledge Hub study with older adults, from Figma prototypes to semi-structured interviews and thematic analysis.'),
             ('Texas Computational Memory Lab, UTSW Medical Center', 'Dr. Bradley Lega', 'External Research Collaborator', 'January 2026 &ndash; present',
              'Autobiographical Interview and temporal recall dynamics in temporal lobe epilepsy patients implanted with the NeuroPace RNS system; electrode localisation in FreeSurfer; patient tutorials for RNS data syncing in HippoCamera.'),
-            ('Levine Lab, Rotman Research Institute, Baycrest', 'Dr. Brian Levine', 'Individual Research Project Student', 'January 2026 &ndash; present',
-             'Sleep, targeted memory reactivation and the free recall of a naturalistic experience, using a controlled hospital tour as the memory paradigm.'),
+            ('Levine Lab, Rotman Research Institute, Baycrest', 'Dr. Brian Levine', 'Research Assistant', 'January 2026 &ndash; present',
+             'Sleep, targeted memory reactivation and the free recall of a naturalistic experience, using a controlled hospital tour as the memory paradigm; meta-analysis of studies using the Autobiographical Interview to quantify episodic richness in recall.'),
+            ('Cognitive Science Program, University of Toronto', 'Dr. John Vervaeke', 'Independent Study Project Student', 'October 2026 &ndash; present',
+             'A theoretical account of consciousness informed by partial information decomposition, with a focus on psychedelics, humour, anaesthesia, and insight problem-solving, extending prior work on predictive processing and relevance realization.'),
             ('KITE Research Institute, University Health Network', 'Dr. Jennifer L. Campos', 'Summer Research Project Student', 'May &ndash; August 2026',
              'Vection, hearing loss and mental health across the lifespan, using a global visual motion paradigm in the StreetLab simulator.'),
         ]
