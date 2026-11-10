@@ -234,7 +234,7 @@ def render(live):
       <div class="mega-col">
         <p class="mega-label">Elsewhere</p>
         <a href="project-hckh.html">HippoCamera Knowledge Hub</a>
-        <a href="{cv}">Curriculum vitae (PDF{', October 2026' if proto else ''})</a>
+        <a href="{cv}">Curriculum vitae (PDF{', November 2026' if proto else ''})</a>
       </div>
     </div>
   </div>'''
@@ -365,7 +365,7 @@ permalink: {'/' if live else '/lab.html'}
         <ul class="ap-stats">
 {highlights_html}
         </ul>
-        <p class="section-cta"><a href="{cv}">Download the full CV{' (October 2026)' if proto else ''} <span aria-hidden="true">&rarr;</span></a></p>
+        <p class="section-cta"><a href="{cv}">Download the full CV{' (November 2026)' if proto else ''} <span aria-hidden="true">&rarr;</span></a></p>
       </div>
     </section>
 {experience}
